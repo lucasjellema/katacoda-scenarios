@@ -22,6 +22,4 @@ Now check the Traefik dashboard - by click on the tab labeled *Traefik Dashboard
 You should see a new frontend (rule) and backend - based on the Docker container added in this step through the Traefik labels. 
 
 Let's try to invoke the new service:
-`curl -H Host:machine.code.cafe http://localhost`{{execute}}
-`curl -H Host:machine.code.cafe http://localhost \n
-curl -H Host:machine.code.cafe http://localhost`{{execute}}
+`curl -H Host:machine.code.cafe http://host01`{{execute}}
