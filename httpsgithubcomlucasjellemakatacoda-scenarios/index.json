@@ -6,16 +6,20 @@
   "details": {
     "steps": [
       {
-        "title": "Step Title",
+        "title": "Run Traefik using Docker Compose",
         "text": "step1.md"
         },
         {
-          "title": "Step 2 - Step Title",
+          "title": "Step 2 - Start a Docker Container that Traefik Routes traffic to",
           "text": "step2.md"
         },
         {
-          "title": "Step 3 - Step Title",
+          "title": "Step 3 - Start a second Docker Container that Traefik also Routes traffic to",
           "text": "step3.md"
+        },
+        {
+          "title": "Step 4 - Scale Up one of the Docker Contains and watch how Traefik starts load balancing",
+          "text": "step4.md"
         }
     ],
     "intro": {
