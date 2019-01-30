@@ -7,22 +7,19 @@
     "steps": [
       {
         "title": "Step Title",
-        "text": "step1.md",
-        "answer": "step1-answer.md",
-        "verify": "step1-verify.sh",
-        "courseData": "run-command-in-background.sh",
-        "code": "run-command-in-terminal.sh"
-      },
-      {
-        "title": "Step 2 - Step Title",
-        "text": "step2.md"
-      }
+        "text": "step1.md"
+        },
+        {
+          "title": "Step 2 - Step Title",
+          "text": "step2.md"
+        },
+        {
+          "title": "Step 3 - Step Title",
+          "text": "step3.md"
+        }
     ],
     "intro": {
       "text": "intro.md",
-      "courseData": "courseBase.sh",
-      "credits": "",
-      "code": "changecd.sh"
     },
     "finish": {
       "text": "finish.md"
@@ -33,13 +30,9 @@
           "file": "docker-compose.yml",
           "target": "~/"
         }
-      ],
-      "host01": []
+      ]
     }
   },
-  "files": [
-    "app.js"
-  ],
   "environment": {
     "showdashboard": true,
     "dashboards": [{"name": "Tab Name", "port": 80}, {"name": "Tab Name", "port": 8080}],
