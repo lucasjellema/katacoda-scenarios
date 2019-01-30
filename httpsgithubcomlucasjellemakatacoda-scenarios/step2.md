@@ -1,22 +1,16 @@
-Allow a code block to be copied `some-command`{{copy}}
-
-<pre class="file" data-filename="docker-compose.yml" data-target="replace">
-var http = require('http');
-var requestListener = function (req, res) {
-  res.writeHead(200);
-  res.end('Hello, World!');
-}
-
-var server = http.createServer(requestListener);
-server.listen(3000, function() { console.log("Listening on port 3000")});
-</pre>
-          
+Copy this service definition into the docker-compose.yml file:
 <pre class="file" data-filename="docker-compose.yml" data-target="append">
-var server2 = http.createServer(requestListener);
-server2.listen(4000, function() { console.log("Listening on port 4000")});
+  code-cafe-machine:
+    image: katacoda/docker-http-server
+    labels:
+      - "traefik.backend=code-cafe-machine-echo"
+      - "traefik.frontend.rule=Host:machine.code.cafe"
+    networks:
+      - cafenet
+
 </pre>
 
-<pre class="file" data-target="clipboard">Test</pre>
-          
+Now execute this command to stop and tear down all Docker artifacts created before using docker-compose `docker-compose down`{{execute}}
 
-<pre class="file" data-target="regex???">Test</pre>
+Let's restart Traefik as well as the newly defined container using docker-compose `docker-compose up -d`{{execute}}.
+

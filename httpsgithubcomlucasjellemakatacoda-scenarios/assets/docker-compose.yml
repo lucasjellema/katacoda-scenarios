@@ -1,5 +1,8 @@
 version: "3"
 
+networks:
+  cafenet:
+
 services:
   proxy:
     image: traefik
@@ -13,22 +16,3 @@ services:
       - /dev/null:/traefik.toml
     networks:
       - cafenet
-
-  code-cafe-machine:
-    image: katacoda/docker-http-server
-    labels:
-      - "traefik.backend=code-cafe-machine-echo"
-      - "traefik.frontend.rule=Host:machine.code.cafe"
-    networks:
-      - cafenet
-
-  code-cafe-echo:
-    image: katacoda/docker-http-server:v2
-    labels:
-      - "traefik.backend=code-cafe-echo"
-      - "traefik.frontend.rule=Host:echo.code.cafe"
-    networks:
-      - cafenet
-
-networks:
-  cafenet:
