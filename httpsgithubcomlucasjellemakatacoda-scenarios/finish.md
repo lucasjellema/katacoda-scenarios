@@ -14,9 +14,11 @@ There is much more to discover.
 * Throttling (rate limiting)
 
 ## Resources
-Traefik Homepage: [https://traefik.io/]
-Traefik Documentation: [https://docs.traefik.io/] 
+Traefik Homepage: https://traefik.io/
+Traefik Documentation: https://docs.traefik.io/
 
-Getting Started Scenario: [https://docs.traefik.io/]
+Getting Started Scenario: https://docs.traefik.io/
 
 Also check out this other Katacode scenario: [Load Balance Containers using Traefik](https://www.katacoda.com/courses/traefik/deploy-load-balancer)
+
+The sources for this Katacoda scenario are also available: [GitHub](https://github.com/lucasjellema/katacoda-scenarios/tree/master/httpsgithubcomlucasjellemakatacoda-scenarios.
