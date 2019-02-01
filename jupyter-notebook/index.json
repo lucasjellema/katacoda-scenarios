@@ -1,0 +1,36 @@
+{
+  "title": "Jupyter Notebook",
+  "description": "A scenario to play with Jupyter Notebook",
+  "difficulty": "beginner",
+  "time": "45 minutes",
+  "details": {
+    "steps": [{
+      "title": "Step 1 - Run the Jupyter Notebook",
+      "text": "step1.md"
+    },{
+      "title": "Step 2 - Access the Jupyter Notebook",
+      "text": "step2.md"
+    }],
+    "intro": {
+      "text": "intro.md",
+      "credits": ""
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "environment": {
+    "uilayout": "terminal",
+    "showdashboard": true,
+    "dashboards": [
+      {
+        "name": "Jupyter Notebook",
+        "port": 8888
+      }
+    ],
+    "uimessage1": "\u001b[32mYour Interactive Bash Terminal.\r\nStart Kubernetes using `launch.sh`\u001b[m\r\n"
+  },
+  "backend": {
+    "imageid": "docker"
+  }
+}
