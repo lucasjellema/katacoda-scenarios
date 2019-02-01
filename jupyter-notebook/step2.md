@@ -1,17 +1,16 @@
 Install some additional libraries into the Jupyter Notebook container
 
-docker exec –it <docker container id> /bin/bash
+docker exec –it jupyter /bin/bash
 
-pip install --upgrade pip
-git clone https://github.com/kavgan/word_cloud
-cd word_cloud
-pip install -e . 
-pip install plotly 
-pip install matplotlib_venn
-pip install cufflinks
-pip install gender-guesser
+`docker exec -d jupyter pip install --upgrade pip`{{execute}}
+`docker exec -d jupyter bash -c 'git clone https://github.com/kavgan/word_cloud `{{execute}}
+`docker exec -d jupyter bash -c ' cd word_cloud && pip install -e . '`{{execute}}
+`docker exec -d jupyter bash -c 'pip install plotly && pip install matplotlib_venn && pip install cufflinks && pip install &gender-guesser'`{{execute}}
 
-jupyter labextension install @jupyterlab/plotly-extension
+`docker exec -d jupyter jupyter labextension install @jupyterlab/plotly-extension`{{execute}}
+
+`docker restart jupyter`{{execute}}
+
 
 
 Perhaps git clone some GitHub repo as well
