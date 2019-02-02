@@ -20,12 +20,12 @@ Run this script to execute these steps:
 These are the individual steps inside this script. You do not have to execute them - because they are in the *runPrep.sh* script.
 
 First, copy the script into the container
-`docker cp prepareContainer.sh jupyter:/script/prepareContainer.sh`
+`docker cp prepareContainer.sh jupyter:/home/jovyan/prepareContainerRoot.sh`
 
-This will copy the local file prepareContainer.sh into the container's /script directory; it will be a root owned file that cannot be run straightaway.
+This will copy the local file prepareContainer.sh into the container's directory `/home/jovyan` as prepareContainerRoot.sh; it will be a root owned file that cannot be run straightaway.
 
 Next, copy the script, make the copy executable and then run the script inside the container:
-`docker exec -d jupyter bash -c 'cp /script/prepareContainer.sh ~/prepareContainer.sh && chmod +x ~/prepareContainer.sh && ~/prepareContainer.sh'`
+`docker exec -d jupyter bash -c 'cp ~/prepareContainerRoot.sh ~/prepareContainer.sh && chmod +x ~/prepareContainer.sh'`
 
 Next, run the script inside the container:
 `docker exec -d jupyter sh /home/jovyan/prepareContainer.sh`
