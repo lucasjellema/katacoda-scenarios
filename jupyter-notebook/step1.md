@@ -21,6 +21,14 @@ Next, you can open the Jupyter Notebook at
 
 Note: you need the value of the Jupyter Token to login to the environment.
 ## Further prepare the container
-
 To prepare the container we will run a script inside the container to install several Python packages
-`docker exec -d jupyter /work/prepareContainer.sh`{{execute}}
+
+First, copy the script into the container
+`docker cp prepareContainer.sh jupyter:/script/prepareContainer.sh`{{execute}}
+This will copy the local file prepareContainer.sh into the container's /script directory; it will be a root owned file that cannot be run straightaway.
+
+Next, copy the script, make the copy executable and then run the script inside the container:
+`docker exec -d jupyter bash -c 'cp /script/prepareContainer.sh ~/prepareContainer.sh && chmod +x ~/prepareContainer.sh && ~/prepareContainer.sh`{{execute}}
+
+Next, run the script inside the container:
+`docker exec -d jupyter ~/prepareContainer.sh`{{execute}}
