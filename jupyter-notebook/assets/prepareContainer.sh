@@ -6,6 +6,7 @@ pip install matplotlib_venn
 pip install cufflinks 
 pip install gender-guesser
 jupyter labextension install @jupyterlab/plotly-extension
-
-# perhaps clone a github repo into /home/jovyan
+# perhaps clone a github repo into /home/jovyan/work
+cd ~/work
 git clone http://bitbucket.org/hrojas/learn-pandas
+

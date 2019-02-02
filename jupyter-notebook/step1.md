@@ -4,7 +4,7 @@ You will now run a Docker container for Jupyter Notebook. Note: this may take up
 
 Run the Jupyter Notebook container image:
 
-`docker run -p 8888:8888 -d --name jupyter --volume "$PWD":/script  jupyter/scipy-notebook:2c80cf3537ca`{{execute}}
+`docker run -p 8888:8888 -d --name jupyter jupyter/scipy-notebook:2c80cf3537ca`{{execute}}
 
 ## Further prepare the container
 To prepare the container we will run a script inside the container to install several Python packages
