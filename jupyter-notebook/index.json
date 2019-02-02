@@ -1,6 +1,6 @@
 {
   "title": "Jupyter Notebook",
-  "description": "A scenario to play with Jupyter Notebook",
+  "description": "A scenario to play with Jupyter Notebooks. You will have access to a Jupyter Scipy Notebook based on the jupyter/scipy-notebook image. You can create and load and run notebooks.",
   "difficulty": "beginner",
   "time": "45 minutes",
   "details": {

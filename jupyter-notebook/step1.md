@@ -11,23 +11,24 @@ To prepare the container we will run a script inside the container to install se
 
 Run this script to execute these steps:
 * copy the script prepareContainer.sh into the container
-* copy the script, make the copy executable and then run the script inside the container
+* copy the script, make the copy executable and then run the script inside the container - this will install several Python packages using pip
 * restart the container
 
 `sh runPrep.sh`{{execute}}
 
-## Notes
+## Notes on what is happening under the covers
 These are the individual steps inside this script. You do not have to execute them - because they are in the *runPrep.sh* script.
 
 First, copy the script into the container
-`docker cp prepareContainer.sh jupyter:/script/prepareContainer.sh`{{execute}}
+`docker cp prepareContainer.sh jupyter:/script/prepareContainer.sh`
+
 This will copy the local file prepareContainer.sh into the container's /script directory; it will be a root owned file that cannot be run straightaway.
 
 Next, copy the script, make the copy executable and then run the script inside the container:
-`docker exec -d jupyter bash -c 'cp /script/prepareContainer.sh ~/prepareContainer.sh && chmod +x ~/prepareContainer.sh && ~/prepareContainer.sh'`{{execute}}
+`docker exec -d jupyter bash -c 'cp /script/prepareContainer.sh ~/prepareContainer.sh && chmod +x ~/prepareContainer.sh && ~/prepareContainer.sh'`
 
 Next, run the script inside the container:
-`docker exec -d jupyter sh /home/jovyan/prepareContainer.sh`{{execute}}
+`docker exec -d jupyter sh /home/jovyan/prepareContainer.sh`
 
 Finally restart the docker container
-`docker restart jupyter`{{execute}}
+`docker restart jupyter`

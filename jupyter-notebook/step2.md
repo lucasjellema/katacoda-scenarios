@@ -17,7 +17,7 @@ Next, you can open the Jupyter Notebook at
 
 Note: you need the value of the Jupyter Token to login to the environment.
 
-The Notebook opens in a new browser window. You can create a new notebook or open a local one. For example: open and run `Example word clouds.ipynb` in the word_cloud folder. Do *not* open `Word Cloud Examples.ipynb` because it has an error and will fail to run.
+The Notebook opens in a new browser window. You can create a new notebook or open a local one. For example: open and run `Example word clouds.ipynb` in the word_cloud folder. Do *not* open `Word Cloud Examples.ipynb` because it has an error and will fail to run. Or open folder learn-pandas/lessons and start with `01 - Lesson.ipynb`.
 
 ## Adding interesting Jupyter Notebooks to the container
 You can easily add more notebooks to the container, by cloning them from GitHub straight into the container and subsequently opening them in Jupyter Notebook.
