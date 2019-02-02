@@ -1,16 +1,16 @@
-Install some additional libraries into the Jupyter Notebook container
+## Access the Jupyter Notebook 
 
-docker exec –it jupyter /bin/bash
+When the container is running, execute this statement:
+`docker logs jupyter`{{execute}}
 
-`docker exec -d jupyter pip install --upgrade pip`{{execute}}
-`docker exec -d jupyter bash -c 'git clone https://github.com/kavgan/word_cloud `{{execute}}
-`docker exec -d jupyter bash -c ' cd word_cloud && pip install -e . '`{{execute}}
-`docker exec -d jupyter bash -c 'pip install plotly && pip install matplotlib_venn && pip install cufflinks && pip install gender-guesser'`{{execute}}
+it would be nice to get hold of the token from the logs, but I have not yet got that working
+`JUPYTER_TOKEN=$(docker logs jupyter | grep -oP "token=\K[a-z0-9^]+" )`{{execute}}
 
-`docker exec -d jupyter jupyter labextension install @jupyterlab/plotly-extension`{{execute}}
+and check the value of the token:
 
-`docker restart jupyter`{{execute}}
+`echo $JUPYTER_TOKEN`{{execute}}
 
+Next, you can open the Jupyter Notebook at 
+ https://[[HOST_SUBDOMAIN]]-8888-[[KATACODA_HOST]].environments.katacoda.com/
 
-
-Perhaps git clone some GitHub repo as well
+Note: you need the value of the Jupyter Token to login to the environment.
