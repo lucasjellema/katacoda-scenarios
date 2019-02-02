@@ -5,7 +5,7 @@
   "time": "45 minutes",
   "details": {
     "steps": [{
-      "title": "Step 1 - Run the Jupyter Notebook",
+      "title": "Step 1 - Run the Jupyter Notebook environment",
       "text": "step1.md"
     },{
       "title": "Step 2 - Access the Jupyter Notebook",
@@ -17,6 +17,14 @@
     },
     "finish": {
       "text": "finish.md"
+    },
+    "assets": {
+      "client": [
+        {
+          "file": "prepareContainer.sh",
+          "target": "~/"
+        }
+      ]
     }
   },
   "environment": {
