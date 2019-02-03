@@ -5,6 +5,7 @@ pip install plotly 
 pip install matplotlib_venn 
 pip install cufflinks 
 pip install gender-guesser
+pip install -U nltk
 jupyter labextension install @jupyterlab/plotly-extension
 # perhaps clone a github repo into /home/jovyan/work
 cd ~/work
