@@ -31,7 +31,7 @@
       ]
     }
   }
-},
+,
 "environment": {
   "uilayout": "terminal-iframe",
   "showdashboard": true,
