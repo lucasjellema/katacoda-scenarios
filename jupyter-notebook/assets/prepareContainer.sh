@@ -16,4 +16,4 @@ cd temp
 git clone https://github.com/lucasjellema/katacoda-scenarios
 cp katacoda-scenarios/jupyter-notebook/assets/introPythonForDataAnalysis.ipynb ~/work
 cd ~/work
-rm -R temp 
+rm -Rf temp 
