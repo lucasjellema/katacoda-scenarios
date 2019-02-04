@@ -4,13 +4,16 @@
   "difficulty": "beginner",
   "time": "10 minutes (to get going)",
   "details": {
-    "steps": [{
-      "title": "Step 1 - Run the Jupyter Notebook environment",
-      "text": "step1.md"
-    },{
-      "title": "Step 2 - Access the Jupyter Notebook",
-      "text": "step2.md"
-    }],
+    "steps": [
+      {
+        "title": "Step 1 - Run the Jupyter Notebook environment",
+        "text": "step1.md"
+      },
+      {
+        "title": "Step 2 - Access the Jupyter Notebook",
+        "text": "step2.md"
+      }
+    ],
     "intro": {
       "text": "intro.md",
       "credits": ""
@@ -21,32 +24,26 @@
     "assets": {
       "client": [
         {
-          "file": "prepareContainer.sh",
-          "target": "~/"
-        },
-        {
-          "file": "runPrep.sh",
-          "target": "~/"
-        },
-        {
-          "file": "pythonForDataAnalysis.sh",
-          "target": "~/"
+          "file": "*",
+          "target": "/home/scrapbook/",
+          "chmod": "+x"
         }
       ]
     }
-  },
-  "environment": {
-    "uilayout": "terminal-iframe",
-    "showdashboard": true,
-    "dashboards": [
-      {
-        "name": "Jupyter Notebook",
-        "port": 8888
-      }
-    ],
-    "uimessage1": "\u001b[32mYour Interactive Bash Terminal.\r\n"
-  },
-  "backend": {
-    "imageid": "docker"
   }
+},
+"environment": {
+  "uilayout": "terminal-iframe",
+  "showdashboard": true,
+  "dashboards": [
+    {
+      "name": "Jupyter Notebook",
+      "port": 8888
+    }
+  ],
+  "uimessage1": "\u001b[32mYour Interactive Bash Terminal.\r\n"
+},
+"backend": {
+  "imageid": "docker"
+}
 }
