@@ -29,7 +29,7 @@
           "target": "~/"
         },
         {
-          "file": "pythonForDataAnalysis.txt",
+          "file": "pythonForDataAnalysis.sh",
           "target": "~/"
         }
       ]
