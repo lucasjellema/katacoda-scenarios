@@ -29,7 +29,7 @@
           "target": "~/"
         },
         {
-          "file": "pythonForDataAnalysis.ipynb",
+          "file": "pythonForDataAnalysis.txt",
           "target": "~/"
         }
       ]
