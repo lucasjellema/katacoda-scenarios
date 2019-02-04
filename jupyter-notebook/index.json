@@ -5,12 +5,15 @@
   "time": "45 minutes",
   "details": {
     "steps": [{
-      "title": "Step 1 - Run the Jupyter Notebook environment", "text": "step1.md"
+      "title": "Step 1 - Run the Jupyter Notebook environment",
+      "text": "step1.md"
     },{
-      "title": "Step 2 - Access the Jupyter Notebook","text": "step2.md"
+      "title": "Step 2 - Access the Jupyter Notebook",
+      "text": "step2.md"
     }],
     "intro": {
-      "text": "intro.md", "credits": ""
+      "text": "intro.md",
+      "credits": ""
     },
     "finish": {
       "text": "finish.md"
@@ -18,13 +21,12 @@
     "assets": {
       "client": [
         {
-          "file": "prepareContainer.sh","target": "~/"
+          "file": "prepareContainer.sh",
+          "target": "~/"
         },
         {
-          "file": "runPrep.sh", "target": "~/"
-        },
-        {
-          "file": "pythonForDataAnalysis.ipynb","target": "~/"
+          "file": "runPrep.sh",
+          "target": "~/"
         }
       ]
     }
@@ -34,7 +36,8 @@
     "showdashboard": true,
     "dashboards": [
       {
-        "name": "Jupyter Notebook", "port": 8888
+        "name": "Jupyter Notebook",
+        "port": 8888
       }
     ],
     "uimessage1": "\u001b[32mYour Interactive Bash Terminal.\r\n"
