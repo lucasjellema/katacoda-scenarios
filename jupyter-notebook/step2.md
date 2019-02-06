@@ -22,9 +22,7 @@ The Notebook opens in a new browser window. You can create a new notebook or ope
 The folder `work/Data-Analysis` contains many notebooks created by Will Koehrsen, who writes many great articles about Data Science and uses Jupyter Notebooks frequently (see his GitHub Repo: https://github.com/WillKoehrsen/Data-Analysis ). 
 
 ### Interactive Widgets
-A nice advanced feature in Jupyter Notebooks are the interactive 
-
-Open `work\widgets\Widgets-Overview.ipynb`.
+A nice advanced feature in Jupyter Notebooks are the interactive widgets. To have a quick tour of what these widgets can add to a notebook, open `work\widgets\Widgets-Overview.ipynb`.
 The code cell under the *Data heading* contains an erroneous file reference - or it did when I last checked. Change the contents of the cell to:
 ```
 df = pd.read_parquet('https://github.com/WillKoehrsen/Data-Analysis/blob/master/medium/data/medium_data_2019_01_26?raw=true')
@@ -39,6 +37,6 @@ You can easily add more notebooks to the container, by cloning them from GitHub 
 
 For example - to grab the world's most trivial notebook:
 
-`docker exec -it bash -c 'cd ~/work && git clone https://github.com/Noura/hello-jupyter'`{{execute}}
+`docker exec -it jupyter bash -c 'cd ~/work && git clone https://github.com/Noura/hello-jupyter'`{{execute}}
 
 After executing this command, this notebook can be opened in the Jupyter Notebook browser window from the folder `work/hello-jupyter`.
