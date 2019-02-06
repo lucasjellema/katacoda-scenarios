@@ -9,6 +9,8 @@ pip install gender-guesser
 pip install -U nltk
 pip install ipywidgets
 pip install pyarrow
+# word_cloud has a fix dependency on an older version of pandas - and when installed will overwrite the current one that comes in the Docker image
+# here I am force installing the latest pandas - required by the widgets notebook; word_cloud will still work
 pip install --upgrade pandas
 
 
