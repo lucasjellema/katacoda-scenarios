@@ -19,16 +19,18 @@ pip install --upgrade pandas
 # perhaps clone a github repo into /home/jovyan/work
 cd ~/work
 git clone http://bitbucket.org/hrojas/learn-pandas
+# adding notebook to play with ipywidgets
 git clone https://github.com/WillKoehrsen/Data-Analysis
-git clone https://github.com/lucasjellema/DataAnalytics--IntroductionDataWrangling-JupyterNotebooks
 cp -R Data-Analysis/widgets ~/work
-# next follows a round about way to get a single file into the running container
 mkdir temp
 cd temp
+# next follows a round about way to get a single file into the running container
 git clone https://github.com/lucasjellema/katacoda-scenarios
-cp katacoda-scenarios/jupyter-notebook/assets/introPythonForDataAnalysis.ipynb ~/work
-# adding notebook to play with ipywidgets
-
+mv katacoda-scenarios/jupyter-notebook/assets/introPythonForDataAnalysis.ipynb ~/work
+# clone the data wrangling workshop github repo
+git clone https://github.com/lucasjellema/DataAnalytics--IntroductionDataWrangling-JupyterNotebooks
+# then move folder CaseOfOracleOpenWorld2018 under ~/work
+mv DataAnalytics--IntroductionDataWrangling-JupyterNotebooks/CaseOfOracleOpenWorld2018 ~/work
 
 cd ~/work
 rm -Rf temp 
