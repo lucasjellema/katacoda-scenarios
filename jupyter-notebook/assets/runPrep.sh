@@ -8,7 +8,7 @@ docker exec -it jupyter sh /home/jovyan/prepareContainer.sh
 docker restart jupyter
 echo 'restarted Jupyter container'
 # perhaps clone a GitHub repo inside the Jupyter container
-docker exec -it jupyter git clone https://github.com/lucasjellema/Oracle-OpenWorld-CodeOne-2018-SessionCatalog
+# docker exec -it jupyter git clone https://github.com/lucasjellema/Oracle-OpenWorld-CodeOne-2018-SessionCatalog
 # and more stuff?
 # docker logs jupyter
 

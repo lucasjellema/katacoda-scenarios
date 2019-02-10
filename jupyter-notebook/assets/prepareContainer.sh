@@ -20,6 +20,7 @@ pip install --upgrade pandas
 cd ~/work
 git clone http://bitbucket.org/hrojas/learn-pandas
 git clone https://github.com/WillKoehrsen/Data-Analysis
+git clone https://github.com/lucasjellema/DataAnalytics--IntroductionDataWrangling-JupyterNotebooks
 cp -R Data-Analysis/widgets ~/work
 # next follows a round about way to get a single file into the running container
 mkdir temp
