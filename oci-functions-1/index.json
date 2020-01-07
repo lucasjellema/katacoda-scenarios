@@ -11,14 +11,17 @@
       },
       {
         "title": "Step 2 - Create your first Function",
-        "text": "step2.md"
+        "text": "step2.md",
+        "courseData": "step2-background.sh",
+        "code": "step2-foreground.sh"
       }
     ],
     "intro": {
       "text": "intro.md",
       "credits": "",
-      "courseData": "prepareStepOne.sh"
-    },
+      "courseData": "background.sh",
+      "code": "foreground.sh"
+        },
     "finish": {
       "text": "finish.md"
     },
