@@ -1,0 +1,30 @@
+{
+  "title": "Serverless Functions on Oracle Cloud Infrastructure",
+  "description": "Getting started with Functions created with Project Fn and deployed to Oracle Cloud Infrastructure.",
+  "difficulty": "beginner",
+  "time": "30 minutes",
+  "details": {
+    "steps": [{
+      "title": "Step 1 - Install Fn and OCI environment",
+      "text": "step1.md",
+      "courseData": "prepareStepOne.sh"
+    },{
+      "title": "Step 2 - Create your first Function",
+      "text": "step2.md"
+    }],
+    "intro": {
+      "text": "intro.md",
+      "credits": ""
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "environment": {
+    "uilayout": "editor-terminal",
+    "uimessage1": "\u001b[32mYour Interactive Bash Terminal.\r\nExecute OCI CLI commands `oci <command>`\u001b[m\r\n"
+  },
+  "backend": {
+    "imageid": "docker"
+  }
+}
