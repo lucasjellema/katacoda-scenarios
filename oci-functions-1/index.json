@@ -4,20 +4,31 @@
   "difficulty": "beginner",
   "time": "30 minutes",
   "details": {
-    "steps": [{
-      "title": "Step 1 - Install Fn and OCI environment",
-      "text": "step1.md",
-      "courseData": "prepareStepOne.sh"
-    },{
-      "title": "Step 2 - Create your first Function",
-      "text": "step2.md"
-    }],
+    "steps": [
+      {
+        "title": "Step 1 - Install Fn and OCI environment",
+        "text": "step1.md"
+      },
+      {
+        "title": "Step 2 - Create your first Function",
+        "text": "step2.md"
+      }
+    ],
     "intro": {
       "text": "intro.md",
-      "credits": ""
+      "credits": "",
+      "courseData": "prepareStepOne.sh"
     },
     "finish": {
       "text": "finish.md"
+    },
+    "assets": {
+      "client": [
+        {
+          "file": "prepareStepOne.sh",
+          "target": "~/"
+        }
+      ]
     }
   },
   "environment": {
