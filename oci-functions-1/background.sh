@@ -3,7 +3,8 @@
 touch /root/createdFromBackgroundScript
 # start Docker Container with OCI 
 mkdir ~/.oci
-docker run --rm --mount type=bind,source=$HOME/.oci,target=/root/.oci -it stephenpearson/oci-cli:latest 
+docker pull stephenpearson/oci-cli:latest
+#docker run --rm --mount type=bind,source=$HOME/.oci,target=/root/.oci  stephenpearson/oci-cli:latest 
 #setup config
 #
 # add this line to ~/.profile
@@ -12,5 +13,3 @@ echo 'oci() { docker run --rm --mount type=bind,source=$HOME/.oci,target=/root/.
 # reload ~/.profile
 . ~/.profile
 
-# install Project Fn CLI
-curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh

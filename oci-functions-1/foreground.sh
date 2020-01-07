@@ -1,4 +1,5 @@
-echo "This is automatically run when the scenario"
+echo "Installing Project Fn"
 
-pwd
-ls -lha
+
+# install Project Fn CLI
+curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh
