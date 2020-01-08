@@ -4,6 +4,7 @@ touch /root/createdFromBackgroundScript
 # start Docker Container with OCI 
 mkdir ~/.oci
 docker pull stephenpearson/oci-cli:latest
+docker pull fnproject/fnserver:latest
 #docker run --rm --mount type=bind,source=$HOME/.oci,target=/root/.oci  stephenpearson/oci-cli:latest 
 #setup config
 #
