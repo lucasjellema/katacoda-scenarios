@@ -1,10 +1,11 @@
-Fn has been installed. Fn Server is running (locally).
+Fn has been installed. Fn Server is running (locally). 
 
 
 ## Task
 
 
-Check if Fn Server is running 
+Check if Fn Server is running by checking the currently running Docker containers
+
 `docker ps`{{execute}} 
 
 Check the installed version - client and server - of Fn
