@@ -1,15 +1,15 @@
 Fn has been installed. Fn Server is running (locally). 
 
 
-## Task
+## Wait for the Fn Server to be running
 
-`fn start `{{execute T2}}
-
-Check if Fn Server is running by checking the currently running Docker containers
+In the background we are currently preparing your Fn environment. Several Docker images are pulled and the Fn server is started. This takes up to three minutes. You can check if Fn Server is running by checking the currently running Docker containers using the following command:
 
 `docker ps`{{execute}} 
 
 Do not continue until you see a Docker container running based on image *fnproject/fnserver:latest*
+
+## Get going with Fn
 
 Check the installed version - client and server - of Fn
 
@@ -19,25 +19,22 @@ List the currently available Fn contexts
 
 `fn list contexts`{{execute}}
 
-# set context for local 
+Set context to *default* - this is a local context that uses the locally running Fn server for deploying functions. 
 
 `fn use context default`{{execute}}
 
-update the registry setting for the default content to something meaningless (do not ask why)
+Update the registry setting for the default content to something meaningless ()
 
-`fn update context registry fndemouser`{{execute}}
+`fn update context registry something-meaningless`{{execute}}
 
 
-## Resources
-
+## Background Resources
 
 Tutorial Getting Started with Fn environment
 https://github.com/fnproject/tutorials/blob/master/install/README.md
 
-
 Tutorial FN with Node
 https://github.com/fnproject/tutorials/blob/master/node/intro/README.md
-
 
 Docs on Fn on OCI
 https://docs.cloud.oracle.com/iaas/Content/Functions/Tasks/functionscreatefncontext.htm
