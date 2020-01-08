@@ -9,6 +9,8 @@ Check if Fn Server is running by checking the currently running Docker container
 
 `docker ps`{{execute}} 
 
+Do not continue until you see a Docker container running based on image *fnproject/fnserver:latest*
+
 Check the installed version - client and server - of Fn
 
 `fn version`{{execute}} 

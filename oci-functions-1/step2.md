@@ -8,7 +8,7 @@ In this step we will create a simple function with Fn. We pick Node (JS) as our 
 
 Three files have been created in the new directory *hello*.
 
-`ls hello`{{execute}}
+`ls`{{execute}}
 
 You could open func.js in the text editor to see the generated functionality.
 

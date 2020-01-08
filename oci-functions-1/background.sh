@@ -21,6 +21,7 @@ curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh
 
 docker pull fnproject/fnserver:latest
 
+fn start &
+
 docker pull fnproject/node:latest
 
-fn start &
