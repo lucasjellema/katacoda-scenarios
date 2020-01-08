@@ -39,6 +39,6 @@
     "uimessage1": "\u001b[32mYour Interactive Bash Terminal.\r\nExecute OCI CLI commands `oci <command>`\u001b[m\r\n"
   },
   "backend": {
-    "imageid": "docker"
+    "imageid": "ubuntu"
   }
 }
