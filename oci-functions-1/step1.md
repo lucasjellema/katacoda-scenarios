@@ -1,13 +1,8 @@
-Fn has been installed.
+Fn has been installed. Fn Server is running (locally).
+
+
 ## Task
 
-
-2nd terminal:
-
-fn start
-
-
-1st terminal
 
 Check if Fn Server is running 
 `docker ps`{{execute}} 
