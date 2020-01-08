@@ -8,7 +8,8 @@ docker pull fnproject/fnserver:latest
 
 docker pull fnproject/node:latest
 
-fn start
+fn start &
+
 fn version
 docker images
 
