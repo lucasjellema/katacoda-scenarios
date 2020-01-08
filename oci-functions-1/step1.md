@@ -11,33 +11,30 @@ fn start
 
 
 `export MY_VAR="mijn waarde"`{{execute}}
-Value Env Variable
-[[PATH]]
-Value Env Variable
-[[STATUS]]
+
 `echo  $STATUS`{{execute}}
 
-`docker ps` {{execute}} 
+`docker ps`{{execute}} 
 
 export FN_API_URL=https://2886795346-8080-ollie02.environments.katacoda.com:8080
 
-`fn version` {{execute}} 
-`fn list contexts` {{execute}}
+`fn version`{{execute}} 
+`fn list contexts`{{execute}}
 
 # set context for local 
 `fn use context default
-fn update context registry fndemouser` {{execute}}
+fn update context registry fndemouser`{{execute}}
 
-`fn init -–runtime node hello` {{execute}}
-`cd hello` {{execute}}
+`fn init -–runtime node hello`{{execute}}
+`cd hello`{{execute}}
 
-`fn create app nodeapp` {{execute}}
-`fn -v deploy –app nodeapp --local` {{execute}}
+`fn create app nodeapp`{{execute}}
+`fn -v deploy –app nodeapp --local`{{execute}}
 
-`docker images | grep fndemouser` {{execute}}
+`docker images | grep fndemouser`{{execute}}
 
 
-`fn invoke nodeapp hello` {{execute}}
+`fn invoke nodeapp hello`{{execute}}
 
 echo -n '{"name":"Your Own Name"}' | fn invoke nodeapp nodefn --content-type application/json
 
