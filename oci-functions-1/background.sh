@@ -16,3 +16,11 @@ echo 'oci() { docker run --rm --mount type=bind,source=$HOME/.oci,target=/root/.
 # reload ~/.profile
 . /root/.
 
+# install Project Fn CLI
+curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh
+
+docker pull fnproject/fnserver:latest
+
+docker pull fnproject/node:latest
+
+fn start &
