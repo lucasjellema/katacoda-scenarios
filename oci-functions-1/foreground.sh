@@ -1,12 +1,5 @@
-echo "Installing Project Fn"
+echo "Installing Project Fn - in the background"
 
-
-
-
-
-fn version
-docker images
-
-echo 'Ready for action!'
+echo "Wait for docker ps to show a container running"
 
 

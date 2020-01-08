@@ -26,15 +26,3 @@ Set context to *default* - this is a local context that uses the locally running
 Update the registry setting for the default content to something meaningless ()
 
 `fn update context registry something-meaningless`{{execute}}
-
-
-## Background Resources
-
-Tutorial Getting Started with Fn environment
-https://github.com/fnproject/tutorials/blob/master/install/README.md
-
-Tutorial FN with Node
-https://github.com/fnproject/tutorials/blob/master/node/intro/README.md
-
-Docs on Fn on OCI
-https://docs.cloud.oracle.com/iaas/Content/Functions/Tasks/functionscreatefncontext.htm
