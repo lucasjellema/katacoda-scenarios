@@ -30,6 +30,10 @@
         {
           "file": "prepareStepOne.sh",
           "target": "~/"
+        },
+        {
+          "file": "prepareStepOne.sh",
+          "target": "/root/"
         }
       ]
     }

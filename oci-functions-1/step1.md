@@ -9,36 +9,37 @@ fn start
 
 1st terminal
 
-
-`export MY_VAR="mijn waarde"`{{execute}}
-
-`echo  $STATUS`{{execute}}
-
+Check if Fn Server is running 
 `docker ps`{{execute}} 
 
-export FN_API_URL=https://2886795346-8080-ollie02.environments.katacoda.com:8080
-
+Check the installed version - client and server - of Fn
 `fn version`{{execute}} 
+List the currently available Fn contexts
 `fn list contexts`{{execute}}
 
 # set context for local 
 `fn use context default
+
 fn update context registry fndemouser`{{execute}}
 
-`fn init -–runtime node hello`{{execute}}
+`fn init --runtime node hello`{{execute}}
+
 `cd hello`{{execute}}
 
+Create an Fn application - a container for multiple related functions:  
 `fn create app nodeapp`{{execute}}
-`fn -v deploy –app nodeapp --local`{{execute}}
+Deploy the Function Hello locally, into the app that was just created
+`fn -v deploy -–app nodeapp --local `{{execute}}
 
-`docker images | grep fndemouser`{{execute}}
+Verify that a Docker Container Image has been built for Fn Function Hello:
+`docker images | grep fndemouser `{{execute}}
 
 
 `fn invoke nodeapp hello`{{execute}}
 
-echo -n '{"name":"Your Own Name"}' | fn invoke nodeapp nodefn --content-type application/json
+`echo -n '{"name":"Your Own Name"}' | fn invoke nodeapp nodefn --content-type application/json`{{execute}}
 
-Resources:
+##Resources
 
 
 Tutorial Getting Started with Fn environment
