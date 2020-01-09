@@ -1,4 +1,4 @@
-This scenario introduces serverless Functions with Project Fn.
+This scenario introduces serverless Functions with Project Fn. It was prepared for the Meetup Workshop Cloud Native application development on Oracle Cloud Infrastructure on January 20th, hosted by AMIS|Conclusion in Nieuwegein.
 
 The scenario uses an Ubuntu 18.04 environment with Docker, Fn CLI and Fn Server running locally. 
 

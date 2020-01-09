@@ -32,4 +32,4 @@ To send in a JSON object as input to the function, use the following command:
 
 `echo -n '{"name":"Your Own Name"}' | fn invoke nodeapp hello --content-type application/json`{{execute}}
 
-Again, a friendly, this time personalizedm welcome message should be your reward.
+Again, a friendly, this time personalized, welcome message should be your reward.
