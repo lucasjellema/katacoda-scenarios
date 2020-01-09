@@ -18,6 +18,11 @@
       {
         "title": "Step 3 - Invoke a Function using CURL",
         "text": "step3.md"
+      },
+      {
+        "title": "Step 4 - Functions in other Languages",
+        "text": "step4.md",
+        "courseData": "step4-background.sh"
       }
     ],
     "intro": {
