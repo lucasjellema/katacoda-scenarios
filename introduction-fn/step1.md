@@ -7,8 +7,7 @@ In the background we are currently preparing your Fn environment. Several Docker
 `docker ps`{{execute}} 
 
 Do not continue until you see a Docker container running based on image *fnproject/fnserver:latest*
-![Fn Server is running](/lucasjellema/scenarios/oci-functions-1/assets/fn-server-is-running.jpg)
-
+![Fn Server is running](/lucasjellema/scenarios/introduction-fn/assets/fn-server-is-running.jpg)
 
 ## Get going with Fn
 
