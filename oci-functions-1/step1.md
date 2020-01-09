@@ -1,10 +1,18 @@
-Fn has been installed. Fn Server is running (locally). 
+## Wait for OCI CLI and Fn CLI to be installed
 
-## Wait for the Fn Server to be running
+You need to provide details on the OCI tenancy you will work in and the OCI user you will work as. Please edit these two files:
 
-In the background we are currently preparing your Fn environment. Several Docker images are pulled and the Fn server is started. This takes up to three minutes. You can check if Fn Server is running by checking the currently running Docker containers using the following command:
+* ~/.oci/config
+* ~/.oci/oci_api_key.pem
 
-`docker ps`{{execute}} 
+Paste the contents provided by the workshop instructor into these two files.
+
+Try out the following command to get a list of all namespaces you currently have access to - based on the OCI Configuration defined above.
+
+`oci os ns get`{{execute}} 
+
+If you get a proper response, the OCI is configured correctly and you can proceed. If you run into an error, ask for help from your instructor.
+
 
 Do not continue until you see a Docker container running based on image *fnproject/fnserver:latest*
 ![Fn Server is running](/lucasjellema/scenarios/oci-functions-1/assets/fn-server-is-running.jpg)

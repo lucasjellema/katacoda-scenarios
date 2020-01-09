@@ -1,12 +1,12 @@
 {
   "title": "Serverless Functions on Oracle Cloud Infrastructure",
-  "description": "Getting started with Functions created with Project Fn and deployed to Oracle Cloud Infrastructure.",
+  "description": "Getting started with Functions on Oracle Cloud Infrastructure.",
   "difficulty": "beginner",
   "time": "30 minutes",
   "details": {
     "steps": [
       {
-        "title": "Step 1 - Install Fn and OCI environment",
+        "title": "Step 1 - Prepare Fn and OCI CLI",
         "text": "step1.md"
       },
       {

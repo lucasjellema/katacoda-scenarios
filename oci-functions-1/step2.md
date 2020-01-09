@@ -14,11 +14,11 @@ You could open func.js in the text editor to see the generated functionality.
 
 Create an Fn application - a container for multiple related functions:  
 
-`fn create app nodeapp`{{execute}}
+`fn create app hello-app`{{execute}}
 
 Deploy the Function Hello locally, into the app that was just created
 
-`fn -v deploy --app nodeapp --local `{{execute}}
+`fn -v deploy --app hello-app --local `{{execute}}
 
 Verify that a Docker Container Image has been built for Fn Function Hello:
 
@@ -26,7 +26,7 @@ Verify that a Docker Container Image has been built for Fn Function Hello:
 
 Time to invoke the function. The command for invoking the function is simply: `fn invoke <app-name> <function-name>`:
 
-`fn invoke nodeapp hello`{{execute}}
+`fn invoke hello-app hello`{{execute}}
 
 To send in a JSON object as input to the function, use the following command:
 
