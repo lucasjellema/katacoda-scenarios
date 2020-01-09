@@ -4,9 +4,9 @@ In this step we will invoke the function with CURL. Subsequently, we will take a
 
 ## Getting a Function's Invoke Endpoint
 
-In addition to using the Fn invoke command, we can call a function by using a URL. To do this, we must get the function's invoke endpoint. Use the command fn inspect function <appname> <function-name>. To list the nodefn function's invoke endpoint we can type:
+In addition to using the Fn invoke command, we can call a function by using a URL. To do this, we must get the function's invoke endpoint. Use the command fn inspect function <appname> <function-name>. To list the hello function's invoke endpoint we can type:
 
-`fn inspect f nodeapp hello`{{execute}}
+`fn inspect f hello-app hello`{{execute}}
 
 Get the value from the annotation `fnproject.io/fn/invokeEndpoint` in the result of this inspect command. 
 

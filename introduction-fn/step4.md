@@ -24,7 +24,7 @@ Java Class HelloFunction.java was generated as the starting point for this funct
 
 Warning: if you make changes to the output of the file, ensure that you change the unit test accordingly because when the test fails, the function cannot be built and deployed. The unit test is in the source file hello-java/src/test/java/com/example/fn/HelloFunctionTest.java.
 
-Deploy the Java Function hello-java locally, into the app that was created in step 2 of this scenario.
+Deploy the Java Function hello-java locally, into the app that was created in step 2 of this scenario. You will again see a Docker Container Image being built. Or actually: two images. The first image is the build environment with the full Java JDK, Maven and facilities to run unit tests. The outcome of this first image is a Fat Jar that contains the built application artifact. This is the input for the second container image - that is based on the Java Runtime Environment, a much lighter weight image. The final result of deploying the function is the image based on JRE and with only the Fat Jar created for the function. 
 
 ````
 cd ~/hello-java
@@ -44,3 +44,7 @@ Again, a friendly, this time personalized, welcome message should be your reward
 
 ## Further Explorations
 To try out other languages, simply replace *java* as runtime with *go* or *python*.
+
+### GraalVM
+
+ Project Fn also supports binary executables with GraalVM; there is a special runtime available that takes a Java application and builds it all the way into a container image with just a binary executable. This results in an even smaller image and even faster function warmup and execution. Read this article for details: [https://medium.com/fnproject/serverless-functions-some-like-it-aot-ea8b46951335](https://medium.com/fnproject/serverless-functions-some-like-it-aot-ea8b46951335)

@@ -12,7 +12,7 @@ Three files have been created in the new directory *hello*.
 
 The fn init command generated a func.yaml function configuration file; this file provides instructions to the Fn Server to build, deploy and invoke the function. Let's look at the contents:
 
-`cat func.yaml'
+`cat func.yaml`{{execute}
 
 The generated func.yaml file contains metadata about your function and declares a number of properties including:
 
@@ -26,7 +26,7 @@ There are other user specifiable properties that can be defined in the yaml file
 
 The package.json file is present in (most) Node applications: it specifies all the NPM dependencies for your Node function - on third party libraries and also on the Fn FDK for Node.
 
-`cat package.json'
+`cat package.json`{{execute}}
 
 You could open func.js in the text editor to see the generated functionality of the function: that is where the real action takes place when the function is invoked.
 

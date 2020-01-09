@@ -1,4 +1,4 @@
-Fn has been installed. Fn Server is running (locally). 
+In this step, we will together prepare the environment for working with Fn. The Katacoda scenario environment runs Ubuntu and contains Docker. We need to add Fn CLI and Fn Server. 
 
 ## Wait for the Fn Server to be running
 
