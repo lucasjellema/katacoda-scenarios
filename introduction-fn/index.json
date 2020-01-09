@@ -22,7 +22,8 @@
       {
         "title": "Step 4 - Functions in other Languages such as Java",
         "text": "step4.md",
-        "courseData": "step4-background.sh"
+        "courseData": "step4-background.sh",
+        "code": "step4-foreground.sh"
       }
     ],
     "intro": {

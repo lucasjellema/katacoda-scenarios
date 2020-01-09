@@ -12,7 +12,7 @@ Three files have been created in the new directory *hello*.
 
 The fn init command generated a func.yaml function configuration file; this file provides instructions to the Fn Server to build, deploy and invoke the function. Let's look at the contents:
 
-`cat func.yaml`{{execute}
+`cat func.yaml`{{execute}}
 
 The generated func.yaml file contains metadata about your function and declares a number of properties including:
 
@@ -24,7 +24,7 @@ The generated func.yaml file contains metadata about your function and declares 
 
 There are other user specifiable properties that can be defined in the yaml file for a function. We do not need those for this simple example.
 
-The package.json file is present in (most) Node applications: it specifies all the NPM dependencies for your Node function - on third party libraries and also on the Fn FDK for Node.
+The package.json file is present in (most) Node applications: it specifies all the NPM dependencies for your Node function - on third party libraries and also on the Fn FDK for Node (@fnproject/fdk).
 
 `cat package.json`{{execute}}
 
@@ -42,7 +42,7 @@ Deploy the Function Hello locally, into the app that was just created
 
 When you deploy a function like this, Fn is dynamically generating a Dockerfile for your function, building a container, and then loading that container for execution when the function is invoked. 
 
-Note: Fn is actually using two images. The first contains the language compiler and all the necessary build tools. The second image packages all dependencies and any necessary language runtime components. Using this strategy, the final function image size can be kept as small as possible.
+Note: Fn is actually using two images. The first contains the necessary build tools and produces the runtime artefact. The second image packages all dependencies and any necessary language runtime components. Using this strategy, the final function image size can be kept as small as possible.
 
 When using fn deploy --local, fn server builds and packages your function into a container image which resides on your local machine. You can now verify that a Docker Container Image has been built for Fn Function Hello:
 
