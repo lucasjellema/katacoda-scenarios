@@ -12,3 +12,7 @@ https://github.com/fnproject/tutorials/blob/master/node/intro/README.md
 
 Docs on Fn on OCI
 https://docs.cloud.oracle.com/iaas/Content/Functions/Tasks/functionscreatefncontext.htm
+
+Tutorials and other background resource for Project Fn:
+https://github.com/fnproject/tutorials/blob/master/README.md
+
