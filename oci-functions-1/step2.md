@@ -28,6 +28,8 @@ Time to invoke the function. The command for invoking the function is simply: `f
 
 `fn invoke nodeapp hello`{{execute}}
 
+To send in a JSON object as input to the function, use the following command:
+
 `echo -n '{"name":"Your Own Name"}' | fn invoke nodeapp hello --content-type application/json`{{execute}}
 
 
