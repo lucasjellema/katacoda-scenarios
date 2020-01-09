@@ -1,6 +1,5 @@
 #!/bin/bash
 
-touch /root/createdFromBackgroundScript
 # start Docker Container with OCI 
 mkdir ~/.oci
 
@@ -25,3 +24,4 @@ fn start &
 
 docker pull fnproject/node:latest
 
+touch /root/readyWithBackground

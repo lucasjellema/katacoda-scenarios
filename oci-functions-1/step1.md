@@ -1,6 +1,5 @@
 Fn has been installed. Fn Server is running (locally). 
 
-
 ## Wait for the Fn Server to be running
 
 In the background we are currently preparing your Fn environment. Several Docker images are pulled and the Fn server is started. This takes up to three minutes. You can check if Fn Server is running by checking the currently running Docker containers using the following command:
@@ -8,6 +7,8 @@ In the background we are currently preparing your Fn environment. Several Docker
 `docker ps`{{execute}} 
 
 Do not continue until you see a Docker container running based on image *fnproject/fnserver:latest*
+![Fn Server is running](/katacoda-scenarios/oci-functions-1/assets/fn-server-is-running.jpg)
+
 
 ## Get going with Fn
 
