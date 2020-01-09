@@ -22,9 +22,6 @@ Now Check the installed version of Fn CLI. Note: we do not need the Fn server at
 
 Configure and set remote context 
 
-`fn list contexts`{{execute}}
-
-
 List the currently available Fn contexts
 
 `fn list contexts`{{execute}}
