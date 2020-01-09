@@ -12,13 +12,9 @@ Three files have been created in the new directory *hello*.
 
 You could open func.js in the text editor to see the generated functionality.
 
-Create an Fn application - a container for multiple related functions:  
+Deploy the Function Hello, into an app that was created beforehand
 
-`fn create app hello-app`{{execute}}
-
-Deploy the Function Hello locally, into the app that was just created
-
-`fn -v deploy --app hello-app `{{execute}}
+`fn -v deploy --app lab-app `{{execute}}
 
 Verify that a Docker Container Image has been built for Fn Function Hello:
 
@@ -26,12 +22,12 @@ Verify that a Docker Container Image has been built for Fn Function Hello:
 
 Time to invoke the function. The command for invoking the function is simply: `fn invoke <app-name> <function-name>`:
 
-`fn invoke hello-app hello`{{execute}}
+`fn invoke lab-app hello`{{execute}}
 
 
 
 To send in a JSON object as input to the function, use the following command:
 
-`echo -n '{"name":"Your Own Name"}' | fn invoke nodeapp hello --content-type application/json`{{execute}}
+`echo -n '{"name":"Your Own Name"}' | fn invoke lab-app hello --content-type application/json`{{execute}}
 
-Again, a friendly, this time personalizedm welcome message should be your reward.
+Again, a friendly, this time personalized welcome message should be your reward - coming from the cloud.
