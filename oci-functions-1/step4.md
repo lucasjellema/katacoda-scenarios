@@ -24,7 +24,7 @@ Java Class HelloFunction.java was generated as the starting point for this funct
 
 Warning: if you make changes to the output of the file, ensure that you change the unit test accordingly because when the test fails, the function cannot be built and deployed. The unit test is in the source file hello-java/src/test/java/com/example/fn/HelloFunctionTest.java.
 
-Deploy the Java Function hello-java locally, into the app that was just created
+Deploy the Java Function hello-java locally, into the app that created in step 2.
 
 `fn -v deploy --app nodeapp --local `{{execute}}
 

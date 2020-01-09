@@ -4,8 +4,7 @@
 mkdir ~/.oci
 
 
-
-docker pull stephenpearson/oci-cli:latest
+# docker pull stephenpearson/oci-cli:latest
 #docker run --rm --mount type=bind,source=$HOME/.oci,target=/root/.oci  stephenpearson/oci-cli:latest 
 #setup config
 #
@@ -17,10 +16,6 @@ echo 'oci() { docker run --rm --mount type=bind,source=$HOME/.oci,target=/root/.
 
 # install Project Fn CLI
 curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh
-
-docker pull fnproject/fnserver:latest
-
-fn start &
 
 docker pull fnproject/node:latest
 

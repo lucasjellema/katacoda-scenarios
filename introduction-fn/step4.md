@@ -12,9 +12,11 @@ fn init --runtime java hello-java
 ```{{execute}}
 
 Check out the generated directory structure and Java Classes:
-```
-ls -R
 
+`ls -R`{{execute}}
+
+Now inspect the generated Java class that handles requests - and can be customized by us. 
+```
 cd hello-java/src/main/java/com/example/fn
 
 cat HelloFunction.java

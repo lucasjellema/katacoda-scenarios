@@ -1,2 +1,2 @@
-echo "This is automatically run when the step starts"
+echo "Ready to create a Function? Let's go!"
 
