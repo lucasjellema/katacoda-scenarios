@@ -66,3 +66,5 @@ To send in a JSON object as input to the function, use the following command:
 Again, a friendly, this time personalized, welcome message should be your reward.
 
 What is happening here: when you invoke "hello-app hello" the Fn server looked up the "hello-app" application and then looked for the Docker container image bound to the "hello" function, started the container (if it was not already running) and send the request to the handler listening inside the container.
+
+![Fn Server handles request](/lucasjellema/scenarios/oci-functions-1/assets/fn-server-functions.jpg)

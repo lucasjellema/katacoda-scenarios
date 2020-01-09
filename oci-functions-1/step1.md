@@ -13,18 +13,14 @@ Try out the following command to get a list of all namespaces you currently have
 
 If you get a proper response, the OCI is configured correctly and you can proceed. If you run into an error, ask for help from your instructor.
 
+Do not continue until you see the file `/root/readyWithBackground` appear. If it appears, then the OCI CLI has been installed and you can continue.
 
-Do not continue until you see a Docker container running based on image *fnproject/fnserver:latest*
-![Fn Server is running](/lucasjellema/scenarios/oci-functions-1/assets/fn-server-is-running.jpg)
-
-
-## Get going with Fn
-
-Check the installed version - client and server - of Fn
+## Fn Client and Context
+Now Check the installed version of Fn CLI. Note: we do not need the Fn server at this stage.  
 
 `fn version`{{execute}} 
 
-List the currently available Fn contexts
+Configure and set remote context 
 
 `fn list contexts`{{execute}}
 

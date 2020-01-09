@@ -19,15 +19,12 @@ chmod +777 install-oci-cli.sh
 # add this line to ~/.profile
 # oci() { docker run --rm --mount type=bind,source=$HOME/.oci,target=/root/.oci stephenpearson/oci-cli:latest "$@"; }
 
-# add this line to ~/.profile - to make oci a recognized shell command
-echo 'oci() { /root/bin/oci "$@"; }' >> ~/.profile
-# reload ~/.profile
-. /root/.profile
-# now oci is recognized as a command
 
 # install Project Fn CLI
 curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh
 
+touch /root/readyWithBackground
+
+
 docker pull fnproject/node:latest
 
-touch /root/readyWithBackground
