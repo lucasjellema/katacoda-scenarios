@@ -14,6 +14,8 @@ You can invoke the function using *curl* at this endpoint. Please set an environ
 
 `export HELLO_FUNCTION_ENDPOINT=<the invokeEndpoint>`{{execute}}
 
+For example: `export HELLO_FUNCTION_ENDPOINT=http://localhost:8080/invoke/01DY4P5ZSFNG9000GZJ0000002`.
+
 Now with the variable set you should be able to invoke the function using curl:
 
 `curl -X "POST" -H "Content-Type: application/json" -d '{"name":"Bob"}' $HELLO_FUNCTION_ENDPOINT`{{execute}}
@@ -59,5 +61,5 @@ By inspecting the *ctx* input parameter, you can make your function interpret th
 
 
 ## Resources 
-Check out this article for details about the contents of the Fn request context:(Oracle Cloud Infrastructure Functions and Project Fn – Retrieving Headers, Query Parameters and other HTTP Request elements)[https://technology.amis.nl/2020/01/02/oracle-cloud-infrastructure-functions-and-project-fn-retrieving-headers-query-parameters-and-other-http-request-elements/] 
+Check out this article for details about the contents of the Fn request context:[Oracle Cloud Infrastructure Functions and Project Fn – Retrieving Headers, Query Parameters and other HTTP Request elements](https://technology.amis.nl/2020/01/02/oracle-cloud-infrastructure-functions-and-project-fn-retrieving-headers-query-parameters-and-other-http-request-elements/)
 
