@@ -4,7 +4,7 @@ The hello function we have been working with in the previous steps was implement
 
 In this step you will create a function in Java. Feel free to try out the other runtimes as well.
 
-Return to 
+Return to the home directory and create a new function called *hello-java* with Java as its runtime engine.
 ```
 cd ~
 
@@ -26,13 +26,17 @@ Warning: if you make changes to the output of the file, ensure that you change t
 
 Deploy the Java Function hello-java locally, into the app that was just created
 
-`fn -v deploy --app nodeapp --local `{{execute}}
+````
+cd ~/hello-java
+
+fn -v deploy --app nodeapp --local 
+```{{execute}}
 
 To invoke the Java function, execute this command:
 
 `fn invoke nodeapp hello-java`{{execute}}
 
-To send in a JSON object as input to the function, use the following command:
+To send input to the function, use the following command:
 
 `echo -n 'Your Own Name' | fn invoke nodeapp hello-java --content-type application/json`{{execute}}
 
