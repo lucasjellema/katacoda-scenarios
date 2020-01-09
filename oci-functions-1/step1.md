@@ -24,18 +24,34 @@ Configure and set remote context
 
 `fn list contexts`{{execute}}
 
-Notice we have a default context which deploys to a local Fn server. The default context is created the first time you run the Fn CLI. However, we need to select default as our current context and set a registry value for remote or local Docker use.
 
-Set context to *default* - this is a local context that uses the locally running Fn server for deploying functions. 
+List the currently available Fn contexts
 
-`fn use context default`{{execute}}
+`fn list contexts`{{execute}}
 
-Before we start using Fn, we need to configure Fn to point to an appropriate Docker registry so it knows where to push your function images to. Normally Fn points to your Docker Hub account by specifying your Docker Hub username. However, for pure local development we can simply configure Fn with an arbitrary value
+Create an appropriate Fn context for working with OCI as provider (see [OCI Docs on Functions](https://docs.cloud.oracle.com/iaas/Content/Functions/Tasks/functionscreatefncontext.htm)).
 
-So now update the registry setting for the default content to something meaningless.
+`fn create context lab-fn-context –provider oracle`{{execute}}
 
-`fn update context registry something-meaningless`{{execute}}
+`fn use context lab-fn-context`{{execute}}
+
+Update the context with the settings relevant for this workshop. Note: the compartment used here is the fn-compartment 
+```
+fn update context oracle.compartment-id ocid1.compartment.oc1..aaaaaaaatxf2nfi7prglkhntadfj4tuxlfms36xhqc4hekuif6wjnoyq4ilq
+
+fn update context api-url https://functions.us-ashburn-1.oci.oraclecloud.com
+
+fn update context registry iad.ocir.io/idtwlqf2hanz/cloudlab-repo
+
+fn update context oracle.profile FN
+```{{execute}}
 
 You can list the currently available Fn contexts again and see whether your changes had an effect (of course they did)
 
 `fn list contexts`{{execute}}
+
+`docker login iad.ocir.io`{{execute}}
+
+username:
+
+Now we are ready to create functions and deploy them to the Oracle Cloud Infrastructure instead of to the locally running Fn Server.

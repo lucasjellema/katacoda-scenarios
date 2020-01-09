@@ -1,4 +1,4 @@
-# Creating a Function with Fn 
+# Creating a Function with Fn and Deploying it to OCI
 
 In this step we will create a simple function with Fn. We pick Node (JS) as our runtime - Go, Python, Java and Ruby are other out of the box options.
 
@@ -18,15 +18,17 @@ Create an Fn application - a container for multiple related functions:
 
 Deploy the Function Hello locally, into the app that was just created
 
-`fn -v deploy --app hello-app --local `{{execute}}
+`fn -v deploy --app hello-app `{{execute}}
 
 Verify that a Docker Container Image has been built for Fn Function Hello:
 
-`docker images | grep something-meaningless`{{execute}}
+`docker images | grep hello`{{execute}}
 
 Time to invoke the function. The command for invoking the function is simply: `fn invoke <app-name> <function-name>`:
 
 `fn invoke hello-app hello`{{execute}}
+
+
 
 To send in a JSON object as input to the function, use the following command:
 
