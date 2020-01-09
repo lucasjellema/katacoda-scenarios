@@ -1,0 +1,57 @@
+{
+  "title": "Serverless Functions with Project Fn",
+  "description": "Getting started with Functions created with Project Fn.",
+  "difficulty": "beginner",
+  "time": "20 minutes",
+  "details": {
+    "steps": [
+      {
+        "title": "Step 1 - Install Fn and OCI environment",
+        "text": "step1.md"
+      },
+      {
+        "title": "Step 2 - Create your first Function (in Node)",
+        "text": "step2.md",
+        "courseData": "step2-background.sh",
+        "code": "step2-foreground.sh"
+      },
+      {
+        "title": "Step 3 - Invoke a Function using CURL",
+        "text": "step3.md"
+      },
+      {
+        "title": "Step 4 - Functions in other Languages such as Java",
+        "text": "step4.md",
+        "courseData": "step4-background.sh"
+      }
+    ],
+    "intro": {
+      "text": "intro.md",
+      "credits": "",
+      "courseData": "background.sh",
+      "code": "foreground.sh"
+        },
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "client": [
+        {
+          "file": "prepareStepOne.sh",
+          "target": "/root/"
+        },
+        {
+          "file": "prepareStepOne.sh",
+          "target": "/root/new_directory/"
+        }
+      ]
+    }
+  },
+  "environment": {
+    "uilayout": "editor-terminal",
+    "uimessage1": "\u001b[32mYour Interactive Bash Terminal.\r\nExecute bash shell commands \u001b[m\r\n"
+  },
+  "backend": {
+    "imageid": "ubuntu1804"
+  }
+}
