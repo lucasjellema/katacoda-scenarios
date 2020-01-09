@@ -31,7 +31,7 @@ List the currently available Fn contexts
 
 Create an appropriate Fn context for working with OCI as provider (see [OCI Docs on Functions](https://docs.cloud.oracle.com/iaas/Content/Functions/Tasks/functionscreatefncontext.htm)).
 
-`fn create context lab-fn-context –provider oracle`{{execute}}
+`fn create context lab-fn-context --provider oracle`{{execute}}
 
 `fn use context lab-fn-context`{{execute}}
 
@@ -50,8 +50,10 @@ You can list the currently available Fn contexts again and see whether your chan
 
 `fn list contexts`{{execute}}
 
+Next and finally, login to the private Docker Registry that is prepared for you on OCI.
+
 `docker login iad.ocir.io`{{execute}}
 
-username:
+The username you have to provide is composed of <tenancy-namespace>/<username>. The password is an Authentication Token generated for the specified user. Both these values are provided by your workshop instructor.
 
-Now we are ready to create functions and deploy them to the Oracle Cloud Infrastructure instead of to the locally running Fn Server.
+And now we are finally ready to create functions and deploy them to the Oracle Cloud Infrastructure instead of to the locally running Fn Server.
