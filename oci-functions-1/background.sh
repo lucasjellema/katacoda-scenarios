@@ -28,3 +28,6 @@ touch /root/readyWithBackground
 
 docker pull fnproject/node:latest
 
+export MY_VAR=jan
+
+

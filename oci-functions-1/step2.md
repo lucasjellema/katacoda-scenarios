@@ -1,4 +1,4 @@
-# Creating a Function with Fn and Deploying it to OCI
+# Creating, Deploying and Invoking a Function on OCI
 
 In this step we will create a simple function with Fn. We pick Node (JS) as our runtime - Go, Python, Java and Ruby are other out of the box options.
 
@@ -24,10 +24,67 @@ Time to invoke the function. The command for invoking the function is simply: `f
 
 `fn invoke lab-app hello`{{execute}}
 
-
+Check the list of functions in the application
+`fn list f lab-app`{{execute}}
 
 To send in a JSON object as input to the function, use the following command:
 
 `echo -n '{"name":"Your Own Name"}' | fn invoke lab-app hello --content-type application/json`{{execute}}
 
 Again, a friendly, this time personalized welcome message should be your reward - coming from the cloud.
+
+Check in the OCI Console if the function shows up there:
+[OCI Console for the Functions App](https://console.us-ashburn-1.oraclecloud.com/functions/apps/ocid1.fnapp.oc1.iad.aaaaaaaaahvgnhjlrvar7foio6qfqv7wql3x2fwmym4bih4kszmyrqeu5kgq/fns)
+
+## Function manipulation using OCI CLI
+
+See [OCI CLI Command Reference for Functions](https://docs.cloud.oracle.com/iaas/tools/oci-cli/2.8.0/oci_cli_docs/cmdref/fn.html)
+List all functions in application:
+
+`oci fn application list --compartment-id ocid1.compartment.oc1..aaaaaaaatxf2nfi7prglkhntadfj4tuxlfms36xhqc4hekuif6wjnoyq4ilq`{{execute}}
+
+funsJ=$(fn inspect f lab-app hello)
+funInvokeEndpoint=$(echo $funsJ | jq '."annotations"."fnproject.io/fn/invokeEndpoint"')
+funId=$(echo $funsJ | jq .id)
+echo $funInvokeEndpoint
+
+Placeholder for MY_VAR:
+[[MY_VAR]]
+
+appId=$(echo $appsJ | jq .id)
+
+
+Check out details for the function you just created and deployed:
+`fn inspect f lab-app hello`{{execute}}
+https://github.com/lucasjellema/oci-scripts/blob/master/functions/prepare-tenancy-for-functions.sh
+https://thoughtbot.com/blog/jq-is-sed-for-json
+https://jqplay.org/jq
+
+Use jq to retrieve namespace name from JSON response to OCI CLI call:
+
+nsJ=$(oci os ns get)
+ns=$(echo $nsJ | jq .data)
+echo "Namespace is $ns"
+
+appsJ=$(oci fn application list --compartment-id ocid1.compartment.oc1..aaaaaaaatxf2nfi7prglkhntadfj4tuxlfms36xhqc4hekuif6wjnoyq4ilq)
+appName=$(echo $appsJ | jq .data[0]'."display-name"')
+appId=$(echo $appsJ | jq --raw-output .data[0]'."id"')
+echo "https://console.us-ashburn-1.oraclecloud.com/functions/apps/$appId/fns"
+
+
+
+    --compartment-id $FN_COMPARTMENT_OCID_VAR --all)
+  local THE_VCN_ID=$(echo $vcns | jq -r --arg display_name "$1" '.data | map(select(."display-name" == $display_name)) | .[0] | .id')
+
+Invoke Function by Function (OC)Id:
+
+oci fn function invoke --function-id ocid1.fnfunc.oc1.iad.aaaaaaaaach3r6tmq4qtn4xvxugdaotwdxuhczzxfjbahhmwn3ojlvzgykbq --body '{"name":"Jan"}' --file -
+
+
+Get Function Invoke Endpoint:
+
+fn inspect function lab-app hello
+
+
+https://zmyrqeu5kgq.us-ashburn-1.functions.oci.oraclecloud.com/20181201/functions/ocid1.fnfunc.oc1.iad.aaaaaaaaach3r6tmq4qtn4xvxugdaotwdxuhczzxfjbahhmwn3ojlvzgykbq/actions/invoke
+

@@ -51,6 +51,6 @@ Next and finally, login to the private Docker Registry that is prepared for you 
 
 `docker login iad.ocir.io`{{execute}}
 
-The username you have to provide is composed of <tenancy-namespace>/<username>. The password is an Authentication Token generated for the specified user. Both these values are provided by your workshop instructor.
+The username you have to provide is composed of `<tenancy-namespace>/<username>`. The password is an Authentication Token generated for the specified user. Both these values are provided by your workshop instructor.
 
 And now we are finally ready to create functions and deploy them to the Oracle Cloud Infrastructure instead of to the locally running Fn Server.
