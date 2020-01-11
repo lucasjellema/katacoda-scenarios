@@ -10,7 +10,20 @@ Three files have been created in the new directory *hello*.
 
 `ls`{{execute}}
 
-You could open func.js in the text editor to see the generated functionality.
+You could open func.js in the text editor to see the generated functionality. Feel free to edit the file - but please make sure it will execute correctly!
+
+## Create Application
+
+Set the environment variable LAB_ID to the number provided to you by the workshop instructor.
+
+`export LAB_ID=1`{{execute}}
+`export SUBNET_OCID=ocid1.subnet.oc1.iad.aaaaaaaaqdnqpvxgjeqqg43kzc3dpesamgkz7ju3o4bdvuvjrj4j3i3pftyq`{{execute}}
+
+Now create the application that will be the container for your functions:
+
+`fn create app lab$LAB_ID --annotation oracle.com/oci/subnetIds='["$SUBNET_OCID"]'`{{execute}}
+
+## Deploy the Function
 
 Deploy the Function Hello, into an app that was created beforehand
 
@@ -47,9 +60,6 @@ funsJ=$(fn inspect f lab-app hello)
 funInvokeEndpoint=$(echo $funsJ | jq '."annotations"."fnproject.io/fn/invokeEndpoint"')
 funId=$(echo $funsJ | jq .id)
 echo $funInvokeEndpoint
-
-Placeholder for MY_VAR:
-[[MY_VAR]]
 
 appId=$(echo $appsJ | jq .id)
 
