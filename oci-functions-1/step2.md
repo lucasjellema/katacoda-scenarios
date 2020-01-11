@@ -52,28 +52,38 @@ To send in a JSON object as input to the function, use the following command:
 
 Again, a friendly, this time personalized welcome message should be your reward - coming from the cloud.
 
-TODO get app id into env var
+Check out details for the function you just created and deployed:
+`fn inspect f "lab$LAB_ID hello`{{execute}}
+
+## OCI Console 
+
 
 Check in the OCI Console if the function shows up there:
-[OCI Console for the Functions App](https://console.us-ashburn-1.oraclecloud.com/functions/apps/ocid1.fnapp.oc1.iad.aaaaaaaaahvgnhjlrvar7foio6qfqv7wql3x2fwmym4bih4kszmyrqeu5kgq/fns)
 
 ## Function manipulation using OCI CLI
+
+Execute this next script to learn the URL Endpoint to Invoke the Function and to get a URL that takes you directly to the OCI Console for the Function application.   
+```
+funsJ=$(fn inspect f  "lab$LAB_ID" hello)
+funInvokeEndpoint=$(echo $funsJ | jq '."annotations"."fnproject.io/fn/invokeEndpoint"')
+funId=$(echo $funsJ | jq --raw-output .id)
+appId=$(echo $funsJ | jq --raw-output .app_id)
+echo "Function Invoke Endpoint $funInvokeEndpoint"
+echo "OCI Functions Console URL for Application lab$LAB_ID: https://console.us-ashburn-1.oraclecloud.com/functions/apps/$appId/fns"
+```{{execute}}
+
+Open the OCI Console in your browser using the URL shown in the terminal window. 
+
+Alternatively, open [OCI Function Console](https://console.us-ashburn-1.oraclecloud.com/functions) and click on the application that you have just created.
+
+## Resources
 
 See [OCI CLI Command Reference for Functions](https://docs.cloud.oracle.com/iaas/tools/oci-cli/2.8.0/oci_cli_docs/cmdref/fn.html)
 List all functions in application:
 
 `oci fn application list --compartment-id ocid1.compartment.oc1..aaaaaaaatxf2nfi7prglkhntadfj4tuxlfms36xhqc4hekuif6wjnoyq4ilq`{{execute}}
 
-funsJ=$(fn inspect f lab-app hello)
-funInvokeEndpoint=$(echo $funsJ | jq '."annotations"."fnproject.io/fn/invokeEndpoint"')
-funId=$(echo $funsJ | jq .id)
-echo $funInvokeEndpoint
 
-appId=$(echo $appsJ | jq .id)
-
-
-Check out details for the function you just created and deployed:
-`fn inspect f lab-app hello`{{execute}}
 https://github.com/lucasjellema/oci-scripts/blob/master/functions/prepare-tenancy-for-functions.sh
 https://thoughtbot.com/blog/jq-is-sed-for-json
 https://jqplay.org/jq

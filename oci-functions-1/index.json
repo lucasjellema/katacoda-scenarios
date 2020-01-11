@@ -32,7 +32,8 @@
       "code": "foreground.sh"
         },
     "finish": {
-      "text": "finish.md"
+      "text": "finish.md",
+      "courseData": "teardown.sh"
     },
     "assets": {
       "client": [
