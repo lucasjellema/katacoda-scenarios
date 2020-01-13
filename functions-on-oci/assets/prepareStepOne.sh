@@ -1,0 +1,1 @@
+export STATUS="Step One from assets"
