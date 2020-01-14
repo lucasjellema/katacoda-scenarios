@@ -1,42 +1,48 @@
-# Creating Functions in other Languages 
+# Adding a Route in an API Deployment to a Serverless Function as a Backend
 
-The hello function we have been working with in the previous steps was implemented using Node JS (server side JavaScript). Fn supports many other runtime, such as Go, Python, Java and Ruby. Additionally, you can create a function from just any Docker Container, regardless which (combination of) runtime engines and languages you hae used in it.
+`touch api_deployment_3.json`{{execute}}
 
-In this step you will create a function in Java. Feel free to try out the other runtimes as well.
+Copy the definitions of the routes */stock*,*/search* and */hello* to the api_deployment_3.json file:
 
-Return to 
-```
-cd ~
+<pre class="file" data-filename="api_deployment_3.json" data-target="append">
+{
+  "routes": [
+    {
+      "path": "/hello",
+      "methods": ["GET","POST"],
+      "backend": {
+        "type": "ORACLE_FUNCTIONS_BACKEND",
+        "functionId": "$funId"
+      }
+    },
+    {
+      "path": "/stock",
+      "methods": ["GET"],
+      "backend": {
+        "type": "STOCK_RESPONSE_BACKEND",
+        "body": "{\"special_key\":\"Special Value\"}",
+        "headers":[],
+        "status":200
+      }
+    },
+    {
+      "path": "/search",
+      "methods": ["GET"],
+      "backend": {
+        "type": "HTTP_BACKEND",
+        "url": "https://www.startpage.com/"
+      }
+    }
+  ]
+}
+</pre>
 
-fn init --runtime java hello-java
-```{{execute}}
+Update the API Deployment in API Gateway lab-apigw with the following command:  
 
-Check out the generated directory structure and Java Classes:
-```
-ls -R
+`oci api-gateway deployment update --deployment-id $apiDeploymentId --specification file://./api_deployment_3.json`{{execute}}
 
-cd hello-java/src/main/java/com/example/fn
+Using *curl* you can now invoke the route that leads to the function *hello* that you created in a previous scenario.
 
-cat HelloFunction.java
-```{{execute}}
+helloEndpoint=https://e5j4rf662bdczha6kdptqp35xa.apigateway.us-ashburn-1.oci.customer-oci.com/my-depl1/hello
+`curl -X "POST" -H "Content-Type: application/json" -d '{"name":"Bob"}' $helloEndpoint`{{execute}}
 
-Java Class HelloFunction.java was generated as the starting point for this function. You can check out file in the editor. 
-
-Warning: if you make changes to the output of the file, ensure that you change the unit test accordingly because when the test fails, the function cannot be built and deployed. The unit test is in the source file hello-java/src/test/java/com/example/fn/HelloFunctionTest.java.
-
-Deploy the Java Function hello-java locally, into the app that created in step 2.
-
-`fn -v deploy --app nodeapp --local `{{execute}}
-
-To invoke the Java function, execute this command:
-
-`fn invoke nodeapp hello-java`{{execute}}
-
-To send in a JSON object as input to the function, use the following command:
-
-`echo -n 'Your Own Name' | fn invoke nodeapp hello-java --content-type application/json`{{execute}}
-
-Again, a friendly, this time personalized, welcome message should be your reward.
-
-## Further Explorations
-To try out other languages, simply replace *java* as runtime with *go* or *python*.

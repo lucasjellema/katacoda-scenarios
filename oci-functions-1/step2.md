@@ -7,9 +7,20 @@ Let's find out about the API Gateway *lab-apigw* that we will be using in this s
 There should not be an API Deployment at this stage. Let's list all gateway deployments in the :
 `oci api-gateway deployment list -c $compartmentId  --gateway-id $apiGatewayId`{{execute}}
 
-So create your own API Deployment - with a single route, to a stock response (a route with a static response object).
+Note: if you feel that it is difficult to read the output from these commands, you could consider piping the output to a text file that you can subequently browse in *vi*. For example:
+
+```
+oci api-gateway deployment list -c $compartmentId  --gateway-id $apiGatewayId > apiGWDepl
+vi apiGWDepl
+```{{execute}}
+
+Exit vi using <kbd>Esc</kbd>q<kbd>!</kbd>.
+
+
+Create your own API Deployment - with a single route, to a stock response (a route with a static response object).
 
 Create a file called api_deployment.json in the current directory with this contents. Note: replace $funId with the actual OCID for the function.
+
 `touch api_deployment.json`{{execute}}
 
 Copy the definition of the route */stock* to the api_deployment.json file:
@@ -35,12 +46,20 @@ Create the API Deployment in API Gateway lab-apigw with the following command:
 
 `oci api-gateway deployment create --compartment-id $compartmentId --display-name MY_API_DEPL_$LAB_ID --gateway-id $apiGatewayId --path-prefix "/my-depl$LAB_ID" --specification file://./api_deployment.json`{{execute}}
 
+Now you can invoke the new API:
+
+ENDPOINT of API Gateway/my-depl$LAB_ID/stock
+
+`curl https://e5j4rf662bdczha6kdptqp35xa.apigateway.us-ashburn-1.oci.customer-oci.com/my-depl1`{{execute}}
+
 
 ## Adding a Route to a Serverless Function as a Backend
 
-Copy the definitions of the routes */stock* and */hello* to the api_deployment.json file:
+`touch api_deployment_2.json`{{execute}}
 
-<pre class="file" data-filename="api_deployment.json" data-target="insert">
+Copy the definitions of the routes */stock* and */hello* to the api_deployment_2.json file:
+
+<pre class="file" data-filename="api_deployment_2.json" data-target="append">
 {
   "routes": [
     {
@@ -67,126 +86,15 @@ Copy the definitions of the routes */stock* and */hello* to the api_deployment.j
 
 Update the API Deployment in API Gateway lab-apigw with the following command:  
 
-`oci api-gateway deployment update --deployment-id $apiDeploymentId --specification file://./api_deployment.json`{{execute}}
+`oci api-gateway deployment update --deployment-id $apiDeploymentId --specification file://./api_deployment_2.json`{{execute}}
 
+Using *curl* you can now invoke the route that leads to the function *hello* that you created in a previous scenario.
 
-
-`echo $funId`{{execute}}
-
-
-Create a file called api_deployment.json in the current directory with this contents. Note: replace $funId with the actual OCID for the function.
-`touch api_deployment.json`{{execute}}
-
-<pre class="file" data-filename="api_deployment.json" data-target="append">
-{
-  "routes": [
-    {
-      "path": "/hello",
-      "methods": ["GET","POST"],
-      "backend": {
-        "type": "ORACLE_FUNCTIONS_BACKEND",
-        "functionId": "$funId"
-      }
-    },
-    {
-      "path": "/stock",
-      "methods": ["GET"],
-      "backend": {
-        "type": "STOCK_RESPONSE_BACKEND",
-        "body": "{\"special_key\":\"Special Value\"}",
-        "headers":[],
-        "status":200
-      }
-    }
-  ]
-}
-</pre>
-
-`oci api-gateway deployment create --compartment-id $compartmentId --display-name MY_API_DEPL_$LAB_ID --gateway-id $apiGatewayId --path-prefix "/my-depl$LAB_ID" --specification file://./api_deployment.json`{{execute}}
+helloEndpoint=https://e5j4rf662bdczha6kdptqp35xa.apigateway.us-ashburn-1.oci.customer-oci.com/my-depl1/hello
+`curl -X "POST" -H "Content-Type: application/json" -d '{"name":"Bob"}' $helloEndpoint`{{execute}}
 
 
 See the documentation on [Deploying an API on an API Gateway by Creating an API Deployment](https://docs.cloud.oracle.com/iaas/Content/APIGateway/Tasks/apigatewaycreatingdeployment.htm) and (Create a Specification)[https://docs.cloud.oracle.com/iaas/Content/APIGateway/Tasks/apigatewaycreatingspecification.htm].
-
-`fn init --runtime node hello`{{execute}}
-
-`cd hello`{{execute}}
-
-Three files have been created in the new directory *hello*.
-
-`ls`{{execute}}
-
-You could open func.js in the text editor to see the generated functionality. Feel free to edit the file - but please make sure it will execute correctly!
-
-## Create Application
-
-Set the environment variable LAB_ID to the number provided to you by the workshop instructor.
-
-`export LAB_ID=1`{{execute}}
-
-Note: Public Subnet-vcn-lab
-
-`export SUBNET_OCID=ocid1.subnet.oc1.iad.aaaaaaaagfz4auw6rgkqbg4huwxno42cnuscafgvyivmdwl7lj6gabpktmvq`{{execute}}
-TODO load SUBNET_OCID as OCID for subnet with name Subnet-vcn-lab
-
-Now create the application that will be the container for your functions:
-
-`fn create app "lab$LAB_ID" --annotation "oracle.com/oci/subnetIds=[\"$SUBNET_OCID\"]"`{{execute}}
-
-See the list of applications - that should include your new application:
-
-`fn list apps`{{execute}}
-
-## Deploy the Function
-
-Deploy the Function Hello, into an app that was created beforehand
-
-`fn -v deploy --app "lab$LAB_ID"`{{execute}}
-
-Verify that a Docker Container Image has been built for Fn Function Hello:
-
-`docker images | grep hello`{{execute}}
-
-Check the list of functions in the application
-`fn list f "lab${LAB_ID}"`{{execute}}
-
-Time to invoke the function. The command for invoking the function is simply: `fn invoke <app-name> <function-name>`:
-
-`fn invoke "lab$LAB_ID" hello`{{execute}}
-
-The first call may take a while because of the cold start of the function. If you call the function a second and third time, it is bound to go a lot quicker. 
-
-To send in a JSON object as input to the function, use the following command:
-
-`echo -n '{"name":"Your Own Name"}' | fn invoke "lab${LAB_ID}" hello --content-type application/json`{{execute}}
-
-Again, a friendly, this time personalized welcome message should be your reward - coming from the cloud.
-
-Check out details for the function you just created and deployed:
-`fn inspect f "lab$LAB_ID" hello`{{execute}}
-
-## OCI Console 
-
-
-Check in the OCI Console if the function shows up there:
-
-## Function manipulation using OCI CLI
-
-Execute this next script to learn the URL Endpoint to Invoke the Function and to get a URL that takes you directly to the OCI Console for the Function application.   
-```
-funsJ=$(fn inspect f  "lab$LAB_ID" hello)
-funInvokeEndpoint=$(echo $funsJ | jq '."annotations"."fnproject.io/fn/invokeEndpoint"')
-funId=$(echo $funsJ | jq --raw-output .id)
-appId=$(echo $funsJ | jq --raw-output .app_id)
-echo "Function Invoke Endpoint $funInvokeEndpoint"
-echo "OCI Functions Console URL for Application lab$LAB_ID: https://console.us-ashburn-1.oraclecloud.com/functions/apps/$appId/fns"
-```{{execute}}
-
-Open the OCI Console in your browser using the URL shown in the terminal window. 
-
-Alternatively, open [OCI Function Console](https://console.us-ashburn-1.oraclecloud.com/functions) and click on the application that you have just created.
-
-Click on the function Hello in the Console. Check the metrics tab. You should see an indication of the number of times you have invoked the function. You can invoke the function a few additional times to see the effect on the metrics.
-
 
 
 ## Resources

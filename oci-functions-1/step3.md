@@ -1,67 +1,38 @@
-# Invoke Function with CURL 
+# Adding a Route in an API Deployment to am HTTP Backend
 
-In this step we will invoke the function with CURL. Subsequently, we will take a look at the context data available to the function when it is handling a request.
+`touch api_deployment_2.json`{{execute}}
 
-## Getting a Function's Invoke Endpoint
+Copy the definitions of the routes */stock* and */search* to the api_deployment_2.json file. You can open the file to check whether the change is applied correctly. Notice the second route, with path set to */search*. This route is of type HTTP_BACKEND: it can route requests to a specific HTTP(S) endpoint, similar to what NGINX for exampe can do. 
 
-In addition to using the Fn invoke command, we can call a function by using a URL. To do this, we must get the function's invoke endpoint. Use the command fn inspect function <appname> <function-name>. To list the nodefn function's invoke endpoint we can type:
-
-`fn inspect f nodeapp hello`{{execute}}
-
-Get the value from the annotation `fnproject.io/fn/invokeEndpoint` in the result of this inspect command. 
-
-You can invoke the function using *curl* at this endpoint. Please set an environment variable HELLO_FUNCTION_ENDPOINT with the value from the endpoint.  
-
-`export HELLO_FUNCTION_ENDPOINT=<the invokeEndpoint>`{{execute}}
-
-For example: `export HELLO_FUNCTION_ENDPOINT=http://localhost:8080/invoke/01DY4P5ZSFNG9000GZJ0000002`.
-
-Now with the variable set you should be able to invoke the function using curl:
-
-`curl -X "POST" -H "Content-Type: application/json" -d '{"name":"Bob"}' $HELLO_FUNCTION_ENDPOINT`{{execute}}
-
-
-## Context available to a Function when processing a Request.
-
-When you invoke a function, the request is handled and forwarded by the Fn Server to the function. This means that an HTTP request is sent to the container that implements the function. This request is received by a handler provided by the Fn FDK for Node. This handler can be seen in the file func.js - which is the generated Node implementation of the function.
-
-Click on the file func.js to open it in the editor. On line 3 you see the call `fdk.handle()`. This initializes the Fn Runtime with a generic request handler; when a request is received it is forwarded to the function that is passed to *fdk.handle()* - the function that takes one parameter called *input*.  
-
-Add a second parameter to the function definition on line 3, to make this line read:
-
-<pre class="file" data-target="clipboard">
-   fdk.handle(function(input , ctx){
+<pre class="file" data-filename="api_deployment_2.json" data-target="append">
+{
+  "routes": [
+     {
+      "path": "/stock",
+      "methods": ["GET"],
+      "backend": {
+        "type": "STOCK_RESPONSE_BACKEND",
+        "body": "{\"special_key\":\"Special Value\"}",
+        "headers":[],
+        "status":200
+      }
+    },
+    {
+      "path": "/search",
+      "methods": ["GET"],
+      "backend": {
+        "type": "HTTP_BACKEND",
+        "url": "https://www.startpage.com/"
+      }
+    }
+  ]
+}
 </pre>
 
-The FDK framework's handler (fdk.handle) will now pass the request context in this variable, in addition to the input or payload that was already passed to the function by the handler. 
+Update the API Deployment in API Gateway lab-apigw with the following command:  
 
-Change line 8 to make it read: 
+`oci api-gateway deployment update --deployment-id $apiDeploymentId --specification file://./api_deployment_2.json`{{execute}}
 
-<pre class="file" data-target="clipboard">
-  return {'message': 'Hello ' + name ,'ctx':ctx}
-</pre>
+Using *curl* you can now invoke the route that leads to the function *search* that you created in a previous scenario.
 
-Changes to file func.js are saved automatically by the editor - do not look for a Save button or use Ctrl+S.
-
-Now we need to redeploy the function with the same command as before:
-
-`fn -v deploy --app nodeapp --local `{{execute}}
-
-And invoke it, either through Fn:
-
-`echo -n '{"name":"Your Own Name"}' | fn invoke nodeapp hello --content-type application/json`{{execute}}
-
-
-Or using CURL.
-
-`curl -X "POST" -H "Content-Type: application/json" -H "my-special-header: my-value" -d '{"name":"Johanna"}' $HELLO_FUNCTION_ENDPOINT`{{execute}}
-
-The custom header should now be visible in the response from the function because it is visible in the context sent to the function by Fn.
-
-By inspecting the *ctx* input parameter, you can make your function interpret the request in a more encompassing way than by only inspecting the input parameter. 
-
-
-
-## Resources 
-Check out this article for details about the contents of the Fn request context:[Oracle Cloud Infrastructure Functions and Project Fn – Retrieving Headers, Query Parameters and other HTTP Request elements](https://technology.amis.nl/2020/01/02/oracle-cloud-infrastructure-functions-and-project-fn-retrieving-headers-query-parameters-and-other-http-request-elements/)
-
+`curl https://e5j4rf662bdczha6kdptqp35xa.apigateway.us-ashburn-1.oci.customer-oci.com/my-depl1/search/sp/search?query=oracle+cloud+infrastructure`{{execute}}
