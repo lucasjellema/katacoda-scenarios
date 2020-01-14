@@ -14,7 +14,7 @@ oci api-gateway deployment list -c $compartmentId  --gateway-id $apiGatewayId > 
 vi apiGWDepl
 ```{{execute}}
 
-Exit vi using <kbd>Esc</kbd>q<kbd>!</kbd>.
+Exit vi using <kbd>Esc</kbd><kbd>:q</kbd>.
 
 
 Create your own API Deployment - with a single route, to a stock response (a route with a static response object).
@@ -46,94 +46,15 @@ Create the API Deployment in API Gateway lab-apigw with the following command:
 
 `oci api-gateway deployment create --compartment-id $compartmentId --display-name MY_API_DEPL_$LAB_ID --gateway-id $apiGatewayId --path-prefix "/my-depl$LAB_ID" --specification file://./api_deployment.json`{{execute}}
 
-Now you can invoke the new API:
+Now you can invoke the new API [deployment route]. The endpoint for the API Deployment can be retrieved by looking up a list of all API Gateway Deployments, filtering out the one with the desired display_name and grabbing its endpoint. Here the endpoint is copied to the *deploymentEndpoint* environment variable. This variable is used next in the *curl* call.
 
-ENDPOINT of API Gateway/my-depl$LAB_ID/stock
+```
+depls=$(oci api-gateway deployment list -c $compartmentId)
+deploymentEndpoint=$(echo $depls | jq -r --arg display_name "MY_API_DEPL_$LAB_ID" '.data.items | map(select(."display-name" == $display_name)) | .[0] | .endpoint')
 
-`curl https://e5j4rf662bdczha6kdptqp35xa.apigateway.us-ashburn-1.oci.customer-oci.com/my-depl1`{{execute}}
-
-
-## Adding a Route to a Serverless Function as a Backend
-
-`touch api_deployment_2.json`{{execute}}
-
-Copy the definitions of the routes */stock* and */hello* to the api_deployment_2.json file:
-
-<pre class="file" data-filename="api_deployment_2.json" data-target="append">
-{
-  "routes": [
-    {
-      "path": "/hello",
-      "methods": ["GET","POST"],
-      "backend": {
-        "type": "ORACLE_FUNCTIONS_BACKEND",
-        "functionId": "$funId"
-      }
-    },
-    {
-      "path": "/stock",
-      "methods": ["GET"],
-      "backend": {
-        "type": "STOCK_RESPONSE_BACKEND",
-        "body": "{\"special_key\":\"Special Value\"}",
-        "headers":[],
-        "status":200
-      }
-    }
-  ]
-}
-</pre>
-
-Update the API Deployment in API Gateway lab-apigw with the following command:  
-
-`oci api-gateway deployment update --deployment-id $apiDeploymentId --specification file://./api_deployment_2.json`{{execute}}
-
-Using *curl* you can now invoke the route that leads to the function *hello* that you created in a previous scenario.
-
-helloEndpoint=https://e5j4rf662bdczha6kdptqp35xa.apigateway.us-ashburn-1.oci.customer-oci.com/my-depl1/hello
-`curl -X "POST" -H "Content-Type: application/json" -d '{"name":"Bob"}' $helloEndpoint`{{execute}}
-
-
-See the documentation on [Deploying an API on an API Gateway by Creating an API Deployment](https://docs.cloud.oracle.com/iaas/Content/APIGateway/Tasks/apigatewaycreatingdeployment.htm) and (Create a Specification)[https://docs.cloud.oracle.com/iaas/Content/APIGateway/Tasks/apigatewaycreatingspecification.htm].
-
+curl $deploymentEndpoint/stock
+```{{execute}}
 
 ## Resources
 
-See [OCI CLI Command Reference for Functions](https://docs.cloud.oracle.com/iaas/tools/oci-cli/2.8.0/oci_cli_docs/cmdref/fn.html)
-List all functions in application:
-
-`oci fn application list --compartment-id ocid1.compartment.oc1..aaaaaaaatxf2nfi7prglkhntadfj4tuxlfms36xhqc4hekuif6wjnoyq4ilq`{{execute}}
-
-
-https://github.com/lucasjellema/oci-scripts/blob/master/functions/prepare-tenancy-for-functions.sh
-https://thoughtbot.com/blog/jq-is-sed-for-json
-https://jqplay.org/jq
-
-Use jq to retrieve namespace name from JSON response to OCI CLI call:
-
-nsJ=$(oci os ns get)
-ns=$(echo $nsJ | jq .data)
-echo "Namespace is $ns"
-
-appsJ=$(oci fn application list --compartment-id ocid1.compartment.oc1..aaaaaaaatxf2nfi7prglkhntadfj4tuxlfms36xhqc4hekuif6wjnoyq4ilq)
-appName=$(echo $appsJ | jq .data[0]'."display-name"')
-appId=$(echo $appsJ | jq --raw-output .data[0]'."id"')
-echo "https://console.us-ashburn-1.oraclecloud.com/functions/apps/$appId/fns"
-
-
-
-    --compartment-id $FN_COMPARTMENT_OCID_VAR --all)
-  local THE_VCN_ID=$(echo $vcns | jq -r --arg display_name "$1" '.data | map(select(."display-name" == $display_name)) | .[0] | .id')
-
-Invoke Function by Function (OC)Id:
-
-oci fn function invoke --function-id ocid1.fnfunc.oc1.iad.aaaaaaaaach3r6tmq4qtn4xvxugdaotwdxuhczzxfjbahhmwn3ojlvzgykbq --body '{"name":"Jan"}' --file -
-
-
-Get Function Invoke Endpoint:
-
-fn inspect function lab-app hello
-
-
-https://zmyrqeu5kgq.us-ashburn-1.functions.oci.oraclecloud.com/20181201/functions/ocid1.fnfunc.oc1.iad.aaaaaaaaach3r6tmq4qtn4xvxugdaotwdxuhczzxfjbahhmwn3ojlvzgykbq/actions/invoke
-
+See the documentation on [Deploying an API on an API Gateway by Creating an API Deployment](https://docs.cloud.oracle.com/iaas/Content/APIGateway/Tasks/apigatewaycreatingdeployment.htm) and (Create a Specification)[https://docs.cloud.oracle.com/iaas/Content/APIGateway/Tasks/apigatewaycreatingspecification.htm].

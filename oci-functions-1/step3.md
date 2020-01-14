@@ -2,6 +2,8 @@
 
 `touch api_deployment_2.json`{{execute}}
 
+Open file api_deployment_2.json in the text editor.
+
 Copy the definitions of the routes */stock* and */search* to the api_deployment_2.json file. You can open the file to check whether the change is applied correctly. Notice the second route, with path set to */search*. This route is of type HTTP_BACKEND: it can route requests to a specific HTTP(S) endpoint, similar to what NGINX for exampe can do. 
 
 <pre class="file" data-filename="api_deployment_2.json" data-target="append">
@@ -35,4 +37,6 @@ Update the API Deployment in API Gateway lab-apigw with the following command:
 
 Using *curl* you can now invoke the route that leads to the function *search* that you created in a previous scenario.
 
-`curl https://e5j4rf662bdczha6kdptqp35xa.apigateway.us-ashburn-1.oci.customer-oci.com/my-depl1/search/sp/search?query=oracle+cloud+infrastructure`{{execute}}
+`curl $deploymentEndpoint/search`{{execute}}
+
+[you can] Open this same URL in a browser window.
