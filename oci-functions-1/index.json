@@ -1,6 +1,6 @@
 {
-  "title": "Serverless Functions on Oracle Cloud Infrastructure",
-  "description": "Getting started with Functions on Oracle Cloud Infrastructure.",
+  "title": "API Gateway and Functions on Oracle Cloud Infrastructure",
+  "description": "Getting started with API Gateway on Oracle Cloud Infrastructure. Use API Gateway to expose a stock response and an HTTP Backend. Then also use API Gateway to expose Serverless Functions on OCI.",
   "difficulty": "beginner",
   "time": "30 minutes",
   "details": {
@@ -10,17 +10,17 @@
         "text": "step1.md"
       },
       {
-        "title": "Step 2 - Create your first Function",
+        "title": "Step 2 - Create your first API Deployment",
         "text": "step2.md",
         "courseData": "step2-background.sh",
         "code": "step2-foreground.sh"
       },
       {
-        "title": "Step 3 - Invoke a Function using CURL",
+        "title": "Step 3 - Expose a Function in the API Deployment",
         "text": "step3.md"
       },
       {
-        "title": "Step 4 - Functions in other Languages",
+        "title": "Step 4 - Functions invoking other Functions",
         "text": "step4.md",
         "courseData": "step4-background.sh"
       }

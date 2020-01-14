@@ -17,7 +17,11 @@ You could open func.js in the text editor to see the generated functionality. Fe
 Set the environment variable LAB_ID to the number provided to you by the workshop instructor.
 
 `export LAB_ID=1`{{execute}}
-`export SUBNET_OCID=ocid1.subnet.oc1.iad.aaaaaaaaqdnqpvxgjeqqg43kzc3dpesamgkz7ju3o4bdvuvjrj4j3i3pftyq`{{execute}}
+
+Note: Public Subnet-vcn-lab
+
+`export SUBNET_OCID=ocid1.subnet.oc1.iad.aaaaaaaagfz4auw6rgkqbg4huwxno42cnuscafgvyivmdwl7lj6gabpktmvq`{{execute}}
+TODO load SUBNET_OCID as OCID for subnet with name Subnet-vcn-lab
 
 Now create the application that will be the container for your functions:
 
@@ -53,7 +57,7 @@ To send in a JSON object as input to the function, use the following command:
 Again, a friendly, this time personalized welcome message should be your reward - coming from the cloud.
 
 Check out details for the function you just created and deployed:
-`fn inspect f "lab$LAB_ID hello`{{execute}}
+`fn inspect f "lab$LAB_ID" hello`{{execute}}
 
 ## OCI Console 
 
@@ -75,6 +79,10 @@ echo "OCI Functions Console URL for Application lab$LAB_ID: https://console.us-a
 Open the OCI Console in your browser using the URL shown in the terminal window. 
 
 Alternatively, open [OCI Function Console](https://console.us-ashburn-1.oraclecloud.com/functions) and click on the application that you have just created.
+
+Click on the function Hello in the Console. Check the metrics tab. You should see an indication of the number of times you have invoked the function. You can invoke the function a few additional times to see the effect on the metrics.
+
+
 
 ## Resources
 

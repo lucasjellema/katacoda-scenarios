@@ -7,15 +7,19 @@ You need to provide details on the OCI tenancy you will work in and the OCI user
 
 Paste the contents provided by the workshop instructor into these two files.
 
+Set the environment variable LAB_ID to the number provided to you by the workshop instructor.
+
+`export LAB_ID=1`{{execute}}
+
+Do not continue until you see the file `/root/readyWithBackground` appear. If it appears, then the OCI CLI has been installed and you can continue.
+
 Try out the following command to get a list of all namespaces you currently have access to - based on the OCI Configuration defined above.
 
 `oci os ns get`{{execute}} 
 
 If you get a proper response, the OCI is configured correctly and you can proceed. If you run into an error, ask for help from your instructor.
 
-Do not continue until you see the file `/root/readyWithBackground` appear. If it appears, then the OCI CLI has been installed and you can continue.
-
-## Fn Client and Context
+## Environment Preparation
 Now Check the installed version of Fn CLI. Note: we do not need the Fn server at this stage.  
 
 `fn version`{{execute}} 
@@ -32,9 +36,12 @@ Create an appropriate Fn context for working with OCI as provider (see [OCI Docs
 
 `fn use context lab-fn-context`{{execute}}
 
-Update the context with the settings relevant for this workshop. Note: the compartment used here is the fn-compartment 
+Update the context with the settings relevant for this workshop. Note: the compartment used here is the lab-compartment, the API Gateway is lab-apigw in that same compartment.
 ```
-fn update context oracle.compartment-id ocid1.compartment.oc1..aaaaaaaatxf2nfi7prglkhntadfj4tuxlfms36xhqc4hekuif6wjnoyq4ilq
+compartmentId=ocid1.compartment.oc1..aaaaaaaag4mbmj22ecmbbf43fjgzo4sd5vtldwbdq7z67p34p7xipkwfhzta
+apiGatewayId=ocid1.apigateway.oc1.iad.amaaaaaa6sde7caaqh7lrxdlijuxxju66zpeycuy2qi72sggv6lgp7yvky4a
+
+fn update context oracle.compartment-id $compartmentId
 
 fn update context api-url https://functions.us-ashburn-1.oci.oraclecloud.com
 
@@ -53,4 +60,4 @@ Next and finally, login to the private Docker Registry that is prepared for you 
 
 The username you have to provide is composed of `<tenancy-namespace>/<username>`. The password is an Authentication Token generated for the specified user. Both these values are provided by your workshop instructor.
 
-And now we are finally ready to create functions and deploy them to the Oracle Cloud Infrastructure instead of to the locally running Fn Server.
+And now we are finally ready to create an API Deployment on API Gateway on Oracle Cloud Infrastructure.
