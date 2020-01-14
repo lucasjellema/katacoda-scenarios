@@ -4,7 +4,7 @@ Functions frequently need to be configured. Environment specific values such as 
 
 For details, check the documentation on [configuring functions](https://github.com/fnproject/docs/blob/master/fn/develop/configs.md).
 
-After you deploy your function, you can set function level configuration variables. The variables only apply to the specific function identified.
+After you deploy your function for the very first time, you can set function level configuration variables. The variables only apply to the specific function identified. Note that configuration values set for a function survive function redeployment. 
 
 `fn config function <app-name> <fn-name> <key> <value>`.
 
@@ -23,6 +23,7 @@ Then change the line that returns the final result from the function into:
 The greeting that is returned will now use the greeting set in the environment variable - if it was set. If not, we will still use Hello. Or actually use Still Hello.
 
 Deploy the now changed function:
+
 `fn -v deploy --app "lab$LAB_ID"`{{execute}}
 
 And invoke the changed function. We expect to see *Still Hello* in the greeting.
@@ -49,6 +50,12 @@ And invoke the function again:
 
 The new value of the GREETING configuration setting should be returned.
 
+Function Configuration values can also be set through the OCI CLI (see [docs](https://docs.cloud.oracle.com/iaas/tools/oci-cli/2.8.0/oci_cli_docs/cmdref/fn/function/update.html#cmdoption-config)) and through the OCI Console for Functions.
 
+The next command will update the entire set of configuration values for function hello; there is no way through the OCI CLI to update just a single configuration value. 
+
+`oci fn function update --function-id $funId --config '{"GREETING": "Goedendag"}'`{{execute}}
+
+The response from this command show the full current state for the function, including the current values of the configuration parameters.
 
 
