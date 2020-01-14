@@ -56,6 +56,9 @@ The next command will update the entire set of configuration values for function
 
 `oci fn function update --function-id $funId --config '{"GREETING": "Goedendag"}'`{{execute}}
 
-The response from this command show the full current state for the function, including the current values of the configuration parameters.
+The response from this command show the full current state for the function, including the current values of the configuration parameters. Inspecting a function provides the same overview:
 
+`fn inspect f lab$LAB_ID hello`{{execute}}
+
+Now that you know how to configure a function, we can manipulate the behavior of functions in an environment specific manner. No more hard coding, no more redeploying for changes that should just be configurable. 
 
