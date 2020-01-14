@@ -1,6 +1,49 @@
-# Creating, Deploying and Invoking a Function on OCI
+# Creating an API Deployment on an API Gateway on OCI
 
-In this step we will create a simple function with Fn. We pick Node (JS) as our runtime - Go, Python, Java and Ruby are other out of the box options.
+Let's find out about the API Gateway that we will be using in this step:
+
+oci api-gateway gateway get --gateway-id $apiGatewayId
+
+There should not be an API Deployment at this stage:
+oci api-gateway deployment list -c $compartmentId  --gateway-id $apiGatewayId
+
+So create your own API Deployment:
+
+`echo $funId`{{execute}}
+
+
+Create a file called api_deployment.json in the current directory with this contents. Note: replace $funId with the actual OCID for the function.
+`touch api_deployment.json`{{execute}}
+
+<pre class="file" data-filename="api_deployment.json" data-target="append">
+{
+  "routes": [
+    {
+      "path": "/hello",
+      "methods": ["GET","POST"],
+      "backend": {
+        "type": "ORACLE_FUNCTIONS_BACKEND",
+        "functionId": "$funId"
+      }
+    },
+    {
+      "path": "/stock",
+      "methods": ["GET"],
+      "backend": {
+        "type": "STOCK_RESPONSE_BACKEND",
+        "body": "{\"special_key\":\"Special Value\"}",
+        "headers":[],
+        "status":200
+      }
+    }
+  ]
+}
+</pre>
+
+`oci api-gateway deployment create --compartment-id $compartmentId --display-name MY_API_DEPL_$LAB_ID --gateway-id $apiGatewayId --path-prefix "/my-depl$LAB_ID" --specification file://./api_deployment.json`{{execute}}
+
+
+See the documentation on [Deploying an API on an API Gateway by Creating an API Deployment](https://docs.cloud.oracle.com/iaas/Content/APIGateway/Tasks/apigatewaycreatingdeployment.htm) and (Create a Specification)[https://docs.cloud.oracle.com/iaas/Content/APIGateway/Tasks/apigatewaycreatingspecification.htm].
 
 `fn init --runtime node hello`{{execute}}
 
