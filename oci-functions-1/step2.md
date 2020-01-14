@@ -51,6 +51,7 @@ Now you can invoke the new API [deployment route]. The endpoint for the API Depl
 ```
 depls=$(oci api-gateway deployment list -c $compartmentId)
 deploymentEndpoint=$(echo $depls | jq -r --arg display_name "MY_API_DEPL_$LAB_ID" '.data.items | map(select(."display-name" == $display_name)) | .[0] | .endpoint')
+apiDeploymentId=$(echo $depls | jq -r --arg display_name "MY_API_DEPL_$LAB_ID" '.data.items | map(select(."display-name" == $display_name)) | .[0] | .id')
 
 curl $deploymentEndpoint/stock
 ```{{execute}}

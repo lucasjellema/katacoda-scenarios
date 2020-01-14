@@ -64,4 +64,4 @@ Using *curl* you can now invoke the route that leads to the function *hello* tha
 
 Feel free to invoke the function in Postman and/or in your Browser, using its endpoint:
 
-`echo "Function Hello's Endpoint $deploymentEndpoint/hello"`
+`echo "Function Hello's Endpoint $deploymentEndpoint/hello"`{{execute}}
