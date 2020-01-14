@@ -1,6 +1,6 @@
 # Summary
 
-This completes your explorations with Functions on a local Fn Server. The next scenario you may want to explore looks at deploying Function to Oracle Cloud Infrastructure. 
+This completes your first adventure with Functions on Oracle Cloud Infrastructure. The next scenario you should check out introduces API Gateway and uses it to expose Functions on Oracle Cloud Infrastructure on Public Endpoints. 
 
 ## Background Resources
 

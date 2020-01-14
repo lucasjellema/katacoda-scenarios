@@ -32,7 +32,7 @@ See the list of applications - that should include your new application:
 
 ## Deploy the Function
 
-Deploy the Function Hello, into an app that was created beforehand
+Deploy the Function Hello, into an app that was created beforehand. At this stage a container image is built to host and run the function. This container image is pushed to the Oracle Container Registry on OCR. It is this image that is used to start a container from when the function is (first) invoked.
 
 `fn -v deploy --app "lab$LAB_ID"`{{execute}}
 
@@ -47,7 +47,7 @@ Time to invoke the function. The command for invoking the function is simply: `f
 
 `fn invoke "lab$LAB_ID" hello`{{execute}}
 
-The first call may take a while because of the cold start of the function. If you call the function a second and third time, it is bound to go a lot quicker. 
+The first call may take a while because of the cold start of the function. During cold start, the container image is used to start a new container from. If you call the function a second and third time, it is bound to go a lot quicker - because the container will hang a round for a bit. After ten minutes or so of inactivity, the container will be stopped and the next function call after that will suffer again from cold start.
 
 To send in a JSON object as input to the function, use the following command:
 

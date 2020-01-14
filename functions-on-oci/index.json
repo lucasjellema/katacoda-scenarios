@@ -20,9 +20,13 @@
         "text": "step3.md"
       },
       {
-        "title": "Step 4 - Functions in other Languages",
+        "title": "Step 4 - Invoke Functions using Postman",
         "text": "step4.md",
         "courseData": "step4-background.sh"
+      },
+      {
+        "title": "Step 5 - Configuring Functions",
+        "text": "step5.md"
       }
     ],
     "intro": {
