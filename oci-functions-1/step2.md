@@ -36,11 +36,17 @@ Check the current contents of the bucket:
 
 `oci os object list --bucket-name $bucketName`{{execute}}
 
-Check in OCI Console for Object Storage: the bucket you have created and the file that should now be visible and manipulatable in the console: [https://console.us-ashburn-1.oraclecloud.com/object-storage/buckets].
+Check in OCI Console for Object Storage: the bucket you have created and the file that should now be visible and manipulatable in the console: https://console.us-ashburn-1.oraclecloud.com/object-storage/buckets.
 
 Retrieve the file that was just created:
 
 `oci os object get  -bn $bucketName --name secret.txt --file secret-from-oci.txt`{{execute}}
+
+Check contents of the file:
+```
+ls -l secret*
+cat secret-from-oci.txt
+```{{execute}}
 
 At this point, we are capable of creating file objects on OCI Object Storage from a Node application. We can wrap this application in a Function that we can also deploy on OCI. That will be (y)our next step.
 
