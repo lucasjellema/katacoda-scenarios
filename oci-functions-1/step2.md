@@ -9,15 +9,40 @@ First, you need a to create a Bucket on OCI Object Storage. This *bucket* is sim
 The bucket is now created. Let's assign the bucket's OCID to an environment variable:
 
 ```
-buckets=$(oci os bucket list -c $compartmentId)
-echo $buckets
 bucketName="oci-lab$LAB_ID"
-bucketOCID=$(echo $depls | jq -r --arg display_name $bucketName '.data.items | map(select(."display-name" == $display_name)) | .[0] | .id')
+bucket=$(oci os bucket get --bucket-name $bucketName)
+echo $bucket
+bucketOCID=$(echo $bucket | jq -r  '.data | .id')
 echo "Bucket OCID for bucket $bucketName is $bucketOCID "
 
 ```{{execute}}
 
+Open file `~/oracle-cloud-native-meetup-20-january-2020/functions/file-writer/oci-configuration.js` in the text editor. Replace the current contents with the section provided to you by the workshop instructor. This file is used by the Node application to connect to the OCI REST APIs. It has to make signed HTTP requests - signed using the private key of an OCI User with necessary permissions on the OCI Object Storage.
 
+Navigate to the directory that contains the File Writer application:
+
+`cd ~/oracle-cloud-native-meetup-20-january-2020/functions/file-writer`{{execute}}
+
+and run `npm install` to install the required libraries.
+
+`npm install`{{execute}} 
+
+## Run the File Writer to create a new file on OCI Object Storage
+
+Run the File Write application with the following command:
+`node fileWriter '{"bucket":"oci-lab1","fileName":"secret.txt", "contents":{"File Contents":"Contents, Contents and more Contents"}}'`{{execute}}
+
+Check the current contents of the bucket:
+
+`oci os object list --bucket-name $bucketName`{{execute}}
+
+Check in OCI Console for Object Storage: the bucket you have created and the file that should now be visible and manipulatable in the console: [https://console.us-ashburn-1.oraclecloud.com/object-storage/buckets].
+
+Retrieve the file that was just created:
+
+`oci os object get  -bn $bucketName --name secret.txt --file secret-from-oci.txt`{{execute}}
+
+At this point, we are capable of creating file objects on OCI Object Storage from a Node application. We can wrap this application in a Function that we can also deploy on OCI. That will be (y)our next step.
 
 ## Resources
 
