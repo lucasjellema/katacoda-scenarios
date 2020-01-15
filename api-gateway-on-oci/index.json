@@ -1,6 +1,6 @@
 {
   "title": "API Gateway and Functions on Oracle Cloud Infrastructure",
-  "description": "Getting started with API Gateway on Oracle Cloud Infrastructure. Use API Gateway to expose a stock response and an HTTP Backend. Then also use API Gateway to expose Serverless Functions on OCI.",
+  "description": "Getting started with API Gateway on Oracle Cloud Infrastructure - expose a stock response,  HTTP Backend and Serverless Functions.",
   "difficulty": "beginner",
   "time": "30 minutes",
   "details": {
@@ -24,7 +24,7 @@
     ],
     "intro": {
       "text": "intro.md",
-      "credits": "",
+      "credits": "AMIS | Conclusion",
       "courseData": "background.sh",
       "code": "foreground.sh"
         },
