@@ -1,14 +1,14 @@
 # Summary
 
-This completes your explorations with Functions on a local Fn Server. The next scenario you may want to explore looks at deploying Function to Oracle Cloud Infrastructure. 
+This completes your explorations with the OCI API Gateway. The next scenario you may want to explore looks at more complex Functions on OCI - functions that invoke other functions and other OCI services such as Object Storage. 
 
 ## Background Resources
 
-Tutorial Getting Started with Fn environment
-https://github.com/fnproject/tutorials/blob/master/install/README.md
 
-Tutorial FN with Node
-https://github.com/fnproject/tutorials/blob/master/node/intro/README.md
+Introducing Oracle Cloud API Gateway – the light weight public or private router to public and private OCI endpoints – https://technology.amis.nl/2019/12/23/first-steps-with-oracle-cloud-api-gateway-the-light-weight-public-or-private-router-to-public-and-private-oci-endpoints/
 
-Docs on Fn on OCI
-https://docs.cloud.oracle.com/iaas/Content/Functions/Tasks/functionscreatefncontext.htm
+First steps with API Gateway – https://technology.amis.nl/2019/12/23/my-first-steps-with-oracle-cloud-api-gateway-the-stock-response/ 
+
+OCI API Gateway Docs – Adding a Function in Oracle Functions as an API Gateway Back End – https://docs.cloud.oracle.com/iaas/Content/APIGateway/Tasks/apigatewayusingfunctionsbackend.htm
+
+Article/Tutorial by Todd Sharp – Creating Your First API Gateway In The Oracle Cloud – https://blogs.oracle.com/developers/creating-your-first-api-gateway-in-the-oracle-cloud

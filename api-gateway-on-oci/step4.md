@@ -17,7 +17,7 @@ Create the new file api_deployment_3.json:
 
 Open the new file *api_deployment_3.json* in the text editor and copy the definitions of the routes */stock*,*/search* and */hello* to the api_deployment_3.json file. The /hello route is new compared to the previous step. This route accepts both GET and POST requests - but not PUT, DELETE and others. The route is of type ORACLE_FUNCTIONS_BACKEND and has a Function as its target. In this case, we want this route to invoke function *hello* in application lab#. 
 
-Replace `<function ocid>` in the file with the OCID that was found just now.
+Replace `function ocid` in the file with the OCID that was found just now.
 
 <pre class="file" data-filename="api_deployment_3.json" data-target="append">
 {
@@ -27,7 +27,7 @@ Replace `<function ocid>` in the file with the OCID that was found just now.
       "methods": ["GET","POST"],
       "backend": {
         "type": "ORACLE_FUNCTIONS_BACKEND",
-        "functionId": "<function ocid>"
+        "functionId": "function ocid"
       }
     },
     {
@@ -56,6 +56,8 @@ Update the API Deployment in API Gateway lab-apigw with the following command:
 
 `oci api-gateway deployment update --deployment-id $apiDeploymentId --specification file://./api_deployment_3.json`{{execute}}
 
+Confirm the update in the terminal window.
+
 It will take a few seconds (up to 15 seconds) for the API Gateway to synchronize its definition with the new specification. When the API Gateway deployment is updated, you can start using the new route. 
 
 You can check on the state of the API Deployment and the current update (called a *workrequest*) in the OCI Console. Execute this command to get the URL to the Console:
@@ -75,11 +77,3 @@ Feel free to invoke the function in Postman and/or in your Browser, using its en
 ## Resources
 
 Blog article [Oracle Cloud Serverless Functions unleashed: exposing OCI Functions through API Gateway](https://technology.amis.nl/2020/01/01/oracle-cloud-serverless-functions-unleashed-exposing-oci-functions-through-api-gateway/); this article shows the actions you just went through on the command line from the OCI Console point of view.
-
-Introducing Oracle Cloud API Gateway – the light weight public or private router to public and private OCI endpoints – https://technology.amis.nl/2019/12/23/first-steps-with-oracle-cloud-api-gateway-the-light-weight-public-or-private-router-to-public-and-private-oci-endpoints/
-
-First steps with API Gateway – https://technology.amis.nl/2019/12/23/my-first-steps-with-oracle-cloud-api-gateway-the-stock-response/ 
-
-OCI API Gateway Docs – Adding a Function in Oracle Functions as an API Gateway Back End – https://docs.cloud.oracle.com/iaas/Content/APIGateway/Tasks/apigatewayusingfunctionsbackend.htm
-
-Article/Tutorial by Todd Sharp – Creating Your First API Gateway In The Oracle Cloud – https://blogs.oracle.com/developers/creating-your-first-api-gateway-in-the-oracle-cloud

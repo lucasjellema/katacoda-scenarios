@@ -46,6 +46,8 @@ Update the API Deployment in API Gateway lab-apigw with the following command:
 
 `oci api-gateway deployment update --deployment-id $apiDeploymentId --specification file://./api_deployment_2.json`{{execute}}
 
+Confirm - when prompted in the terminal - that you want to update, overwriting the existing specification.
+
 It will take a few seconds (up to 15 seconds) for the API Gateway to synchronize its definition with the new specification. When the API Gateway deployment is updated, you can start using the new routes. 
 
 You can check on the state of the API Deployment and the current update (called a *workrequest*) in the OCI Console. Execute this command to get the URL to the Console:
