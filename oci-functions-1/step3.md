@@ -22,5 +22,22 @@ fn config function "lab$LAB_ID" file-writer bucketName "$bucketName"
 
 To invoke the function
 
-`echo -n '{"bucketname":"$bucketName","filename":"my-special-file.txt","contents":"A new file, written by a Function on OCI"}' | fn invoke lab$LAB_ID file-writer`{{execute}}
+`echo -n '{ "filename":"my-special-file.txt","contents":"A new file, written by a Function on OCI"}' | fn invoke lab$LAB_ID file-writer`{{execute}}
+
+Check the current contents of the bucket:
+
+`oci os object list --bucket-name $bucketName`{{execute}}
+
+Check in OCI Console for Object Storage: the bucket you have created and the file that should now be visible and manipulatable in the console: https://console.us-ashburn-1.oraclecloud.com/object-storage/buckets.
+
+Retrieve the file that was just created:
+
+`oci os object get  -bn $bucketName --name my-special-file.txt --file my-special-file.txt`{{execute}}
+
+Check contents of the file:
+```
+ls -l my-special-file*
+cat my-special-file.txt
+```{{execute}}
+
 
