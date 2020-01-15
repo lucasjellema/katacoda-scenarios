@@ -14,10 +14,12 @@ bucket=$(oci os bucket get --bucket-name $bucketName)
 echo $bucket
 bucketOCID=$(echo $bucket | jq -r  '.data | .id')
 echo "Bucket OCID for bucket $bucketName is $bucketOCID "
-
+touch ~/oracle-cloud-native-meetup-20-january-2020/functions/file-writer/oci_api_key.pem 
 ```{{execute}}
 
 Open file `~/oracle-cloud-native-meetup-20-january-2020/functions/file-writer/oci-configuration.js` in the text editor. Replace the current contents with the section provided to you by the workshop instructor. This file is used by the Node application to connect to the OCI REST APIs. It has to make signed HTTP requests - signed using the private key of an OCI User with necessary permissions on the OCI Object Storage.
+
+Open file `~/oracle-cloud-native-meetup-20-january-2020/functions/file-writer/oci-api-key.pem. Copy the private key that the instructor provided to you into this file.
 
 Navigate to the directory that contains the File Writer application:
 

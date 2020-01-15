@@ -22,5 +22,5 @@ fn config function "lab$LAB_ID" file-writer bucketName "$bucketName"
 
 To invoke the function
 
-echo -n '{"bucketname":"$bucketName","filename":"my-special-file.txt","contents":"A new file, written by a Function on OCI"}' | fn invoke lab$LAB_ID file-writer
+`echo -n '{"bucketname":"$bucketName","filename":"my-special-file.txt","contents":"A new file, written by a Function on OCI"}' | fn invoke lab$LAB_ID file-writer`{{execute}}
 
