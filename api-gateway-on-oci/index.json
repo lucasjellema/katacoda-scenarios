@@ -34,10 +34,7 @@
     },
     "assets": {
       "client": [
-        {
-          "file": "prepareStepOne.sh",
-          "target": "/root/"
-        }
+     
       ]
     }
   },
