@@ -32,6 +32,7 @@ and run `npm install` to install the required libraries.
 ## Run the File Writer to create a new file on OCI Object Storage
 
 Run the File Write application with the following command:
+
 `node fileWriter '{"bucket":"oci-lab1","fileName":"secret.txt", "contents":{"File Contents":"Contents, Contents and more Contents"}}'`{{execute}}
 
 Check the current contents of the bucket:

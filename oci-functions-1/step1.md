@@ -1,4 +1,17 @@
-## Wait for OCI CLI and Fn CLI to be installed
+The environment is currently being prepared. While that is happening, we can take a look at the Stream `lab-stream` in the `lab-compartment`. Note: there is a fairly strict limit on the number of Stream (partitions) that we are allowed to create (out of the box); therefore we are all sharing the stream in this workshop.
+
+Open the OCI Console as lab-user at: https://console.us-ashburn-1.oraclecloud.com/storage/streaming . Here you should see the stream `lab-stream`. 
+
+Click on the stream *lab-stream* to go to the details page. Click on Produce Test Message to... well, produce a test message of course.
+
+Type a message and press Produce. The console will indicate that the message was produced successfully.
+
+To check on the message, close the popup window and press Load Messages. All recently published messages on the stream are displayed – including the one that was just published.
+
+This is the simplest example of pub/sub through OCI Streaming.
+
+
+## Wait for OCI CLI (and Fn CLI) to be installed
 
 You need to provide details on the OCI tenancy you will work in and the OCI user you will work as. Please edit these two files:
 
