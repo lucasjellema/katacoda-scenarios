@@ -41,6 +41,10 @@ Update the context with the settings relevant for this workshop. Note: the compa
 compartmentId=ocid1.compartment.oc1..aaaaaaaag4mbmj22ecmbbf43fjgzo4sd5vtldwbdq7z67p34p7xipkwfhzta
 apiGatewayId=ocid1.apigateway.oc1.iad.amaaaaaa6sde7caaqh7lrxdlijuxxju66zpeycuy2qi72sggv6lgp7yvky4a
 
+depls=$(oci api-gateway deployment list -c $compartmentId)
+deploymentEndpoint=$(echo $depls | jq -r --arg display_name "MY_API_DEPL_$LAB_ID" '.data.items | map(select(."display-name" == $display_name)) | .[0] | .endpoint')
+apiDeploymentId=$(echo $depls | jq -r --arg display_name "MY_API_DEPL_$LAB_ID" '.data.items | map(select(."display-name" == $display_name)) | .[0] | .id')
+
 fn update context oracle.compartment-id $compartmentId
 
 fn update context api-url https://functions.us-ashburn-1.oci.oraclecloud.com
@@ -60,4 +64,4 @@ Next and finally, login to the private Docker Registry that is prepared for you 
 
 The username you have to provide is composed of `<tenancy-namespace>/<username>`. The password is an Authentication Token generated for the specified user. Both these values are provided by your workshop instructor.
 
-And now we are finally ready to create an API Deployment on API Gateway on Oracle Cloud Infrastructure.
+And now we are finally ready to create Functions on Oracle Cloud Infrastructure and expose them through OCI API Gateway.

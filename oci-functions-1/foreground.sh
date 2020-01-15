@@ -8,6 +8,10 @@ echo 'oci() { /root/bin/oci "$@"; }' >> ~/.profile
 . /root/.profile
 # now oci is recognized as a command
 
+# get workshop resource into scenario
+
+git clone https://github.com/AMIS-Services/oracle-cloud-native-meetup-20-january-2020
+
 echo "Wait for the file /root/readyWithBackground to appear"
 
 

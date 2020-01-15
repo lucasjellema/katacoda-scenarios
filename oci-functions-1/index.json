@@ -1,28 +1,29 @@
 {
-  "title": "API Gateway and Functions on Oracle Cloud Infrastructure",
-  "description": "Getting started with API Gateway on Oracle Cloud Infrastructure. Use API Gateway to expose a stock response and an HTTP Backend. Then also use API Gateway to expose Serverless Functions on OCI.",
-  "difficulty": "beginner",
+  "title": "Functions, Object Storage and API Gateway on Oracle Cloud Infrastructure",
+  "description": "Next steps with Serverless Functions on OCI, Object Storage and API Gateway.",
+  "difficulty": "intermediate",
   "time": "30 minutes",
   "details": {
     "steps": [
       {
-        "title": "Step 1 - Prepare Fn and OCI CLI",
+        "title": "Step 1 - Prepare Environment Settings, Fn and OCI CLI",
         "text": "step1.md"
       },
       {
-        "title": "Step 2 - Create your first API Deployment",
-        "text": "step2.md",
-        "courseData": "step2-background.sh",
-        "code": "step2-foreground.sh"
+        "title": "Step 2 - Node JS application accessing OCI Object Storage",
+        "text": "step2.md"
       },
       {
-        "title": "Step 3 - Expose a Function in the API Deployment",
+        "title": "Step 3 - Create, Deploy and Invoke Node Application as FileWriter Function on OCI",
         "text": "step3.md"
       },
       {
-        "title": "Step 4 - Functions invoking other Functions",
-        "text": "step4.md",
-        "courseData": "step4-background.sh"
+        "title": "Step 4 - Expose File Writer Function through API Gateway for public access",
+        "text": "step4.md"
+      },
+      {
+        "title": "Step 5 - Create an RSSFeed Reader Function that write RSSFeed through FileWriter to OCI Object Storage",
+        "text": "step5.md"
       }
     ],
     "intro": {
