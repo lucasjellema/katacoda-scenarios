@@ -32,7 +32,7 @@ And invoke the changed function. We expect to see *Still Hello* in the greeting.
 
 Now let's go crazy and set a configuration value for the function.
 
-`fn config function lab1 hello GREETING Hi`{{execute}}
+`fn config function "lab$LAB_ID" hello GREETING Hi`{{execute}}
 
 This configures the key-value pair GREETING=Hi for the function. The environment variable GREETING is now available to the function. Let's invoke the function another time:
 
@@ -42,7 +42,7 @@ The configured greeting should be returned.
 
 Try another configuration value for the function.
 
-`fn config function lab1 hello GREETING "Bonjour mon ami"`{{execute}}
+`fn config function "lab$LAB_ID" hello GREETING "Bonjour mon ami"`{{execute}}
 
 And invoke the function again:
 
