@@ -1,0 +1,5 @@
+In this scenario you will create a Node JS application that creates files on OCI Object Storage. Then you will turn this application into a Function and deploy that function to Oracle Cloud Infrastructure. Next, you will expose this File Writer Function through API Gateway for public access. Finally, you will create, deploy and invoke a second function - RSSFeed Reader - that writes RSS Feed contents through FileWriter to OCI Object Storage.
+
+You will use the OCI Console to verify the update of your API Deployment and to monitor the calls to API Gateway and check the creation of files on OCI Object Storage.
+
+The scenario uses an Ubuntu 18.04 environment with Docker, OCI CLI and Fn CLI. Before you can start the steps in the scenario, the two Command Line interfaces are downloaded and installed. This will take about one minute. You will need Postman as well, if you want to invoke the API Gateway directly from your computer.

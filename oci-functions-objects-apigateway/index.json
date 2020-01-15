@@ -1,0 +1,55 @@
+{
+  "title": "Functions, Object Storage and API Gateway on Oracle Cloud Infrastructure",
+  "description": "Next steps with Serverless Functions on OCI, Object Storage and API Gateway.",
+  "difficulty": "intermediate",
+  "time": "40 minutes",
+  "details": {
+    "steps": [
+      {
+        "title": "Step 1 - Prepare Environment Settings, Fn and OCI CLI",
+        "text": "step1.md"
+      },
+      {
+        "title": "Step 2 - Node JS application accessing OCI Object Storage",
+        "text": "step2.md"
+      },
+      {
+        "title": "Step 3 - Create, Deploy and Invoke Node Application as FileWriter Function on OCI",
+        "text": "step3.md"
+      },
+      {
+        "title": "Step 4 - Expose File Writer Function through API Gateway for public access",
+        "text": "step4.md"
+      },
+      {
+        "title": "Step 5 - Create an RSSFeed Reader Function that writes RSSFeed through FileWriter to OCI Object Storage",
+        "text": "step5.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md",
+      "credits": "",
+      "courseData": "background.sh",
+      "code": "foreground.sh"
+        },
+    "finish": {
+      "text": "finish.md",
+      "courseData": "teardown.sh"
+    },
+    "assets": {
+      "client": [
+        {
+          "file": "prepareStepOne.sh",
+          "target": "/root/"
+        }
+      ]
+    }
+  },
+  "environment": {
+    "uilayout": "editor-terminal",
+    "uimessage1": "\u001b[32mYour Interactive Bash Terminal.\r\nExecute bash shell commands \u001b[m\r\n"
+  },
+  "backend": {
+    "imageid": "ubuntu1804"
+  }
+}
