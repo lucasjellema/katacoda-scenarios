@@ -8,3 +8,11 @@ The scenario expects a number of preparations:
 * you already have deployed a function called *hello* in an application called lab# where # is a number assigned to you (in OCI compartment lab-compartment)
 * an API Gateway already has been provided in compartment *lab-compartment* with permissions to access functions in this compartment; the API Gateway is associated with a public subnet 
 
+You will need several pieces of information from the workshop instructor:
+* your lab participant number  
+* contents for OCI Config File
+* private key to go with the OCI Config File
+* username and password to login to OCI Console
+
+Make sure you get those.
+
