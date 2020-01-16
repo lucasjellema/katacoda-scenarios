@@ -10,20 +10,16 @@
         "text": "step1.md"
       },
       {
-        "title": "Step 2 - Node JS listener application to Consume Events from Stream",
+        "title": "Step 2 - Listen to Stream through the OCI CLI",
         "text": "step2.md"
       },
       {
-        "title": "Step 3 - Extend Hello Function to Publish Events to Stream",
+        "title": "Step 3 - Node JS listener application to Consume Events from Stream",
         "text": "step3.md"
       },
       {
-        "title": "Step 4 - Expose File Writer Function through API Gateway for public access",
+        "title": "Step 4 - Extend Hello Function to Publish Events to Stream",
         "text": "step4.md"
-      },
-      {
-        "title": "Step 5 - Create an RSSFeed Reader Function that writes RSSFeed through FileWriter to OCI Object Storage",
-        "text": "step5.md"
       }
     ],
     "intro": {

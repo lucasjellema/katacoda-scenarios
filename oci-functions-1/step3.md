@@ -1,43 +1,40 @@
-# Create, Deploy and Invoke Node Application as FileWriter Function on OCI
+# Node Application as OCI Stream Consumer
 
-In this step, you wrap the FileWriter application in a Function and deploy that function on OCI. Then we will invoke the function.
+OCI can be accessed through a console, through the OCI CLI and through REST APIs. Custom applications probably work most easily with this last option. In this step you will create (well, actually the code is already there, cloned from github and almost ready to execute) and test a Node JS application that consumes messages from the OCI Stream *lab-stream*. 
 
-Check the contents of file `~/oracle-cloud-native-meetup-20-january-2020/functions/file-writer/func.js`. This file is the wrapper for the Fn Function around the FileWriter application.
+Open file `~/oracle-cloud-native-meetup-20-january-2020/functions/streams-pubsub/oci-configuration.js` in the text editor. Replace the current contents with the section provided to you by the workshop instructor. This file is used by the Node application to connect to the OCI REST APIs. It has to make signed HTTP requests - signed using the private key of an OCI User with necessary permissions on the OCI Object Storage.
 
-`cat ~/oracle-cloud-native-meetup-20-january-2020/functions/file-writer/func.js`{{execute}}
+Open file `~/oracle-cloud-native-meetup-20-january-2020/functions/streams-pubsub/oci-api-key.pem. Copy the private key that the instructor provided to you into this file.
 
-Let's deploy this function to application `lab#`. Execute the next command - make sure you are in the correct directory.
+Navigate to the directory that contains the Stream application:
 
+`cd ~/oracle-cloud-native-meetup-20-january-2020/functions/streams-pubsub`{{execute}}
+
+and run `npm install` to install the required libraries.
+
+`npm install`{{execute}} 
+
+## Run the Stream Consumer to consume all current messages on OCI Stream lab-stream
+
+Run the Stream Consume application with the following command:
+
+`node stream-consumer`{{execute}}
+
+This application creates a cursor on the *lab-stream* with TRIM_HORIZON set - meaning all messages on the Stream. It then reads messages from the cursor and writes them to the console.
+
+You may want to check the code that reads from the Stream. It is in file *streams-pubsub.js*.
+
+Note the following lines
 ```
-cd ~/oracle-cloud-native-meetup-20-january-2020/functions/file-writer
-
-fn -v deploy --app "lab$LAB_ID"
-```{{execute}}
-
-Make sure that the environment variables are set when FileWriter is executing. This is done by defining configuration settings for the function:
+    let buff = new Buffer.from(e.value, 'base64');
+    let text = buff.toString('ascii');
+    log( text)
 ```
-fn config function "lab$LAB_ID" file-writer bucketOCID "$bucketOCID"
-fn config function "lab$LAB_ID" file-writer bucketName "$bucketName"
-```{{execute}}
 
-To invoke the function
+that take care of decoding (from  Base64 en from ByteArray format) the message payload.
 
-`echo -n '{ "filename":"my-special-file.txt","contents":"A new file, written by a Function on OCI"}' | fn invoke lab$LAB_ID file-writer`{{execute}}
+## Resources
 
-Check the current contents of the bucket:
-
-`oci os object list --bucket-name $bucketName`{{execute}}
-
-Check in OCI Console for Object Storage: the bucket you have created and the file that should now be visible and manipulatable in the console: https://console.us-ashburn-1.oraclecloud.com/object-storage/buckets.
-
-Retrieve the file that was just created:
-
-`oci os object get  -bn $bucketName --name my-special-file.txt --file my-special-file.txt`{{execute}}
-
-Check contents of the file:
-```
-ls -l my-special-file*
-cat my-special-file.txt
-```{{execute}}
+A blog article: [Oracle Cloud Streaming Service – Scalable, Reliable, Kafka-like Event service on OCI](https://technology.amis.nl/2020/01/07/oracle-cloud-streaming-service-scalable-reliable-kafka-like-event-service-on-oci)
 
 
