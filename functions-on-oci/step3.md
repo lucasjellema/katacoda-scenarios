@@ -7,7 +7,7 @@ In this step we will inspect the function using the CLI and then invoke the func
 Execute this next script to learn the URL Endpoint to Invoke the Function and to get a URL that takes you directly to the OCI Console for the Function application.   
 
 ```
-funsJ=$(fn inspect f  "lab$LAB_ID" hello)
+funsJ=$(fn inspect f  "lab$LAB_ID" "hello$LAB_ID")
 funInvokeEndpoint=$(echo $funsJ | jq '."annotations"."fnproject.io/fn/invokeEndpoint"')
 funId=$(echo $funsJ | jq --raw-output .id)
 appId=$(echo $funsJ | jq --raw-output .app_id)

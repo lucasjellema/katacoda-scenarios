@@ -28,25 +28,25 @@ Deploy the now changed function:
 
 And invoke the changed function. We expect to see *Still Hello* in the greeting.
 
-`fn invoke "lab$LAB_ID" hello`{{execute}}
+`fn invoke "lab$LAB_ID" "hello$LAB_ID"`{{execute}}
 
 Now let's go crazy and set a configuration value for the function.
 
-`fn config function "lab$LAB_ID" hello GREETING Hi`{{execute}}
+`fn config function "lab$LAB_ID" "hello$LAB_ID" GREETING Hi`{{execute}}
 
 This configures the key-value pair GREETING=Hi for the function. The environment variable GREETING is now available to the function. Let's invoke the function another time:
 
-`fn invoke "lab$LAB_ID" hello`{{execute}}
+`fn invoke "lab$LAB_ID" "hello$LAB_ID"`{{execute}}
 
 The configured greeting should be returned.
 
 Try another configuration value for the function.
 
-`fn config function "lab$LAB_ID" hello GREETING "Bonjour mon ami"`{{execute}}
+`fn config function "lab$LAB_ID" "hello$LAB_ID" GREETING "Bonjour mon ami"`{{execute}}
 
 And invoke the function again:
 
-`fn invoke "lab$LAB_ID" hello`{{execute}}
+`fn invoke "lab$LAB_ID" "hello$LAB_ID"`{{execute}}
 
 The new value of the GREETING configuration setting should be returned.
 
@@ -58,7 +58,7 @@ The next command will update the entire set of configuration values for function
 
 The response from this command show the full current state for the function, including the current values of the configuration parameters. Inspecting a function provides the same overview:
 
-`fn inspect f lab$LAB_ID hello`{{execute}}
+`fn inspect f lab$LAB_ID "hello$LAB_ID"`{{execute}}
 
 Now that you know how to configure a function, we can manipulate the behavior of functions in an environment specific manner. No more hard coding, no more redeploying for changes that should just be configurable. 
 
