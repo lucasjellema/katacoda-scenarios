@@ -8,3 +8,7 @@ The scenario expects a number of preparations:
 * you already have deployed a function called *hello* in an application called lab# where # is a number assigned to you (in OCI compartment lab-compartment)
 * an API Gateway already has been provided in compartment lab-compartment with permissions to access functions in this compartment; the API Gateway is associated with a public subnet 
 * there is already an API Deployment on the API Gateway - called MY_API_DEPL#
+
+The scenario was prepared for the Meetup Workshop Cloud Native application development on Oracle Cloud Infrastructure on January 20th, hosted by AMIS|Conclusion in Nieuwegein in collaboration with REAL (the Red Expert Alliance) and Link from Portugal.
+
+![Function on OCI to read RSS Feed and pass it to second Function (via API Gateway) to write to Object Storage](/lucasjellema/scenarios/oci-functions-objects-apigateway/assets/oci-rssfeeder.jpg)
