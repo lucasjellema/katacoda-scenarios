@@ -18,8 +18,12 @@
         "text": "step3.md"
       },
       {
-        "title": "Step 4 - Extend Hello Function to Publish Events to Stream",
+        "title": "Step 4 - Node JS publisher application to Publish Events to Stream",
         "text": "step4.md"
+      },
+      {
+        "title": "Step 5 - Extend Hello Function to Publish Events to Stream",
+        "text": "step5.md"
       }
     ],
     "intro": {

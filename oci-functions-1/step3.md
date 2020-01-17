@@ -33,6 +33,13 @@ Note the following lines
 
 that take care of decoding (from  Base64 en from ByteArray format) the message payload.
 
+Go to the OCI Console (as lab-user at: https://console.us-ashburn-1.oraclecloud.com/storage/streaming) and publish a few test messages on *lab-stream*. Then run the Node application another time - and watch the fresh messages come in.
+
+`node stream-consumer`{{execute}}
+
+You could change the constant CURSOR_TYPE from TRIM_HORIZON (all messages) to LATEST (only messages published after the cursor was created). Run the application again - and again - to only see new messages.
+
+
 ## Resources
 
 A blog article: [Oracle Cloud Streaming Service – Scalable, Reliable, Kafka-like Event service on OCI](https://technology.amis.nl/2020/01/07/oracle-cloud-streaming-service-scalable-reliable-kafka-like-event-service-on-oci)
