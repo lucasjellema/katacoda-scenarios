@@ -11,7 +11,7 @@ Run the Stream Publish application with the following command:
 This will execute the REST API call to will publish the messages to stream *lab-stream*.
 
 You can verify the success of the call by checking in the console:
-`echo "Console endpoint for Recent Messages on Stream lab-stream: https://console.us-ashburn-1.oraclecloud.com/storage/streaming/$streamId/recent-messages`{{execute}}
+`echo "Console endpoint for Recent Messages on Stream lab-stream: https://console.us-ashburn-1.oraclecloud.com/storage/streaming/$streamId/recent-messages"`{{execute}}
 
 or of course run the Stream Consumer from the previous step:
 
