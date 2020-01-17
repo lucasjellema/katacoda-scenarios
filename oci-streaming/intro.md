@@ -10,6 +10,8 @@ The scenario expects a number of preparations:
 * there is already an API Deployment on the API Gateway - called MY_API_DEPL#
 * there already is a Stream in compartment lab-compartment, called lab-stream 
 
+The scenario was prepared for the Meetup Workshop Cloud Native application development on Oracle Cloud Infrastructure on January 20th, hosted by AMIS|Conclusion in Nieuwegein in collaboration with REAL (the Red Expert Alliance) and Link from Portugal.
+
 # Resources
 
 Blog article introducing OCI Streaming [https://technology.amis.nl/2020/01/07/oracle-cloud-streaming-service-scalable-reliable-kafka-like-event-service-on-oci/]
@@ -17,3 +19,5 @@ Blog article introducing OCI Streaming [https://technology.amis.nl/2020/01/07/or
 Documentation on OCI Streaming Service: https://docs.cloud.oracle.com/iaas/Content/Streaming/Concepts/streamingoverview.htm
 
 Blog article Todd Sharp: Getting your feet wet with Oracle Streaming: https://blogs.oracle.com/developers/getting-your-feet-wet-with-oci-streams
+
+![OCI Streaming - Publisher => Stream => Consumer(s)](/lucasjellema/scenarios/oci-streaming/assets/oci-streaming.jpg)
