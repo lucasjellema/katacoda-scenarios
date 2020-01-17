@@ -2,21 +2,23 @@
 
 In this step we will create a simple function with Fn. We pick Node (JS) as our runtime - Go, Python, Java and Ruby are other out of the box options.
 
-`fn init --runtime node hello`{{execute}}
+Set the environment variable LAB_ID to the number provided to you by the workshop instructor.
 
-`cd hello`{{execute}}
+`export LAB_ID=1`{{execute}}
 
-Three files have been created in the new directory *hello*.
+Note: in order to ensure that all workshop participants will have their own individual copies of the function (and more specifically: of the Function's container image on OCI Container Registry), we need to add the participant's LAB_ID to the name of the function. 
+
+`fn init --runtime node hello$LAB_ID`{{execute}}
+
+`cd hello$LAB_ID`{{execute}}
+
+Three files have been created in the new directory *hello#*.
 
 `ls`{{execute}}
 
 You could open func.js in the text editor to see the generated functionality. Feel free to edit the file - but please make sure it will execute correctly!
 
 ## Create Application
-
-Set the environment variable LAB_ID to the number provided to you by the workshop instructor.
-
-`export LAB_ID=1`{{execute}}
 
 Note: Public Subnet-vcn-lab in compartment lab-compartment
 
@@ -45,18 +47,18 @@ Check the list of functions in the application
 
 Time to invoke the function. The command for invoking the function is simply: `fn invoke <app-name> <function-name>`:
 
-`fn invoke "lab$LAB_ID" hello`{{execute}}
+`fn invoke "lab$LAB_ID" hello$LAB_ID`{{execute}}
 
 The first call may take a while because of the cold start of the function. During cold start, the container image is used to start a new container from. If you call the function a second and third time, it is bound to go a lot quicker - because the container will hang a round for a bit. After ten minutes or so of inactivity, the container will be stopped and the next function call after that will suffer again from cold start.
 
 To send in a JSON object as input to the function, use the following command:
 
-`echo -n '{"name":"Your Own Name"}' | fn invoke "lab${LAB_ID}" hello --content-type application/json`{{execute}}
+`echo -n '{"name":"Your Own Name"}' | fn invoke "lab${LAB_ID}" "hello$LAB_ID" --content-type application/json`{{execute}}
 
 Again, a friendly, this time personalized welcome message should be your reward - coming from the cloud.
 
 Check out details for the function you just created and deployed:
-`fn inspect f "lab$LAB_ID" hello`{{execute}}
+`fn inspect f "lab$LAB_ID" "hello$LAB_ID"`{{execute}}
 
 ## OCI Console 
 
