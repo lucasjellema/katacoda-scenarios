@@ -1,4 +1,4 @@
-This scenario introduces the OCI Application Gateway. It is used to provide access to a Stock Response and to HTTP Backends. The  it is also used to expose serverless Functions on Oracle Cloud Infrastructure through a public endpoint. 
+This scenario introduces the OCI Application Gateway. It is used to provide access to a Stock Response and to HTTP Backends. The  it is also used to expose serverless Functions on Oracle Cloud Infrastructure through a public endpoint. The scenario was prepared for the Meetup Workshop Cloud Native application development on Oracle Cloud Infrastructure on January 20th, hosted by AMIS|Conclusion in Nieuwegein in collaboration with REAL (the Red Expert Alliance) and Link from Portugal.
 
 You will use the OCI Console to verify the creation of API Deployment with Routes and to monitor the calls to API Gateway. You can inspect the logging from the API Deployment on Object Storage - although it will take some time for the logging to arrive in the OCI Object Storage Bucket. 
 
@@ -15,4 +15,8 @@ You will need several pieces of information from the workshop instructor:
 * username and password to login to OCI Console
 
 Make sure you get those.
+
+
+![Overview of Function running on Fn](/lucasjellema/scenarios/api-gateway-on-oci/assets/api-gateway-on-oci.jpg)
+
 
