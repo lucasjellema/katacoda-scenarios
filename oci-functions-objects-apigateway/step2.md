@@ -9,7 +9,7 @@ First, you need a to create a Bucket on OCI Object Storage. This *bucket* is sim
 The bucket is now created. Let's assign the bucket's OCID to an environment variable:
 
 ```
-bucketName="oci-lab$LAB_ID"
+export bucketName="oci-lab$LAB_ID"
 bucket=$(oci os bucket get --bucket-name $bucketName)
 bucketOCID=$(echo $bucket | jq -r  '.data | .id')
 echo "Bucket OCID for bucket $bucketName is $bucketOCID "
@@ -32,7 +32,7 @@ and run `npm install` to install the required libraries.
 
 Run the File Write application with the following command:
 
-`node fileWriter '{"bucket":"oci-lab1","fileName":"secret.txt", "contents":{"File Contents":"Contents, Contents and more Contents"}}'`{{execute}}
+`node fileWriter '{"bucket":"oci-lab$LAB_ID","fileName":"secret.txt", "contents":{"File Contents":"Contents, Contents and more Contents"}}'`{{execute}}
 
 Check the current contents of the bucket:
 

@@ -36,7 +36,7 @@ Create an appropriate Fn context for working with OCI as provider (see [OCI Docs
 
 `fn use context lab-fn-context`{{execute}}
 
-Prepare a number of environment variables. Note: the assumptions here are a compartment called *lab-compartment*  and an API Gateway *lab-apigw* in that same compartment. We need to get references to these resources in order to create new resources in the right place.  
+Prepare a number of environment variables. Note: the assumptions here are a compartment called *lab-compartment*  and an API Gateway *lab-apigw* in that same compartment as well as an API Deployment called MY_API_DEPL# on the API Gateway. We need to get references to these resources in order to create new resources in the right place.  
 
 ```
 cs=$(oci iam compartment list)
@@ -44,14 +44,13 @@ export compartmentId=$(echo $cs | jq -r --arg display_name "lab-compartment" '.d
 
 apigws=$(oci api-gateway gateway list -c $compartmentId)
 export apiGatewayId=$(echo $apigws | jq -r --arg display_name "lab-apigw" '.data.items | map(select(."display-name" == $display_name)) | .[0] | .id')
-```{{execute}}
-
-Update the context with the settings relevant for this workshop. Note: the compartment used here is the lab-compartment, the API Gateway is lab-apigw in that same compartment.
-```
 depls=$(oci api-gateway deployment list -c $compartmentId)
 deploymentEndpoint=$(echo $depls | jq -r --arg display_name "MY_API_DEPL_$LAB_ID" '.data.items | map(select(."display-name" == $display_name)) | .[0] | .endpoint')
 apiDeploymentId=$(echo $depls | jq -r --arg display_name "MY_API_DEPL_$LAB_ID" '.data.items | map(select(."display-name" == $display_name)) | .[0] | .id')
+```{{execute}}
 
+Update the context with the settings relevant for this workshop.
+```
 fn update context oracle.compartment-id $compartmentId
 
 fn update context api-url https://functions.us-ashburn-1.oci.oraclecloud.com

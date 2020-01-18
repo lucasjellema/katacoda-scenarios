@@ -6,7 +6,7 @@ Check the contents of file `~/oracle-cloud-native-meetup-20-january-2020/functio
 
 `cat ~/oracle-cloud-native-meetup-20-january-2020/functions/file-writer/func.js`{{execute}}
 
-Open the file *func.yaml* in the text editor. Change the name of the function from *file-writer* to *file-writer#* , where # is the LAB_ID you have neen assigned. 
+Open the file *func.yaml* in the text editor. Change the name of the function from *file-writer* to *file-writer#* , where # is the LAB_ID you have been assigned. 
 
 Let's deploy this function to application `lab#`. Execute the next command - make sure you are in the correct directory.
 
@@ -16,9 +16,8 @@ cd ~/oracle-cloud-native-meetup-20-january-2020/functions/file-writer
 fn -v deploy --app "lab$LAB_ID"
 ```{{execute}}
 
-Make sure that the environment variables are set when FileWriter is executing. This is done by defining configuration settings for the function:
+We have to ensure that the environment variable *bucketName* is set in the context where function FileWriter is executing. This is done by defining a configuration setting for the function:
 ```
-fn config function "lab$LAB_ID" file-writer$LAB_ID bucketOCID "$bucketOCID"
 fn config function "lab$LAB_ID" file-writer$LAB_ID bucketName "$bucketName"
 ```{{execute}}
 
