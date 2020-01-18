@@ -52,7 +52,20 @@ echo "$vcnId"
 subnets=$(oci network subnet list  -c $compartmentId --vcn-id $vcnId)
 export subnetId=$(echo $subnets | jq -r --arg display_name "Public Subnet-vcn-lab" '.data | map(select(."display-name" == $display_name)) | .[0] | .id')
 
+sls=$(oci network security-list list  -c $compartmentId --vcn-id $vcnId)
+export slOCID=$(echo $sls | jq -r '.data | .[0] | .id')
+
 ```{{execute}}
+
+Add network security rule to allow inbound traffic to public subnet on port 443
+(https://technology.amis.nl/2019/12/23/my-first-steps-with-oracle-cloud-api-gateway-the-stock-response/)
+
+Open the console for the security list:
+`echo "Open the console at https://console.us-ashburn-1.oraclecloud.com/networking/vcns/$vcnId/security-lists/$slOCID
+`{{execute}}
+
+Press *Add Ingress Rule*. Specify source CIDR as 0.0.0.0/0 (anything goes) and set *Source Port Range* to *All*. Set *Destination Port Range* to *443*. Leave the IP protocol at the default of *TCP*. Press *Add Ingress Rule*.
+
 
 ## Create API Gateway
 
@@ -66,8 +79,6 @@ export apiGatewayId=$(echo $apigws | jq -r --arg display_name "lab-apigw" '.data
 ```{{execute}}
 
 
-Add network security rule to allow inbound traffic to public subnet on port 443
-(https://technology.amis.nl/2019/12/23/my-first-steps-with-oracle-cloud-api-gateway-the-stock-response/)
 
 Create a Dynamic Group through Console to allow API Gateway access to functions - called *lab-apigw-dynamic-group*
 https://console.us-ashburn-1.oraclecloud.com/identity/dynamicgroups

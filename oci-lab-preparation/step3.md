@@ -51,13 +51,13 @@ Policy to allow lab-participants to work with API Gateway:
 
 ## Object Storage
 
-Policy to allow lab-participants to work with Object Storage:
+Policy `lab-participants-object-storage-in-lab-compartment` to allow lab-participants to work with Object Storage:
 
 `Allow group lab-participants to use object-family in compartment lab-compartment`
 
 ## Streaming
 
-Policy to allow lab-participants to work with Streaming:
+Policy `streaming-for-lab-participants` to allow lab-participants to work with Streaming:
 
 ```
 Allow group lab-participants to use streams in compartment lab-compartment

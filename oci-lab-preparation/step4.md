@@ -3,8 +3,9 @@
 In this step you will create the user *lab-user*.
 
 A new user has no permissions until you place the user in one or more groups (see AddUserToGroup). 
-If the user needs to access the Console, you need to provide the user a password (see CreateOrResetUIPassword). 
+If the user needs to access the Console, you need to provide the user a password. 
 If the user needs to access the Oracle Cloud Infrastructure REST API, you need to upload a public API signing key for that user (see Required Keys and OCIDs and also UploadApiKey).
+In order to be able to deploy function, a user needs an AuthToken to use for logging into to OCIR (Container Registry)
 
 ```
 user=$(oci iam user create --name "lab-user" --description "OCI user for Cloud Native Lab Assignments"  --email "lucasjellema@gmail.com" )  
@@ -13,6 +14,9 @@ userId=$(echo $user | jq --raw-output .data.id)
 echo $userId
 ```{{execute}}
 
+In case the user already exists, the user OCID can be retrieved like this:
+
+oci iam user list -c $compartmentId
 
 create password for lab-user, change upon first login:
 ```
@@ -44,7 +48,7 @@ oci iam user api-key upload --user-id $userId  --key-file ~/.oci/lab-user-oci_ap
 ```{{execute}}
 
 Hold on to the Private Key - make sure to save it somewhere for reuse.
-
+`cat ~/.oci/lab-user-oci_api_key.pem`{{execute}}
 
 ## Generate Auth Token for logging into Docker Container Registry
 
