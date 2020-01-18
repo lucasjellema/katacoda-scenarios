@@ -44,7 +44,7 @@ allow dynamic-group lab-apigw-dynamic-group to manage public-ips in compartment 
 allow dynamic-group lab-apigw-dynamic-group to use functions-family in compartment lab-compartment
 ```
 
-Policy to allow lab-participants to work with API Gateway:
+Policy `lab-participants-priv-on-api-gateway` to allow lab-participants to work with API Gateway:
 
 `Allow group lab-participants to manage api-gateway-family in compartment lab-compartment`
 
@@ -54,6 +54,9 @@ Policy to allow lab-participants to work with API Gateway:
 Policy `lab-participants-object-storage-in-lab-compartment` to allow lab-participants to work with Object Storage:
 
 `Allow group lab-participants to use object-family in compartment lab-compartment`
+`Allow group lab-participants to manage buckets in compartment lab-compartment`
+`Allow group lab-participants to manage objects in compartment lab-compartment`
+
 
 ## Streaming
 
