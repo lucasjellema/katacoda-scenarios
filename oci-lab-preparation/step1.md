@@ -37,7 +37,9 @@ If you need the fingerprint for the key, it can be retrieved using:
 
 See https://technology.amis.nl/2018/10/14/get-going-quickly-with-command-line-interface-for-oracle-cloud-infrastructure-using-docker-container/ for some background. 
 
+### If there already is a key pair...
 
+If the key pair was previously created and the public key uploaded to OCI, you do not need to create a new key. However, you need to add the Private Key of the Tenancy Owner or Admin user to the file `oci_api_key.pem`. 
 
 ## Edit Config File
 

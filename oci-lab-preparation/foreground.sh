@@ -1,4 +1,4 @@
-echo "Installing Project Fn - in the background"
+echo "Installing OCI CLI - in the background"
 
 export OCI_CLI_SUPPRESS_FILE_PERMISSIONS_WARNING=True
 
