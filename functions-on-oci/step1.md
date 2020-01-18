@@ -42,6 +42,8 @@ vcns=$(oci network vcn list -c $compartmentId)
 vcnId=$(echo $vcns | jq -r --arg display_name "vcn-lab" '.data | map(select(."display-name" == $display_name)) | .[0] | .id')
 subnets=$(oci network subnet list  -c $compartmentId --vcn-id $vcnId)
 export subnetId=$(echo $subnets | jq -r --arg display_name "Public Subnet-vcn-lab" '.data | map(select(."display-name" == $display_name)) | .[0] | .id')
+nss=$(oci os ns get)
+export ns=$(echo $nss | jq '.data')
 ```{{execute}}
 
 Update the *fn* context with the settings relevant for this workshop. Note: the compartment used here is the lab-compartment 
@@ -50,7 +52,7 @@ fn update context oracle.compartment-id $compartmentId
 
 fn update context api-url https://functions.us-ashburn-1.oci.oraclecloud.com
 
-fn update context registry iad.ocir.io/idtwlqf2hanz/cloudlab-repo
+fn update context registry iad.ocir.io/$ns/cloudlab-repo
 
 fn update context oracle.profile FN
 ```{{execute}}
