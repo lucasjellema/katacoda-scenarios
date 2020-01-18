@@ -35,7 +35,13 @@ Create an appropriate Fn context for working with OCI as provider (see [OCI Docs
 
 Update the context with the settings relevant for this workshop. Note: the compartment used here is the lab-compartment 
 ```
-compartmentId=ocid1.compartment.oc1..aaaaaaaag4mbmj22ecmbbf43fjgzo4sd5vtldwbdq7z67p34p7xipkwfhzta
+cs=$(oci iam compartment list)
+export compartmentId=$(echo $cs | jq -r --arg display_name "lab-compartment" '.data | map(select(."name" == $display_name)) | .[0] | .id')
+
+vcns=$(oci network vcn list -c $compartmentId)
+vcnId=$(echo $vcns | jq -r --arg display_name "vcn-lab" '.data | map(select(."display-name" == $display_name)) | .[0] | .id')
+subnets=$(oci network subnet list  -c $compartmentId --vcn-id $vcnId)
+export subnetId=$(echo $subnets | jq -r --arg display_name "Public Subnet-vcn-lab" '.data | map(select(."display-name" == $display_name)) | .[0] | .id')
 
 fn update context oracle.compartment-id $compartmentId
 

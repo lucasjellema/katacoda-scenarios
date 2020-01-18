@@ -20,13 +20,9 @@ You could open func.js in the text editor to see the generated functionality. Fe
 
 ## Create Application
 
-Note: Public Subnet-vcn-lab in compartment lab-compartment
-
-`export SUBNET_OCID=ocid1.subnet.oc1.iad.aaaaaaaagfz4auw6rgkqbg4huwxno42cnuscafgvyivmdwl7lj6gabpktmvq`{{execute}}
-
 Now create the new application that will be the container for your functions:
 
-`fn create app "lab$LAB_ID" --annotation "oracle.com/oci/subnetIds=[\"$SUBNET_OCID\"]"`{{execute}}
+`fn create app "lab$LAB_ID" --annotation "oracle.com/oci/subnetIds=[\"$subnetId\"]"`{{execute}}
 
 See the list of applications - that should include your new application:
 
@@ -41,6 +37,9 @@ Deploy the Function Hello, into an app that was created beforehand. At this stag
 Verify that a Docker Container Image has been built for Fn Function Hello:
 
 `docker images | grep hello`{{execute}}
+
+Optionally, check in the OCI Console if the Container Image has been pushed to the OCI Container Registry: https://console.us-ashburn-1.oraclecloud.com/containers/registry. 
+
 
 Check the list of functions in the application
 `fn list f "lab${LAB_ID}"`{{execute}}
