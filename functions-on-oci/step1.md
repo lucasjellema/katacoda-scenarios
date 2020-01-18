@@ -7,7 +7,7 @@ You need to provide details on the OCI tenancy you will work in and the OCI user
 
 Paste the contents provided by the workshop instructor into these two files.
 
-Do not continue until you see the file `/root/readyWithBackground` appear. If it appears, then the OCI CLI has been installed and you can continue.
+Do not continue until you see the file `/root/allSetInBackground` appear. If it appears, then the OCI CLI has been installed and you can continue.
 
 Try out the following command to get a list of all namespaces you currently have access to - based on the OCI Configuration defined above.
 
