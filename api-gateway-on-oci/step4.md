@@ -1,13 +1,13 @@
 # Adding a Route in an API Deployment to a Serverless Function as a Backend
 
-In this step, you will create a route to a serverless Function on OCI. We will create a route to function *hello* - that was created in the previous scenario. The function OCID for this function *hello* (in application *lab#<your lab participant number>* can be retrieved as follows:
+In this step, you will create a route to a serverless Function on OCI. We will create a route to function *hello* - that was created in the previous scenario. The function OCID for this function *hello#* (in application *lab#<your lab participant number>* can be retrieved as follows:
 
 ```
 apps=$(oci fn application list -c $compartmentId)
 labApp=$(echo $apps | jq -r --arg display_name "lab$LAB_ID" '.data | map(select(."display-name" == $display_name)) | .[0] | .id')
 
 funs=$(oci fn function list --application-id $labApp)
-helloFun=$(echo $funs | jq -r --arg display_name "hello" '.data | map(select(."display-name" == $display_name)) | .[0] | .id')
+helloFun=$(echo $funs | jq -r --arg display_name "hello$LAB_ID" '.data | map(select(."display-name" == $display_name)) | .[0] | .id')
 echo "OCID for hello function : $helloFun"
 ```{{execute}}
 
