@@ -61,7 +61,7 @@ Add network security rule to allow inbound traffic to public subnet on port 443
 (https://technology.amis.nl/2019/12/23/my-first-steps-with-oracle-cloud-api-gateway-the-stock-response/)
 
 Open the console for the security list:
-`echo "Open the console at https://console.us-ashburn-1.oraclecloud.com/networking/vcns/$vcnId/security-lists/$slOCID
+`echo "Open the console at https://console.us-ashburn-1.oraclecloud.com/networking/vcns/$vcnId/security-lists/$slOCID"
 `{{execute}}
 
 Press *Add Ingress Rule*. Specify source CIDR as 0.0.0.0/0 (anything goes) and set *Source Port Range* to *All*. Set *Destination Port Range* to *443*. Leave the IP protocol at the default of *TCP*. Press *Add Ingress Rule*.
