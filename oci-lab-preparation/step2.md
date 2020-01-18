@@ -7,7 +7,15 @@ group=$(oci iam group create --name "lab-participants"  --description "Group for
 echo $group
 export groupId=$(echo $group | jq --raw-output .data.id)
 echo $groupId
-```{{excute}}
+export groupName="lab-participants"
+```{{execute}}
+
+If group already exists:
+```
+gs=$(oci iam group list)
+export groupId=$(echo $gs | jq -r --arg display_name "lab-participants" '.data | map(select(."name" == $display_name)) | .[0] | .id')
+```{{execute}}
+
 
 Lab environment uses a compartment called *lab-compartment*:
 
@@ -17,6 +25,13 @@ echo $compartment
 compartmentId=$(echo $compartment | jq --raw-output .data.id)
 echo $compartmentId
 ```{{execute}}
+
+If compartment already exists:
+```
+cs=$(oci iam compartment list)
+export compartmentId=$(echo $cs | jq -r --arg display_name "lab-compartment" '.data | map(select(."name" == $display_name)) | .[0] | .id')
+```{{execute}}
+
 
 
  (Compartment, VCN, API Gateway, Stream)
@@ -42,12 +57,25 @@ export subnetId=$(echo $subnets | jq -r --arg display_name "Public Subnet-vcn-la
 ## Create API Gateway
 
 Create an API Gateway called *lab-apigw*. 
-```
-oci api-gateway gateway create --compartment-id $compartmentId --endpoint-type PUBLIC  --display-name lab-apigw --subnet-id $subnetId 
+`oci api-gateway gateway create --compartment-id $compartmentId --endpoint-type PUBLIC  --display-name lab-apigw --subnet-id $subnetId `{{execute}}
 
+Retrieve the Gateway OCID
+```
 apigws=$(oci api-gateway gateway list -c $compartmentId)
 export apiGatewayId=$(echo $apigws | jq -r --arg display_name "lab-apigw" '.data.items | map(select(."display-name" == $display_name)) | .[0] | .id')
 ```{{execute}}
+
+
+Add network security rule to allow inbound traffic to public subnet on port 443
+(https://technology.amis.nl/2019/12/23/my-first-steps-with-oracle-cloud-api-gateway-the-stock-response/)
+
+Create a Dynamic Group through Console to allow API Gateway access to functions - called *lab-apigw-dynamic-group*
+https://console.us-ashburn-1.oraclecloud.com/identity/dynamicgroups
+
+Create a rule for dynamic group
+
+ALL {resource.type = 'ApiGateway', resource.compartment.id = 'OCID compartment lab-compartment'}
+
 
 ## Create Stream
 

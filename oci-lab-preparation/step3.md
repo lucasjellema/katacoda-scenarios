@@ -2,6 +2,8 @@
 
 Create policies to assign privileges to group *lab-participants*  
 
+## Functions (FaaS) Policies
+
 Prepare some environment variables
 ```
 FN_DEVS_GROUP="lab-participants"
@@ -30,4 +32,35 @@ oci iam policy create  --name $FN_GROUP_USE_VCN_POLICY --compartment-id $compart
 ```{{execute}}
 
 
+## Policies on API Gateway
 
+Policy: to allow lab apigw dynamic group access to lab-compartment
+https://console.us-ashburn-1.oraclecloud.com/a/identity/policies
+dyn-group-gateway-access-lab-compartment
+
+```
+allow dynamic-group lab-apigw-dynamic-group to use virtual-network-family in compartment lab-compartment
+allow dynamic-group lab-apigw-dynamic-group to manage public-ips in compartment lab-compartment
+allow dynamic-group lab-apigw-dynamic-group to use functions-family in compartment lab-compartment
+```
+
+Policy to allow lab-participants to work with API Gateway:
+
+`Allow group lab-participants to manage api-gateway-family in compartment lab-compartment`
+
+
+## Object Storage
+
+Policy to allow lab-participants to work with Object Storage:
+
+`Allow group lab-participants to use object-family in compartment lab-compartment`
+
+## Streaming
+
+Policy to allow lab-participants to work with Streaming:
+
+```
+Allow group lab-participants to use streams in compartment lab-compartment
+Allow group lab-participants to use stream-pull in compartment lab-compartment
+Allow group lab-participants to use stream-push in compartment lab-compartment
+```
