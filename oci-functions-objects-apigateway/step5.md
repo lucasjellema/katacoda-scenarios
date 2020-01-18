@@ -35,25 +35,27 @@ We will now turn the Node application into a Function, just like we did with Fil
 
 Check the contents of file `~/oracle-cloud-native-meetup-20-january-2020/functions/rss-feeder/func.js`. This file is the wrapper for the Fn Function around the RSSFeeder application.
 
-`cat ~/oracle-cloud-native-meetup-20-january-2020/functions/rss-feeder/func.js`{{execute}}
+````
+cd ~/oracle-cloud-native-meetup-20-january-2020/functions/rss-feeder
+
+cat func.js
+```{{execute}}
+
+Open the file *func.yaml* in the text editor. Change the name of the function from *rss-feeder* to *rss-feeder#* , where # is the LAB_ID you have neen assigned. 
 
 Let's deploy this function to application `lab#`. Execute the next command - make sure you are in the correct directory.
 
-```
-cd ~/oracle-cloud-native-meetup-20-january-2020/functions/rss-feeder
-
-fn -v deploy --app "lab$LAB_ID"
-```{{execute}}
+`fn -v deploy --app "lab$LAB_ID"`{{execute}}
 
 Make sure that the environment variables are set when RSSFeerder is executing. This is done by defining configuration settings for the function:
 ```
-fn config function "lab$LAB_ID" rss-feeder bucketName "$bucketName"
-fn config function "lab$LAB_ID" rss-feeder file_writer_endpoint "$file_writer_endpoint"
+fn config function "lab$LAB_ID" rss-feeder$LAB_ID bucketName "$bucketName"
+fn config function "lab$LAB_ID" rss-feeder$LAB_ID file_writer_endpoint "$file_writer_endpoint"
 ```{{execute}}
 
 To invoke the function
 
-`echo -n '{"rssFeedURL":"https://technology.amis.nl/feed/","filename":"another-amis-blog-rss.json"}' | fn invoke lab$LAB_ID rss-feeder`{{execute}}
+`echo -n '{"rssFeedURL":"https://technology.amis.nl/feed/","filename":"another-amis-blog-rss.json"}' | fn invoke lab$LAB_ID rss-feeder$LAB_ID`{{execute}}
 
 Check the current contents of the bucket:
 
@@ -80,10 +82,10 @@ apps=$(oci fn application list -c $compartmentId)
 labApp=$(echo $apps | jq -r --arg display_name "lab$LAB_ID" '.data | map(select(."display-name" == $display_name)) | .[0] | .id')
 
 funs=$(oci fn function list --application-id $labApp)
-fileWriterFun=$(echo $funs | jq -r --arg display_name "file-writer" '.data | map(select(."display-name" == $display_name)) | .[0] | .id')
-echo "OCID for file-writer function : $fileWriterFun"
-rssFeederFun=$(echo $funs | jq -r --arg display_name "rss-feeder" '.data | map(select(."display-name" == $display_name)) | .[0] | .id')
-echo "OCID for rss-feeder function : $rssFeederFun"
+fileWriterFun=$(echo $funs | jq -r --arg display_name "file-writer$LAB_ID" '.data | map(select(."display-name" == $display_name)) | .[0] | .id')
+echo "OCID for file-writer$LAB_ID function : $fileWriterFun"
+rssFeederFun=$(echo $funs | jq -r --arg display_name "rss-feeder$LAB_ID" '.data | map(select(."display-name" == $display_name)) | .[0] | .id')
+echo "OCID for rss-feeder$LAB_ID function : $rssFeederFun"
 ```{{execute}}
 
 Create the new file api_deployment2.json:

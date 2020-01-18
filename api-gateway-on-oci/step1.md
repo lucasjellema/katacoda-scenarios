@@ -27,7 +27,6 @@ Prepare a number of environment variables. Note: the assumptions here are a comp
 cs=$(oci iam compartment list)
 export compartmentId=$(echo $cs | jq -r --arg display_name "lab-compartment" '.data | map(select(."name" == $display_name)) | .[0] | .id')
 
-
 apigws=$(oci api-gateway gateway list -c $compartmentId)
 export apiGatewayId=$(echo $apigws | jq -r --arg display_name "lab-apigw" '.data.items | map(select(."display-name" == $display_name)) | .[0] | .id')
 ```{{execute}}

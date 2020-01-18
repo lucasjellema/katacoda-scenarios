@@ -23,7 +23,7 @@ chmod +777 install-oci-cli.sh
 # install Project Fn CLI
 curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh
 
-touch /root/readyWithBackground
+touch /root/allSetInBackground
 
 
 docker pull fnproject/node:latest

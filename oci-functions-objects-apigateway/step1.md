@@ -11,7 +11,7 @@ Set the environment variable LAB_ID to the number provided to you by the worksho
 
 `export LAB_ID=1`{{execute}}
 
-Do not continue until you see the file `/root/readyWithBackground` appear. If it appears, then the OCI CLI has been installed and you can continue.
+Do not continue until you see the file `/root/allSetInBackground` appear. If it appears, then the OCI CLI has been installed and you can continue.
 
 Try out the following command to get a list of all namespaces you currently have access to - based on the OCI Configuration defined above.
 
@@ -36,11 +36,18 @@ Create an appropriate Fn context for working with OCI as provider (see [OCI Docs
 
 `fn use context lab-fn-context`{{execute}}
 
+Prepare a number of environment variables. Note: the assumptions here are a compartment called *lab-compartment*  and an API Gateway *lab-apigw* in that same compartment. We need to get references to these resources in order to create new resources in the right place.  
+
+```
+cs=$(oci iam compartment list)
+export compartmentId=$(echo $cs | jq -r --arg display_name "lab-compartment" '.data | map(select(."name" == $display_name)) | .[0] | .id')
+
+apigws=$(oci api-gateway gateway list -c $compartmentId)
+export apiGatewayId=$(echo $apigws | jq -r --arg display_name "lab-apigw" '.data.items | map(select(."display-name" == $display_name)) | .[0] | .id')
+```{{execute}}
+
 Update the context with the settings relevant for this workshop. Note: the compartment used here is the lab-compartment, the API Gateway is lab-apigw in that same compartment.
 ```
-compartmentId=ocid1.compartment.oc1..aaaaaaaag4mbmj22ecmbbf43fjgzo4sd5vtldwbdq7z67p34p7xipkwfhzta
-apiGatewayId=ocid1.apigateway.oc1.iad.amaaaaaa6sde7caaqh7lrxdlijuxxju66zpeycuy2qi72sggv6lgp7yvky4a
-
 depls=$(oci api-gateway deployment list -c $compartmentId)
 deploymentEndpoint=$(echo $depls | jq -r --arg display_name "MY_API_DEPL_$LAB_ID" '.data.items | map(select(."display-name" == $display_name)) | .[0] | .endpoint')
 apiDeploymentId=$(echo $depls | jq -r --arg display_name "MY_API_DEPL_$LAB_ID" '.data.items | map(select(."display-name" == $display_name)) | .[0] | .id')

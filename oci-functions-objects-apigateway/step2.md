@@ -11,7 +11,6 @@ The bucket is now created. Let's assign the bucket's OCID to an environment vari
 ```
 bucketName="oci-lab$LAB_ID"
 bucket=$(oci os bucket get --bucket-name $bucketName)
-echo $bucket
 bucketOCID=$(echo $bucket | jq -r  '.data | .id')
 echo "Bucket OCID for bucket $bucketName is $bucketOCID "
 touch ~/oracle-cloud-native-meetup-20-january-2020/functions/file-writer/oci_api_key.pem 

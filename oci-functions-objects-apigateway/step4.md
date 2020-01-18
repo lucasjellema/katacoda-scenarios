@@ -7,8 +7,8 @@ apps=$(oci fn application list -c $compartmentId)
 labApp=$(echo $apps | jq -r --arg display_name "lab$LAB_ID" '.data | map(select(."display-name" == $display_name)) | .[0] | .id')
 
 funs=$(oci fn function list --application-id $labApp)
-fileWriterFun=$(echo $funs | jq -r --arg display_name "file-writer" '.data | map(select(."display-name" == $display_name)) | .[0] | .id')
-echo "OCID for file-writer function : $fileWriterFun"
+fileWriterFun=$(echo $funs | jq -r --arg display_name "file-writer$LAB_ID" '.data | map(select(."display-name" == $display_name)) | .[0] | .id')
+echo "OCID for file-writer$LAB_ID function : $fileWriterFun"
 ```{{execute}}
 
 Create the new file api_deployment.json:

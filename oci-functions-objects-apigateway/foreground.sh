@@ -12,6 +12,6 @@ echo 'oci() { /root/bin/oci "$@"; }' >> ~/.profile
 
 git clone https://github.com/AMIS-Services/oracle-cloud-native-meetup-20-january-2020
 
-echo "Wait for the file /root/readyWithBackground to appear"
+echo "Wait for the file /root/allSetInBackground to appear"
 
 

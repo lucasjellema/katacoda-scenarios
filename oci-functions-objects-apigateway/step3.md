@@ -6,6 +6,8 @@ Check the contents of file `~/oracle-cloud-native-meetup-20-january-2020/functio
 
 `cat ~/oracle-cloud-native-meetup-20-january-2020/functions/file-writer/func.js`{{execute}}
 
+Open the file *func.yaml* in the text editor. Change the name of the function from *file-writer* to *file-writer#* , where # is the LAB_ID you have neen assigned. 
+
 Let's deploy this function to application `lab#`. Execute the next command - make sure you are in the correct directory.
 
 ```
@@ -16,13 +18,13 @@ fn -v deploy --app "lab$LAB_ID"
 
 Make sure that the environment variables are set when FileWriter is executing. This is done by defining configuration settings for the function:
 ```
-fn config function "lab$LAB_ID" file-writer bucketOCID "$bucketOCID"
-fn config function "lab$LAB_ID" file-writer bucketName "$bucketName"
+fn config function "lab$LAB_ID" file-writer$LAB_ID bucketOCID "$bucketOCID"
+fn config function "lab$LAB_ID" file-writer$LAB_ID bucketName "$bucketName"
 ```{{execute}}
 
 To invoke the function
 
-`echo -n '{ "filename":"my-special-file.txt","contents":"A new file, written by a Function on OCI"}' | fn invoke lab$LAB_ID file-writer`{{execute}}
+`echo -n '{ "filename":"my-special-file.txt","contents":"A new file, written by a Function on OCI"}' | fn invoke lab$LAB_ID file-writer$LAB_ID`{{execute}}
 
 Check the current contents of the bucket:
 
