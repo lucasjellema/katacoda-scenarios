@@ -8,6 +8,6 @@ echo 'oci() { /root/bin/oci "$@"; }' >> ~/.profile
 . /root/.profile
 # now oci is recognized as a command
 
-echo "Wait for the file /root/readyWithBackground to appear"
+echo "Wait for the file /root/allSetInBackground to appear"
 
 

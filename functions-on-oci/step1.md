@@ -33,7 +33,7 @@ Create an appropriate Fn context for working with OCI as provider (see [OCI Docs
 
 `fn use context lab-fn-context`{{execute}}
 
-Update the context with the settings relevant for this workshop. Note: the compartment used here is the lab-compartment 
+Prepare a number of environment variables. Note: the assumptions here are a compartment called *lab-compartment*, a VCN called *vcn-lab* and a subnet in that VCN called *Public Subnet-vcn-lab*. We need to get references to these three resources in order to create Functions and Applications in the right place.  
 ```
 cs=$(oci iam compartment list)
 export compartmentId=$(echo $cs | jq -r --arg display_name "lab-compartment" '.data | map(select(."name" == $display_name)) | .[0] | .id')
@@ -42,7 +42,10 @@ vcns=$(oci network vcn list -c $compartmentId)
 vcnId=$(echo $vcns | jq -r --arg display_name "vcn-lab" '.data | map(select(."display-name" == $display_name)) | .[0] | .id')
 subnets=$(oci network subnet list  -c $compartmentId --vcn-id $vcnId)
 export subnetId=$(echo $subnets | jq -r --arg display_name "Public Subnet-vcn-lab" '.data | map(select(."display-name" == $display_name)) | .[0] | .id')
+```{{execute}}
 
+Update the *fn* context with the settings relevant for this workshop. Note: the compartment used here is the lab-compartment 
+```
 fn update context oracle.compartment-id $compartmentId
 
 fn update context api-url https://functions.us-ashburn-1.oci.oraclecloud.com
