@@ -20,6 +20,9 @@ fn create context lab-fn-context --provider oracle
 
 fn use context lab-fn-context
 
+cs=$(oci iam compartment list)
+export compartmentId=$(echo $cs | jq -r --arg display_name "lab-compartment" '.data | map(select(."name" == $display_name)) | .[0] | .id')
+
 
 fn update context oracle.compartment-id $compartmentId
 

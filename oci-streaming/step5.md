@@ -16,11 +16,14 @@ Copy the sources from the stream-publisher application into the new function's d
 
 `cp -R streams-pubsub/* ./hello$LAB_ID`{{execute}}
 
-Copy these two package dependencies to file *package.json* in the *hello* directory (take good care of the commas to retain valid JSON):
+Change into the directory for the new function:
+
+`cd ~/oracle-cloud-native-meetup-20-january-2020/functions/hello$LAB_ID`{{execute}}
+
+Copy this dependency on the Fn Node handler to file *package.json* in the *hello#* directory (take good care of the commas to retain valid JSON):
 
 ```
-		"http-signature": "^1.3.1",
-		"jssha": "^2.3.1"
+		"@fnproject/fdk": ">=0.0.15"
 ```
 
 and run `npm install` to install the required libraries.
