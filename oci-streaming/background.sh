@@ -9,7 +9,7 @@ curl -L https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/
 chmod +777 install-oci-cli.sh
 ./install-oci-cli.sh --accept-all-defaults
 
-touch /root/readyWithBackground
+touch /root/allSetInBackground
 
 # install Project Fn CLI
 curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh

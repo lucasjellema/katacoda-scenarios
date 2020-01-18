@@ -10,11 +10,11 @@ Navigate to the directory that contains the functions:
 
 Create a new function *hello* with this command:
 
-`fn init --runtime node hello`{{execute}}
+`fn init --runtime node hello$LAB_ID`{{execute}}
 
 Copy the sources from the stream-publisher application into the new function's directory:
 
-`cp -R streams-pubsub/* ./hello`{{execute}}
+`cp -R streams-pubsub/* ./hello$LAB_ID`{{execute}}
 
 Copy these two package dependencies to file *package.json* in the *hello* directory (take good care of the commas to retain valid JSON):
 
@@ -37,17 +37,17 @@ Copy and paste the next to lines to become lines 5 and 6 (inside the anonymous f
   pub.publish(streamId, [`Function Hello was invoked with input ${JSON.stringify(input)}`])
 ```
 
-Deploy function *hello*; this may overwrite an earlier version of the function:
+Deploy function *hello#*; this may overwrite an earlier version of the function:
 
 `fn -v deploy --app "lab$LAB_ID"`{{execute}}
 
 Make sure that the function as a meaningful value for environment variable streamId by setting it as configuration on the function:
 
-`fn config function "lab$LAB_ID" hello streamId $streamId`{{execute}}
+`fn config function "lab$LAB_ID" hello$LAB_ID streamId $streamId`{{execute}}
 
 Invoke the function:
 
-`echo -n '{"name":"Your Own Name"}' | fn invoke "lab${LAB_ID}" hello --content-type application/json`{{execute}}
+`echo -n '{"name":"Your Own Name"}' | fn invoke "lab${LAB_ID}" hello$LAB_ID --content-type application/json`{{execute}}
 
 Check in the Streaming console if the message was indeed published to the stream by the Function:
 
