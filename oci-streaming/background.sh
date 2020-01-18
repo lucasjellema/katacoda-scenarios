@@ -24,7 +24,7 @@ cs=$(oci iam compartment list)
 export compartmentId=$(echo $cs | jq -r --arg display_name "lab-compartment" '.data | map(select(."name" == $display_name)) | .[0] | .id')
 # get namespace
 nss=$(oci os ns get)
-export ns=$(echo $nss | jq '.data')
+export ns=$(echo $nss | jq -r '.data')
 
 
 fn update context oracle.compartment-id $compartmentId

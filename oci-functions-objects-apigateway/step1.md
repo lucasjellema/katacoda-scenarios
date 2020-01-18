@@ -49,7 +49,7 @@ deploymentEndpoint=$(echo $depls | jq -r --arg display_name "MY_API_DEPL_$LAB_ID
 apiDeploymentId=$(echo $depls | jq -r --arg display_name "MY_API_DEPL_$LAB_ID" '.data.items | map(select(."display-name" == $display_name)) | .[0] | .id')
 # get namespace
 nss=$(oci os ns get)
-export ns=$(echo $nss | jq '.data')
+export ns=$(echo $nss | jq -r '.data')
 
 ```{{execute}}
 
