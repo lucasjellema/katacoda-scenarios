@@ -47,6 +47,10 @@ export apiGatewayId=$(echo $apigws | jq -r --arg display_name "lab-apigw" '.data
 depls=$(oci api-gateway deployment list -c $compartmentId)
 deploymentEndpoint=$(echo $depls | jq -r --arg display_name "MY_API_DEPL_$LAB_ID" '.data.items | map(select(."display-name" == $display_name)) | .[0] | .endpoint')
 apiDeploymentId=$(echo $depls | jq -r --arg display_name "MY_API_DEPL_$LAB_ID" '.data.items | map(select(."display-name" == $display_name)) | .[0] | .id')
+# get namespace
+nss=$(oci os ns get)
+export ns=$(echo $nss | jq '.data')
+
 ```{{execute}}
 
 Update the context with the settings relevant for this workshop.
@@ -55,7 +59,7 @@ fn update context oracle.compartment-id $compartmentId
 
 fn update context api-url https://functions.us-ashburn-1.oci.oraclecloud.com
 
-fn update context registry iad.ocir.io/idtwlqf2hanz/cloudlab-repo
+fn update context registry iad.ocir.io/$ns/cloudlab-repo
 
 fn update context oracle.profile FN
 ```{{execute}}

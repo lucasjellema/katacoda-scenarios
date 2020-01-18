@@ -75,6 +75,8 @@ At this point it would be most convenient if you can compile a document with all
 * OCIR docker username and password (namespace/lab-user and generated auth token)
 
 ```
+echo "Here comes namespace" 
+oci os ns get
 echo "Tenancy OCID: $TENANCY_OCID"
 echo "User OCID for user lab-user: $userId"
 echo "Password: $password"

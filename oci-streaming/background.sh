@@ -22,13 +22,16 @@ fn use context lab-fn-context
 
 cs=$(oci iam compartment list)
 export compartmentId=$(echo $cs | jq -r --arg display_name "lab-compartment" '.data | map(select(."name" == $display_name)) | .[0] | .id')
+# get namespace
+nss=$(oci os ns get)
+export ns=$(echo $nss | jq '.data')
 
 
 fn update context oracle.compartment-id $compartmentId
 
 fn update context api-url https://functions.us-ashburn-1.oci.oraclecloud.com
 
-fn update context registry iad.ocir.io/idtwlqf2hanz/cloudlab-repo
+fn update context registry iad.ocir.io/$ns/cloudlab-repo
 
 fn update context oracle.profile FN
 
