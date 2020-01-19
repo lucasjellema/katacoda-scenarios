@@ -43,14 +43,35 @@ export apiGatewayId=$(echo $apigws | jq -r --arg display_name "lab-apigw" '.data
 depls=$(oci api-gateway deployment list -c $compartmentId)
 deploymentEndpoint=$(echo $depls | jq -r --arg display_name "MY_API_DEPL_$LAB_ID" '.data.items | map(select(."display-name" == $display_name)) | .[0] | .endpoint')
 apiDeploymentId=$(echo $depls | jq -r --arg display_name "MY_API_DEPL_$LAB_ID" '.data.items | map(select(."display-name" == $display_name)) | .[0] | .id')
+nss=$(oci os ns get)
+export ns=$(echo $nss | jq -r '.data')
+
+echo "Compartment OCID: $compartmentId"
+echo "Namespace: $ns"
+echo "API Deployment Id and Endpoing: $apiDeploymentEndpoint and $apiDeploymentId"
 ```{{execute}}
 
-## Environment Preparation
+## Fn Environment Preparation
 Now Check the installed version of Fn CLI. Note: we do not need the Fn server at this stage.  
 
 `fn version`{{execute}} 
+To prepare the proper Fn context - associated with the OCI tenancy for this workshop, execute the next set of commands:
 
-A remote Fn context based on Oracle as provider should have been set up for you (in the background). List the currently available and set Fn contexts to verify this.
+```
+fn create context lab-fn-context --provider oracle
+
+fn use context lab-fn-context
+
+fn update context oracle.compartment-id $compartmentId
+
+fn update context api-url https://functions.us-ashburn-1.oci.oraclecloud.com
+
+fn update context registry iad.ocir.io/$ns/cloudlab-repo
+
+fn update context oracle.profile FN
+```{{execute}}
+
+A remote Fn context based on Oracle as provider should now be set up. List the currently available and set Fn contexts to verify this.
 
 `fn list contexts`{{execute}}
 

@@ -16,22 +16,3 @@ curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh
 
 docker pull fnproject/node:latest
 
-fn create context lab-fn-context --provider oracle
-
-fn use context lab-fn-context
-
-cs=$(oci iam compartment list)
-export compartmentId=$(echo $cs | jq -r --arg display_name "lab-compartment" '.data | map(select(."name" == $display_name)) | .[0] | .id')
-# get namespace
-nss=$(oci os ns get)
-export ns=$(echo $nss | jq -r '.data')
-
-
-fn update context oracle.compartment-id $compartmentId
-
-fn update context api-url https://functions.us-ashburn-1.oci.oraclecloud.com
-
-fn update context registry iad.ocir.io/$ns/cloudlab-repo
-
-fn update context oracle.profile FN
-
