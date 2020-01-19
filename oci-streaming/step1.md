@@ -55,6 +55,7 @@ echo "API Deployment Id and Endpoint: $deploymentEndpoint and $apiDeploymentId"
 Now Check the installed version of Fn CLI. Note: we do not need the Fn server at this stage.  
 
 `fn version`{{execute}} 
+
 To prepare the proper Fn context - associated with the OCI tenancy for this workshop, execute the next set of commands:
 
 ```
