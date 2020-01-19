@@ -48,7 +48,7 @@ export ns=$(echo $nss | jq -r '.data')
 
 echo "Compartment OCID: $compartmentId"
 echo "Namespace: $ns"
-echo "API Deployment Id and Endpoing: $apiDeploymentEndpoint and $apiDeploymentId"
+echo "API Deployment Id and Endpoint: $deploymentEndpoint and $apiDeploymentId"
 ```{{execute}}
 
 ## Fn Environment Preparation
