@@ -86,7 +86,7 @@ https://console.us-ashburn-1.oraclecloud.com/identity/dynamicgroups
 Create a rule for dynamic group
 
 ALL {resource.type = 'ApiGateway', resource.compartment.id = 'OCID compartment lab-compartment'}
-
+`oci iam dynamic-group create --compartment-id $TENANCY_OCID --name "lab-apigw-dynamic-group" --description "to collect API Gateways in Compart lab-compartment"  --matching-rule "[ \"ALL {resource.type = 'ApiGateway', resource.compartment.id = '$compartmentId'}\"]" `{{execute}}
 
 ## Create Stream
 
