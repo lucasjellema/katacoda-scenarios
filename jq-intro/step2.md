@@ -14,7 +14,7 @@ Show the contents of variable `$nl`:
 `echo $nl`{{execute}}
 
 Get the Dutch capital:
-`echo $nl | jq '.| .capital'{{execute}}
+`echo $nl | jq '.| .capital'`{{execute}}
 
 We could have gotten their in a more direct fashion of course:
 `echo $countries | jq -r --arg countryAlpha2Code "NL" '. | map(select(."alpha2Code" == $countryAlpha2Code)) | .[0] | .capital'`{{execute}} 
