@@ -7,8 +7,11 @@ jq is written in portable C, and it has zero runtime dependencies. You can downl
 In this scenario, you will a few simple steps to take using jq, just to get you going.
 
 ## Some resources
-jq on GitHub - https://stedolan.github.io/jq/
-jqplay.org - live playground for jq - https://jqplay.org/
-Introduction of jq as Bash command - https://linuxhint.com/bash_jq_command/
-Guide to Linux jq Command for JSON Processing - Baeldung- https://www.baeldung.com/linux/jq-command-json  
+* jq on GitHub - https://stedolan.github.io/jq/
+* JQ Tutorial - https://stedolan.github.io/jq/tutorial/ 
+* jqplay.org - live playground for jq - https://jqplay.org/
+* Introduction of jq as Bash command - https://linuxhint.com/bash_jq_command/
+* Guide to Linux jq Command for JSON Processing - Baeldung- https://www.baeldung.com/linux/jq-command-json  
 
+* Manual - https://stedolan.github.io/jq/manual/ 
+* Cookbook - https://github.com/stedolan/jq/wiki/Cookbook 
