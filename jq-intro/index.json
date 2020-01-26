@@ -1,0 +1,46 @@
+{
+  "title": "Introduction to JQ - Linux Command Line tool for JSON",
+  "description": "JQ is like grep, awk or sed for JSON - for interpreting and manipulating JSON data on the Linux command line",
+  "difficulty": "beginner",
+  "time": "25 minutes",
+  "details": {
+    "steps": [
+      {
+        "title": "Step 1 - ",
+        "text": "step1.md"
+      },
+      {
+        "title": "Step 2 - ",
+        "text": "step2.md"
+      },
+      {
+        "title": "Step 3",
+        "text": "step3.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md",
+      "credits": "",
+      "courseData": "background.sh",
+      "code": "foreground.sh"
+        },
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "client": [
+        {
+          "file": "prepareStepOne.sh",
+          "target": "/root/"
+        }
+      ]
+    }
+  },
+  "environment": {
+    "uilayout": "editor-terminal",
+    "uimessage1": "\u001b[32mYour Interactive Bash Terminal.\r\nExecute bash shell commands \u001b[m\r\n"
+  },
+  "backend": {
+    "imageid": "ubuntu1804"
+  }
+}
