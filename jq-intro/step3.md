@@ -29,12 +29,12 @@ To extract the department values from the file:
 `jq '.[] | .department' students.json`{{execute}}
 
 which is equivalent to:
-`cat students.json > jq '.[] | .department'`{{execute}}
+`cat students.json | jq '.[] | .department'`{{execute}}
 
 If you want to read two or more object values from JSON data then mention the object names by separating comma (,) in the jq command. The following command will retrieve the values of name and department keys.
 
 `jq '.[] | .name, .department' students.json`{{execute}}
 
-jq command is used not only for reading JSON data but also to display data by removing a particular key. The next command showns the Students objects minus the *batch* and *roll* properties:
-`jq 'map(del(.batch, .roll))' students.json`  
+jq command is used not only for reading JSON data but also to display data by removing a particular key. The next command shows the Students objects minus the *batch* and *roll* properties:
+`jq 'map(del(.batch, .roll))' students.json`{{execute}} 
 
