@@ -11,7 +11,7 @@ Get details on The Netherlands:
 Note how input parameter *countryAlpha2Code* is defined and how it is set as "NL" and how it is subsequently used in the comparison in the *select* in the *map* operator. Variable $nl is now defined with a JSON document describing The Netherlands as its contents. The `-r` switch is used to request raw output from jq. 
 
 Show the contents of variable `$nl`:
-`echo $nl`
+`echo $nl`{{execute}}
 
 Get the Dutch capital:
 `echo $nl | jq '.| .capital'{{execute}}
