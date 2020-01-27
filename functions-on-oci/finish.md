@@ -12,3 +12,6 @@ https://github.com/fnproject/tutorials/blob/master/node/intro/README.md
 
 Docs on Fn on OCI
 https://docs.cloud.oracle.com/iaas/Content/Functions/Tasks/functionscreatefncontext.htm
+
+Todd Sharpe on Using Key Management To Encrypt And Decrypt Configuration Variables
+https://blogs.oracle.com/developers/oracle-functions-using-key-management-to-encrypt-and-decrypt-configuration-variables
