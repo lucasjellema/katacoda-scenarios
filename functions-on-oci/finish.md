@@ -15,3 +15,9 @@ https://docs.cloud.oracle.com/iaas/Content/Functions/Tasks/functionscreatefncont
 
 Todd Sharpe on Using Key Management To Encrypt And Decrypt Configuration Variables
 https://blogs.oracle.com/developers/oracle-functions-using-key-management-to-encrypt-and-decrypt-configuration-variables
+
+Todd Sharpe on Invoking Functions Automatically With Cloud Events
+https://blogs.oracle.com/developers/oracle-functions-invoking-functions-automatically-with-cloud-events
+
+Todd Sharpe on Connecting To ATP With Node.JS
+https://blogs.oracle.com/developers/oracle-functions-connecting-to-atp-with-nodejs
