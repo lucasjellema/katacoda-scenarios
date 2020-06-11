@@ -8,7 +8,7 @@ sudo chmod -R ugo+rw graalvm-polyglot-meetup-november2019
 
 Run the GraalVM Container and map the sources directory into it:
 
-`docker run -it -v /root/graalvm-polyglot-meetup-november2019:/labs docker.pkg.github.com/graalvm/container/community:20.1.0 bash`{{execute}}
+`docker run -it -v /root/graalvm-polyglot-meetup-november2019:/labs oracle/graalvm-ce bash`{{execute}}
 
 Check whether Java is installed and running as expected inside the container:
 
