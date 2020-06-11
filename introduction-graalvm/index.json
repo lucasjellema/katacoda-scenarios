@@ -1,0 +1,56 @@
+{
+  "title": "First steps with GraalVM",
+  "description": "Getting started with GraalVM",
+  "difficulty": "beginner",
+  "time": "40 minutes",
+  "details": {
+    "steps": [
+      {
+        "title": "Step 1 - Pull GraalVM Docker Container",
+        "text": "step1.md"
+      },
+      {
+        "title": "Step 2 - Run and Explore GraalVM Container",
+        "text": "step2.md"
+      },
+      {
+        "title": "Step 3 - Ahead of Time Compilation",
+        "text": "step3.md"
+      },
+      {
+        "title": "Step 4 - Polyglot ",
+        "text": "step4.md"
+      },
+      {
+        "title": "Step 5 - Bonus: Ahead of Time Function Compilation with GraalVM",
+        "text": "step5.md"
+      },
+      {
+        "title": "Step 6 - Bonus: Custom Docker Images as Function Implementation",
+        "text": "step6.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md",
+      "credits": ""
+        },
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "client": [
+        {
+          "file": "prepareStepOne.sh",
+          "target": "/root/"
+        }
+      ]
+    }
+  },
+  "environment": {
+    "uilayout": "editor-terminal",
+    "uimessage1": "\u001b[32mYour Interactive Bash Terminal.\r\nExecute bash shell commands \u001b[m\r\n"
+  },
+  "backend": {
+    "imageid": "ubuntu1904"
+  }
+}
