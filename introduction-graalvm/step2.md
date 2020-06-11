@@ -12,15 +12,17 @@ Run the GraalVM Container and map the sources directory into it:
 
 Check whether Java is installed and running as expected inside the container:
 
-`java -version`
+`java -version`{{execute}}
 
 Type `node` to check the runtime version of node:
-`node`
+`node`{{execute}}
 
 Type Ctrl+C twice, to end the Node session.
 
 You can install the support for additional languages like Ruby, R, Python or WebAssembly at will. For example, the following command installs the Ruby support :
 
-`gu install ruby`
+`gu install ruby`{{execute}}
+Install support for native image - the component that does Ahead of Time Compilation
+`gu install native-image`{{execute}}
 
 
