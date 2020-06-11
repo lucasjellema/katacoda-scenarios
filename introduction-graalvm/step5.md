@@ -1,4 +1,4 @@
-# Bonus: Ahead of Time Function Compilation with GraalVM
+# Bonus: Ahead of Time Polyglot Application Compilation with GraalVM
 
 This step will focus on a specific GraalVM capability, i.e. GraalVM Ahead-of-time Compilation (AOT) and more specifically on GraalVM native-image feature with Java functions.
 

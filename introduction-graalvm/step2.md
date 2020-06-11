@@ -19,9 +19,13 @@ Type `node` to check the runtime version of node:
 
 Type Ctrl+C twice, to end the Node session.
 
-You can install the support for additional languages like Ruby, R, Python or WebAssembly at will. For example, the following command installs the Ruby support :
+You can install the support for additional languages like Ruby, R, Python or WebAssembly at will. For example, the following command installs the Python  support :
 
-`gu install ruby`{{execute}}
+```
+gu install python
+gu install r
+gu install ruby
+```{{execute}}
 Install support for native image - the component that does Ahead of Time Compilation
 `gu install native-image`{{execute}}
 

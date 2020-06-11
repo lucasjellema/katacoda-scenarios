@@ -1,64 +1,38 @@
-# Creating Functions in other Languages 
+# Node Calling Java
 
-The hello function we have been working with in the previous steps was implemented using Node JS (server side JavaScript). Fn supports many other runtime, such as Go, Python, Java and Ruby. Additionally, you can create a function from just any Docker Container, regardless which (combination of) runtime engines and languages you have used in it.
 
-In this step you will create a function in Java. Feel free to try out the other runtimes as well.
+`cd /labs/js2java`{{execute}}
 
-Return to the home directory and create a new function called *hello-java* with Java as its runtime engine.
-```
-cd ~
+Open file Joker.js. It is monoglot – and utterly dull. The Joker does not have a single Joke. Very unfortunate.
 
-fn init --runtime java hello-java
-```{{execute}}
+`cat joker.js`{{execute}}
 
-Check out the generated directory structure and Java Classes:
+Run the application:
+`node joker.js`{{execute}} 
 
-`ls -R`{{execute}}
+You will not be dazzled, no tricks up anyone’s sleeves.
+Now open the file joker2.js. Things start to look more interesting. The joker still does not have any jokes – but he has a friend. A Java Class, called Joker, that may help out.
 
-Now inspect the generated Java class that handles requests - and can be customized by us. 
-```
-cd hello-java/src/main/java/com/example/fn
+Run the application with this command
 
-cat HelloFunction.java
-```{{execute}}
+`node --jvm --vm.cp application-bundle.jar joker2.js`{{execute}}
 
-Java Class HelloFunction.java was generated as the starting point for this function. You can check out file in the editor. 
 
-Warning: if you make changes to the output of the file, ensure that you change the unit test accordingly because when the test fails, the function cannot be built and deployed. The unit test is in the source file hello-java/src/test/java/com/example/fn/HelloFunctionTest.java.
+Now there should be jokes cracked left and right. They must be produced by the Java Joker. Take a look at the file Joker.java in folder nl/amis/js2java to see how that class is coded. And to see that is not aware of the fact that it is used in a polyglot context. This is just a regular Java Class, doing its thing.
 
-It is not as obvious as in the func.js generated for the Node runtime that an Fn handler is at play. However, also in the case of Java based functions, requests are handled by a generic Fn Java runtime handler before being passed to our own code. Check in *func.yaml* how the Java Class and method that the generic handler should forward the request to are specified. 
+File joker3.js takes another step. It shows how we can post parameters and exchange more complex objects – such as an Array and a Map – between JavaScript and Java..
 
-Deploy the Java Function hello-java locally, into the app that was created in step 2 of this scenario. You will again see a Docker Container Image being built. Or actually: two images. The first image is the build environment with the full Java JDK, Maven and facilities to run unit tests. The outcome of this first image is a Fat Jar that contains the built application artifact. This is the input for the second container image - that is based on the Java Runtime Environment, a much lighter weight image. The final result of deploying the function is the image based on JRE and with only the Fat Jar created for the function. 
+Run the application with this command
 
-```
-cd ~/hello-java
+`node --jvm --vm.cp application-bundle.jar joker3.js`{{execute}}
 
-fn -v deploy --app hello-app --local 
-```{{execute}}
+## VALIDATOR APPLICATION
+Open file validateJS2J2JS.js. The JavaScript application wants to validate a Postal Code. The developer knew about the Java Class ValidateThroughNPMValidator that we created a little earlier on, so she though she might as well make use of it.
 
-To invoke the Java function, execute this command:
+Run the application with this command
+`node --jvm --vm.cp application-bundle.jar validateJS2J2JS.js`{{execute}}
+and find that two postal codes are validated.
 
-`time fn invoke hello-app hello-java`{{execute}}
+The remarkable thing here is that what is actually taking place is JavaScript executing Java code that in turn is executing JavaScript code. Not an obvious thing to do – but not a problem on a technical level.
 
-Note: we have added the `time` instruction to get timing for the cold startup time of the function. In step 6, we will use GraalVM powered ahead of time compiled Java applications, that are supposed to have a much faster cold startup time. Please remember the values you are getting for the timing of this command for comparison in step 6.
-
-To send input to the function, use the following command:
-
-`echo -n 'Your Own Name' | fn invoke hello-app hello-java --content-type application/json`{{execute}}
-
-Again, a friendly, this time personalized, welcome message should be your reward.
-
-## Further Explorations
-To try out other languages, simply replace *java* as runtime with *go* or *python* in the call to `fn init`. For example:
-```
-cd ~
-
-fn init --runtime go hello-go
-```{{execute}}
-
-### Custom Docker Containers as Function implementation
-It is possible to take any Docker Container and use it as the implementation of a function. In that case the runtime is *docker*. The next step in this scenario demonstrates this compelling feature of Fn.
-
-### GraalVM
-
- Project Fn also supports binary executables with GraalVM; there is a special runtime available that takes a Java application and builds it all the way into a container image with just a binary executable. This results in an even smaller image and even faster function warmup and execution. In step 5 of this scenario, you can check out this approach to packaging Java applications.
+![](assets/js-java-js.png)
