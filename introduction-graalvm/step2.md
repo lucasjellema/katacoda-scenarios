@@ -22,10 +22,10 @@ Type Ctrl+C twice, to end the Node session.
 You can install the support for additional languages like Ruby, R, Python or WebAssembly at will. For example, the following command installs the Python, R and Ruby support :
 
 ```
+gu install native-image
 gu install python
 gu install r
 gu install ruby
-gu install native-image
 ```{{execute}}
 
 

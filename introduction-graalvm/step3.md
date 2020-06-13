@@ -14,6 +14,7 @@ javac PrimeNumbers.java
 
 time java PrimeNumbers
 ```{{execute}}
+Please take note of the value for *real* time (expected to be somewhere between 60 and 150 ms).
 
 ## Run JavaScript and Node applications - with GraalVM
 
@@ -39,6 +40,10 @@ cd /labs/nodejs
 node PrimeNumbers.js
 ```{{execute}}
 
+Feel free to browse the contents of the file `nodejs\PrimeNumbers.js`.
+
+Open the Node application in the text editor or look at it in the terminal:
+`cat /labs/nodejs/PrimeNumbers.js`{{execute}}
 ## Run Python applications - with GraalVM
 
 GraalVM includes an early implementation of a Python 3.7 interpreter - and through this interpreter and Truffle also the ability to run Python applications. 
@@ -65,3 +70,12 @@ graalpython PrimeNumbers.py
 ```{{execute}}
 
 Feel free to browse the contents of the file `python\PrimeNumbers.py`.
+
+Open the Python application in the text editor or look at it in the terminal:
+`cat /labs/python/PrimeNumbers.py`{{execute}}
+
+## Other supported languages
+
+GraalVM supports other languages too, such as R, Ruby, WebAssembly and (through the LLVM toolchain) C/C++, Rust and other languages that can be compiled to LLVM bitcode. We will not go into these other languages at this point.
+
+![](assets/polyglot_runtime.png)

@@ -21,6 +21,13 @@ Run it:
 
 `./primes`{{execute}}
 
+Note: if for some reason the native image generation failed, you can find the result of this generation as produced on an earlier scenario run in folder */labs/native*. You can run this prepared native image:
+```
+cd /labs/native
+chmod +x *
+./primes
+```{{execute}}
+
 Get the timing for the AOT versions of PrimeNumbers:
 
 ```
@@ -34,21 +41,3 @@ Compare with the timing for the cold start JIT version that you took in the prev
 Both are pretty fast presumably, but the native executable should still be much faster than the JIT compiled one. The difference in resource usage - both CPU and especially memory - will be very substantial as well. And of course, to run the native image you do not need a Java runtime environment. No hassle of installing and upgrading, no diskspace allocated. Think what that means for container images: instead of the Java Runtime, all they need to contain is... the tiny executable. This is why frameworks such as Quarkus, Micronaut, Helidon and in the near future Spring as well all support running as native executable produced by GraalVM.
 
 
-## Advanced AOT - Getting Ahead of Ourselves
-A first quick attempt you could make to create a natively executable image of the HelloWorld class *with embedded JavaScript* (Java interoperating with JavaScript, turned into a native executable):
-
-```
-cd /labs/js2java
-$GRAALVM_HOME/bin/native-image -cp ./application-bundle.jar --language:js --verbose -H:Name=hello -H:Class=nl.amis.java2js.HelloWorld
-```{{execute}}
-
-Even this extremely simple example takes more than five minutes to create the executable file. The closed world analysis of all dependencies and the production of the executable need time and memory.
-
-The result should be a natively executable file of moderate size (compared to the Java Runtime environment you would need to run the HelloWorld class with JIT compilation)
-
-Run this executable with the following command. No Java, no classpath. Only this one file (that contains a JavaScript runtime engine as well as the as yet unparsed, unprocessed JavaScript snippets):
-
-`./hello`{{execute}}
-
-![](assets/run-native-image.png)
-This tells you that the run time image - a combination of Java & JavaScript runtime engines along with the application - is close to 100MB. Without the JavaScript runtime, it would have been closer to 20MB. The startup time is phenomenal: less than 10 ms.
