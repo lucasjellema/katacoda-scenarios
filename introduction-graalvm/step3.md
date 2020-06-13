@@ -2,11 +2,13 @@
 
 GraalVM is known for some very advanced features - such as Ahead of Time Compilation and Polyglot interoperability. Additionally, GraalVM is a runtime engine - for Java and other JVM based languages (replacing HotSpot JIT compiler) and for many other languages (that are compiled to run on GraalVM through the Truffle framework).
 
-In this step, let's see how you interact with this runtime platform. Note: it will not feel as anything special. You will use the regular commands belonging to the specific language (platform) - and they will be executed by GraalVM - and you will hardly even know it. That of course is one of the objective: transparent replacement of language runtime - with added value such as management and development tools, interoperability and better runtime characteristics, such as startup time, resource usage, throughput, runtime optimizations and performance. Some of the GraalVM language implementations have shown substatial benefits in this runtime department. However, for some use cases, the results are not as good. You will have to verify for yourself how well GraalVM runs your application. 
+In this step, let's see how you interact with this runtime platform. Note: it will not feel as anything special. You will use the regular commands belonging to the specific language (platform) - and they will be executed by GraalVM - and you will hardly even know it. That of course is one of the objectives: transparent replacement of language runtime - with added value such as management and development tools, interoperability and better runtime characteristics, such as startup time, resource usage, throughput, runtime optimizations and performance. Some of the GraalVM language implementations have shown substatial benefits in this runtime department. However, for some use cases, the results are not as good. You will have to verify for yourself how well GraalVM runs your application. 
+
+With the next command, you first produce the Class file (compilation to byte code, not yet to executable machine code) and then run the Class, using the OpenJDK Java Runtime powered by the GraalVM JIT compiler. The execution time for this cold startup is measured - for comparison in the next step with the startup time for the native image created from this Java application.
 
 ```
 cd /labs/java
 javac PrimeNumbers.java
 
-java PrimeNumbers
+time java PrimeNumbers
 ```{{execute}}

@@ -25,6 +25,7 @@ You can install the support for additional languages like Ruby, R, Python or Web
 gu install python
 gu install r
 gu install ruby
+gu install native-image
 ```{{execute}}
 
 
