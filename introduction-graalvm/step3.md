@@ -57,9 +57,11 @@ GraalVM supports some of the same options as Python 3.7 and some additional opti
 
 ### Run PrimeNumbers Python Application
 
-This command executes a Python application to generate a list of the first 100 prime numbers. The *node* executable invoked here is the GraalVM utility - not the regular Node distribution with V8 execution engine. GraalVM interprets the JavaScript code, turns it into a Java bytecode-like representation of the programming logic and executes it on the GraalVM JIT compiler.
+This command executes a Python application to generate a list of the first prime numbers between 1 and 100. 
 
 ```
-cd /labs/nodejs
-node PrimeNumbers.js
+cd /labs/python
+graalpython PrimeNumbers.py 
 ```{{execute}}
+
+Feel free to browse the contents of the file `python\PrimeNumbers.py`.
