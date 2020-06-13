@@ -10,24 +10,28 @@
         "text": "step1.md"
       },
       {
-        "title": "Step 2 - Run and Explore GraalVM Container",
+        "title": "Step 2 - Run and Explore and Refine the GraalVM Container",
         "text": "step2.md"
       },
       {
-        "title": "Step 3 - Ahead of Time Compilation",
+        "title": "Step 3 - Polyglot JIT Compilation and Run Applications (Java, Node, Python)",
         "text": "step3.md"
       },
       {
-        "title": "Step 4 - Polyglot ",
+        "title": "Step 4 - Ahead of Time Compilation",
         "text": "step4.md"
       },
       {
-        "title": "Step 5 - Bonus: Ahead of Time Function Compilation with GraalVM",
+        "title": "Step 5 - Bi-directional Polyglot - from Java to JS",
         "text": "step5.md"
       },
       {
-        "title": "Step 6 - Bonus: Custom Docker Images as Function Implementation",
+        "title": "Step 6 - Bi-directional Polyglot - from Node to Java ",
         "text": "step6.md"
+      },
+      {
+        "title": "Step 7 - Bonus: Multi-directional Polyglot",
+        "text": "step7.md"
       }
     ],
     "intro": {

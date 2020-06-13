@@ -1,38 +1,30 @@
-# Node Calling Java
+# Ahead of Time Polyglot Application Compilation with GraalVM
+
+This step will focus on a specific GraalVM capability, i.e. GraalVM Ahead-of-time Compilation (AOT) and more specifically on GraalVM native-image feature with Java functions.
+
+## Ahead of Time Compilation - generating native image 
+
+The GraalVM native image utility has been installed in the Virtual Machine. However, the AOT compilation requires a fair amount of memory. It may exhaust the physical resources in the Katacoda environment. 
+
+cd /labs/java
+$GRAALVM_HOME/bin/native-image --verbose -H:Name=primes -H:Class=PrimeNumbers
+```{{execute}}
 
 
-`cd /labs/js2java`{{execute}}
+## Advanced AOT - Getting Ahead of Ourselves
+A first quick attempt you could make to create a natively executable image of the HelloWorld class with embedded JavaScript (Java interoperating with JavaScript, turned into a native executable):
 
-Open file Joker.js. It is monoglot – and utterly dull. The Joker does not have a single Joke. Very unfortunate.
+```
+cd /labs/js2java
+$GRAALVM_HOME/bin/native-image -cp ./application-bundle.jar --language:js --verbose -H:Name=hello -H:Class=nl.amis.java2js.HelloWorld`{{execute}}
 
-`cat joker.js`{{execute}}
+Even this extremely simple example takes more than five minutes to create the executable file. The closed world analysis of all dependencies and the production of the executable need time and memory.
 
-Run the application:
-`node joker.js`{{execute}} 
+The result should be a natively executable file of moderate size (compared to the Java Runtime environment you would need to run the HelloWorld class with JIT compilation)
 
-You will not be dazzled, no tricks up anyone’s sleeves.
-Now open the file joker2.js. Things start to look more interesting. The joker still does not have any jokes – but he has a friend. A Java Class, called Joker, that may help out.
+Run this executable with the following command. No Java, no classpath. Only this one file (that contains a JavaScript runtime engine as well as the as yet unparsed, unprocessed JavaScript snippets):
 
-Run the application with this command
+`./hello`{{execute}}
 
-`node --jvm --vm.cp application-bundle.jar joker2.js`{{execute}}
-
-
-Now there should be jokes cracked left and right. They must be produced by the Java Joker. Take a look at the file Joker.java in folder nl/amis/js2java to see how that class is coded. And to see that is not aware of the fact that it is used in a polyglot context. This is just a regular Java Class, doing its thing.
-
-File joker3.js takes another step. It shows how we can post parameters and exchange more complex objects – such as an Array and a Map – between JavaScript and Java..
-
-Run the application with this command
-
-`node --jvm --vm.cp application-bundle.jar joker3.js`{{execute}}
-
-## VALIDATOR APPLICATION
-Open file validateJS2J2JS.js. The JavaScript application wants to validate a Postal Code. The developer knew about the Java Class ValidateThroughNPMValidator that we created a little earlier on, so she though she might as well make use of it.
-
-Run the application with this command
-`node --jvm --vm.cp application-bundle.jar validateJS2J2JS.js`{{execute}}
-and find that two postal codes are validated.
-
-The remarkable thing here is that what is actually taking place is JavaScript executing Java code that in turn is executing JavaScript code. Not an obvious thing to do – but not a problem on a technical level.
-
-![](assets/js-java-js.png)
+![](assets/run-native-image.png)
+This tells you that the run time image - a combination of Java & JavaScript runtime engines along with the application - is close to 100MB. Without the JavaScript runtime, it would have been closer to 20MB. The startup time is phenomenal: less than 10 ms.

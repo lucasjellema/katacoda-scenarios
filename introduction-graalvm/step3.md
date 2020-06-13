@@ -1,21 +1,12 @@
-# Real work
+# JIT with GraalVM - the Polyglot Runtime Engine for Java, Node, Python, R and more
 
-Here the HelloWorld example – the gentle introduction into Java code interacting with JavaScript. Your first taste of polyglot interoperability.
-From folder /labs/java2js, 
+GraalVM is known for some very advanced features - such as Ahead of Time Compilation and Polyglot interoperability. Additionally, GraalVM is a runtime engine - for Java and other JVM based languages (replacing HotSpot JIT compiler) and for many other languages (that are compiled to run on GraalVM through the Truffle framework).
 
-`cd /labs/java2js`{{execute}}
+In this step, let's see how you interact with this runtime platform. Note: it will not feel as anything special. You will use the regular commands belonging to the specific language (platform) - and they will be executed by GraalVM - and you will hardly even know it. That of course is one of the objective: transparent replacement of language runtime - with added value such as management and development tools, interoperability and better runtime characteristics, such as startup time, resource usage, throughput, runtime optimizations and performance. Some of the GraalVM language implementations have shown substatial benefits in this runtime department. However, for some use cases, the results are not as good. You will have to verify for yourself how well GraalVM runs your application. 
 
-Generate a .class with the javac command and then check the code outputs as expected:
 ```
-javac nl/amis/java2js/HelloWorld.java
+cd /labs/java
+javac PrimeNumbers.java
 
-java nl/amis/java2js/HelloWorld
+java PrimeNumbers
 ```{{execute}}
-
-It may feel as if you have executed just some Java code. However, the Java Class engaged JavaScript to do some of the work. Nothing spectacular as such – but two languages as brothers in arms at run time. That in itself is quite something!
-Inspect the contents of the Java Class definition:
-`cat nl/amis/java2js/HelloWorld.java`{{execute}}
-
-
-The polyglot context object is the bridge between Java and JavaScript. Not only can we execute JavaScript snippets and get simple values returned, the JavaScript code can also return a function – that we can execute later on – and many times – from Java.
-

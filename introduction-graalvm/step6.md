@@ -1,25 +1,38 @@
-# Bonus: Multi-directional Polyglot
+# Bonus: Bi-directional Polyglot Node calling Java
 
-In this section, we will look at some examples of polyglot language interaction, not necessarily focused on Java, and involving more than just two languages.
 
-![](assets/multidirectional-polyglot.png)
-## FROM PYTHON TO JAVASCRIPT, JAVA AND R
+`cd /labs/js2java`{{execute}}
 
-This article describes in detail a Python application running on GraalVM and interacting with both JavaScript, R and Java. The code discussed in the article is also available in the VM.
-To try it out, run the application with this command – on the command line from directory /home/developer/graalvm-polyglot-meetup-november2019/polyglot:
+Open file Joker.js. It is monoglot – and utterly dull. The Joker does not have a single Joke. Very unfortunate.
 
-```
-cd /labs/polyglot
+`cat joker.js`{{execute}}
 
-graalpython --polyglot --jvm ./python_polyglot.py
-```{{execute}}
+Run the application:
+`node joker.js`{{execute}} 
 
-##FROM JAVASCRIPT TO PYTHON AND R
+You will not be dazzled, no tricks up anyone’s sleeves.
+Now open the file joker2.js. Things start to look more interesting. The joker still does not have any jokes – but he has a friend. A Java Class, called Joker, that may help out.
 
-Similar - but taking JavaScript as the starting language – is polyglot.js. This JavaScript application loads a Python library and invokes the Python function object that is created by that library. It also uses an R snippet that creates a function object and hands it back to the Polyglot context for all participating language contexts to invoke.
+Run the application with this command
 
-To try it out, run the application with this command – on the command line from directory /labs/polyglot:
+`node --jvm --vm.cp application-bundle.jar joker2.js`{{execute}}
 
-`js --polyglot --jvm polyglot.js`{{execute}}
 
-Please, take this opportunity and modify the source polyglot.js. Make it jump through more hoops. Make the polyglot contexts share even more.
+Now there should be jokes cracked left and right. They must be produced by the Java Joker. Take a look at the file Joker.java in folder nl/amis/js2java to see how that class is coded. And to see that is not aware of the fact that it is used in a polyglot context. This is just a regular Java Class, doing its thing.
+
+File joker3.js takes another step. It shows how we can post parameters and exchange more complex objects – such as an Array and a Map – between JavaScript and Java..
+
+Run the application with this command
+
+`node --jvm --vm.cp application-bundle.jar joker3.js`{{execute}}
+
+## VALIDATOR APPLICATION
+Open file validateJS2J2JS.js. The JavaScript application wants to validate a Postal Code. The developer knew about the Java Class ValidateThroughNPMValidator that we created a little earlier on, so she though she might as well make use of it.
+
+Run the application with this command
+`node --jvm --vm.cp application-bundle.jar validateJS2J2JS.js`{{execute}}
+and find that two postal codes are validated.
+
+The remarkable thing here is that what is actually taking place is JavaScript executing Java code that in turn is executing JavaScript code. Not an obvious thing to do – but not a problem on a technical level.
+
+![](assets/js-java-js.png)
