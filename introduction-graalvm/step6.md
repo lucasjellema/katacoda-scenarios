@@ -43,6 +43,10 @@ Now there should be jokes cracked left and right. They must be produced by the J
 ## Pass Parameters Back and Forth 
 
 File joker3.js takes another step. It shows how we can post parameters and exchange more complex objects – such as an Array and a Map – between JavaScript and Java..
+```
+cat /labs/js2java/joker3.js
+```{{execute}}
+
 
 Run the application with this command
 
