@@ -28,7 +28,7 @@ GraalVM is adapted to run unmodified Node.js applications. Applications can impo
 
 To run Node.js-based applications, use the node utility in the GraalVM distribution:
 
-'node [options] [filename] [args]'
+`node [options] [filename] [args]`
 
 To install a Node.js module, use the npm executable in the /bin folder of the GraalVM package. The npm command is equivalent to the default Node.js command and supports all Node.js APIs. Note that some npm modules will require to be re-compiled from source with GraalVM JavaScript if they ship with binaries that have been compiled for Node.js based on V8.
 

@@ -31,7 +31,10 @@ chmod +x *
 Get the timing for the AOT versions of PrimeNumbers:
 
 ```
+echo "Timing for Native Image (AOT):"
 time ./primes
+echo "-----------"
+echo "Timing for regular execution (JIT) "
 time java PrimeNumbers
 ```{{execute}}
 
