@@ -1,24 +1,46 @@
-# Bonus: Bi-directional Polyglot Node calling Java
+# Polyglot Node applications calling Java
+Just like Java applications running on GraalVM can execute JavaScript, so can JavaScript or Node applications instantiate Java Classes and invoke Java objects.
 
+![](assets/node-to-java.png)
 
-`cd /labs/js2java`{{execute}}
+## The Joker Node Applications Getting his Jokes from is Java Sidekick
 
-Open file Joker.js. It is monoglot – and utterly dull. The Joker does not have a single Joke. Very unfortunate.
+check out file Joker.js. It is monoglot – and utterly dull. The Joker does not have a single Joke. Very unfortunate.
 
-`cat joker.js`{{execute}}
+```
+cd /labs/js2java
+cat joker.js
+```{{execute}}
 
-Run the application:
+Run the Node application - and get the expected dull results:
 `node joker.js`{{execute}} 
 
 You will not be dazzled, no tricks up anyone’s sleeves.
-Now open the file joker2.js. Things start to look more interesting. The joker still does not have any jokes – but he has a friend. A Java Class, called Joker, that may help out.
+
+Now look at the contents of the file joker2.js. 
+
+```
+cat /labs/js2java/joker2.js
+```{{execute}}
+
+Things start to look more interesting. The joker still does not have any jokes – but he has a friend. A Java Class, called Joker, that may help out. Look at this Java Class:
+```
+cat /labs/js2java/nl/amis/js2java/Joker.java
+```{{execute}}
+
+See how this class is coded. And notice that class is not aware of the fact that it is used in a polyglot context. This is just a regular Java Class, doing its thing.
+
+Now look how the Java Class is defined in the Node application with the `Java.type` instruction and how from that type a Joker object is instantiated `new javaJokerClass()`. This produces an object on which the JavaScript code can invoke methods just like functions on regular JS objects: `javaJoker1.getJoke()`. 
 
 Run the application with this command
 
 `node --jvm --vm.cp application-bundle.jar joker2.js`{{execute}}
 
+Note: the file application-bundle.jar contains the Joker.class file. The `--vm.cp` switch provides the GraalVM runtime with a classpath reference to the Java Classes that the Node application intends to invoke. 
 
-Now there should be jokes cracked left and right. They must be produced by the Java Joker. Take a look at the file Joker.java in folder nl/amis/js2java to see how that class is coded. And to see that is not aware of the fact that it is used in a polyglot context. This is just a regular Java Class, doing its thing.
+Now there should be jokes cracked left and right. They must be produced by the Java Joker. 
+
+## Pass Parameters Back and Forth 
 
 File joker3.js takes another step. It shows how we can post parameters and exchange more complex objects – such as an Array and a Map – between JavaScript and Java..
 
@@ -26,7 +48,7 @@ Run the application with this command
 
 `node --jvm --vm.cp application-bundle.jar joker3.js`{{execute}}
 
-## VALIDATOR APPLICATION
+## VALIDATOR APPLICATION - Node calling Java calling JavaScript
 Open file validateJS2J2JS.js. The JavaScript application wants to validate a Postal Code. The developer knew about the Java Class ValidateThroughNPMValidator that we created a little earlier on, so she though she might as well make use of it.
 
 Run the application with this command

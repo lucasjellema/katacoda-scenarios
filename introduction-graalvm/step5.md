@@ -145,7 +145,7 @@ We can now use this file as JavaScript resource in our Java application. Check J
 
 See how this class loads the validatorbundled.js using the ClassLoader (for example from the JAR file) – or from an absolute path on the file system (used when we create a native image of this Java application, see below). The source loaded from file is evaluated against the Polyglot JavaScript context. As a result, all top level functions in the Validator module are now executable from within the Java application. 
 
-Note: the JS source is loaded in a static initializer. That means that we can turn this Java Class into a native image with the JS included in the image. We can do this because we can instruct the native image generator to generate the image after first executing the static initializers.
+Note: the JS source is loaded in a static initializer. That means that we can turn this Java Class into a native image with the JS included in the image. We can do this because we can instruct the native image generator to generate the image after first executing the static initializers. See [this blog article](https://technology.amis.nl/2019/10/28/create-a-native-image-binary-executable-for-a-polyglot-java-application-using-graalvm/) for details on native image generation from polyglot applications, leveraging static initializers.
 
 To execute the Java application that leverages validations provided through the NPM *validator* module, execute this next command:
 ```
@@ -171,7 +171,12 @@ public Boolean isPostalCode(String postalCodeToValidate, String country) {
 		System.out.println("Postal Code Validation Result " + v.isPostalCode("XX 27165", "NL"));
 	}
 ```
+## Java Calling into Other Languages
+Java Polyglot applications not only can interact with JavaScript, they can just as easily evaluate and execute snippets and sources in other languages – provided there is a Truffle interpreter for that language. Some of the languages currently supported (to some extent) are R, Ruby, Python and LLVM (C, C++, Rust, Swift and others).
 
+The [GraalVM Documentation on Embedding](https://www.graalvm.org/docs/reference-manual/embed/) shows a number of examples of Java code with embedded snippets of code in some of these languages. Browse through the document. Add one of the examples of calling R or Python from Java to class HelloWorld. Run the class’ main method. Check whether HelloWorld in addition to speaking JavaScript now also can converse in these other languages.
+
+![](assets/java-to-others.png)
 
 # Bonus: Advanced AOT - Native Image for Polyglot Java Applications
 
