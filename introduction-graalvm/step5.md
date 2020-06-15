@@ -61,7 +61,8 @@ JavaScript code does not need to be inline or embedded as Strings in the Java so
 
 Check class LoadAndRunJS. In this class you will find a simple example of how the JavaScript is not embedded in Java, but is loaded from a separate file – calculator.js - instead.
 
-`cat nl/amis/java2js/LoadAndRunJS.java`
+`cat nl/amis/java2js/LoadAndRunJS.java`{{execute}}
+
 Using the ClassLoader to load a file resource, the JavaScript functions *Calculator* and *Fibonacci* are loaded. Subsequently, the loaded snippets of JS code are evaluated through the Polyglot context object, resulting in a bindings object (a Map) that has the functions as entries. The names of the JS functions are the keys of the objects in *binding*.  
 
 ```
@@ -115,8 +116,64 @@ Here you see the result of Java executing JavaScript that leverages a Java objec
 
 You could try additional things, such as adding variables or methods to the FriendlyNeighbour class and see if you can execute and access methods and data from both sides of the polyglot divide.
 
+## Leverage NPM Module from Java - for Validating Postal Codes
 
-## Bonus: Advanced AOT - Native Image for Polyglot Java Applications
+Our challenge: implement validations of postal codes, across multiple countries, in our Java application. Our frustration: having to write such code while we know it already exists in the form of an NPM module called Validator – freely available in the open source domain. However: it is in JavaScript.
+
+GraalVM to the rescue: we can now from the comfort of our Java application enlist the help of modules written in JavaScript. This challenge is discussed in detail in [this article](https://technology.amis.nl/2019/10/25/leverage-npm-javascript-module-from-java-application-using-graalvm/).
+
+![](assets/java-npm.png)
+
+The most important thing we need to find a workaround for is: how to make GraalJS – the JavaScript implementation on GraalVM – work with the module structure in the NPM Validator module. GraalJS does not support *require()* or *CommonJS*. In order to make it work with NPM modules – they have to be turned into ‘flat’ JavaScript resources – self-contained JavaScript source file. This can be done using one of the many popular open-source bundling tools such as Parcel, Browserify and Webpack. 
+
+Note: ECMAScript modules can be loaded in a Context simply by evaluating the module sources. Currently, GraalVM JavaScript loads ECMAScript modules based on their file extension. Therefore, any ECMAScript module must have file name extension .mjs.
+
+The steps to turn an NPM module into a self contained bundle dat GraalVM can process are these:
+• check GraalVM compatibility of NPM module at https://www.graalvm.org/docs/reference-manual/compatibility/#validator
+• install webpack and webpack-cli
+• install npx (executable runner – complement to npm which is not included with GraalVM platform)
+• install validator module with npm
+• produce self contained bundle for validator module with webpack
+In the interest of time and because the resulting validatorbundled.js file is already included in the workshop resources –there is no absolute need for you to perform these installations at this moment. So let’s skip them (if you are interested in the details, please refer to the blog article.
+
+The outcome is a file called validatorbundled.js that contains the sublimation of all modules that contribute to the Validator module. 
+You can take a look at this file:
+`cat /labs/java2js/validatorbundled.js`{{execute}}
+
+We can now use this file as JavaScript resource in our Java application. Check Java class ValidateThroughNPMValidator:
+`cat /labs/java2js/nl/amis/java2js/ValidateThroughNPMValidator.java`
+
+See how this class loads the validatorbundled.js using the ClassLoader (for example from the JAR file) – or from an absolute path on the file system (used when we create a native image of this Java application, see below). The source loaded from file is evaluated against the Polyglot JavaScript context. As a result, all top level functions in the Validator module are now executable from within the Java application. 
+
+Note: the JS source is loaded in a static initializer. That means that we can turn this Java Class into a native image with the JS included in the image. We can do this because we can instruct the native image generator to generate the image after first executing the static initializers.
+
+To execute the Java application that leverages validations provided through the NPM *validator* module, execute this next command:
+```
+cd /labs/java2js
+
+javac nl/amis/java2js/ValidateThroughNPMValidator.java
+
+java nl/amis/java2js/ValidateThroughNPMValidator
+```{{execute}}
+In the output, you will find a list of all validation functions now at our disposal in Java code, without programming a single letter of it.
+
+The validation results printed to the output are produced from these lines of Java code:
+```
+public Boolean isPostalCode(String postalCodeToValidate, String country) {
+		Value postalCodeValidator = c.getBindings("js").getMember("isPostalCode");
+		Boolean postalCodeValidationResult = postalCodeValidator.execute(postalCodeToValidate, country).asBoolean();
+		return postalCodeValidationResult;
+	}
+
+	public static void main(String[] args) {
+		ValidateThroughNPMValidator v = new ValidateThroughNPMValidator();
+		System.out.println("Postal Code Validation Result " + v.isPostalCode("3214 TT", "NL"));
+		System.out.println("Postal Code Validation Result " + v.isPostalCode("XX 27165", "NL"));
+	}
+```
+
+
+# Bonus: Advanced AOT - Native Image for Polyglot Java Applications
 
 The following statement is used to create a natively executable image of the HelloWorld class *with embedded JavaScript* (Java interoperating with JavaScript, turned into a native executable). 
 
