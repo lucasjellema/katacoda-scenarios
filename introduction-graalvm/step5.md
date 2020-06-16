@@ -3,6 +3,7 @@
 GraalVM is not only a superior JIT compiler as well as an AOT compiler that produces natively executable images from Java applications. It is also a polyglot runtime platform for many programming languages and it offers polyglot interoperability. A program written in one language can execute snippets (or chunks) written in a different language, thus leveraging existing libraries and components and leveraging the strengths of each language. To add a certain *je ne sais quoi* to a program. And capture the *zeitgeist* with the hottest programming language in town.
 
 In this section, you will see the first examples of Polyglot Interoperability - starting from Java and calling out to JavaScript.
+![](assets/java2js.png)
 
 ## Execute Polyglot Java Class HelloWorld
 Here the HelloWorld example – the gentle introduction into Java code interacting with JavaScript. Your first taste of polyglot interoperability.
@@ -103,6 +104,7 @@ The definition of Class *FriendlyNeighbour* is shown here:
 So we have:
 *CallbackFromJS2J (Java) => JavaScript snippet => FriendlyNeighbour (Java)* 
 
+![](assets/java2jsfriendlyneighnour.png)
 To execute:
 ```
 cd /labs/java2js
@@ -176,7 +178,7 @@ Java Polyglot applications not only can interact with JavaScript, they can just 
 
 The [GraalVM Documentation on Embedding](https://www.graalvm.org/docs/reference-manual/embed/) shows a number of examples of Java code with embedded snippets of code in some of these languages. Browse through the document. Add one of the examples of calling R or Python from Java to class HelloWorld. Run the class’ main method. Check whether HelloWorld in addition to speaking JavaScript now also can converse in these other languages.
 
-![](assets/java-to-others.png)
+![](assets/java2others.png)
 
 # Bonus: Advanced AOT - Native Image for Polyglot Java Applications
 

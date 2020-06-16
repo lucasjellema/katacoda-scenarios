@@ -1,7 +1,7 @@
 # Polyglot Node applications calling Java
 Just like Java applications running on GraalVM can execute JavaScript, so can JavaScript or Node applications instantiate Java Classes and invoke Java objects.
 
-![](assets/node-to-java.png)
+![](assets/node2java.png)
 
 ## The Joker Node Applications Getting his Jokes from is Java Sidekick
 
@@ -39,6 +39,7 @@ Run the application with this command
 Note: the file application-bundle.jar contains the Joker.class file. The `--vm.cp` switch provides the GraalVM runtime with a classpath reference to the Java Classes that the Node application intends to invoke. 
 
 Now there should be jokes cracked left and right. They must be produced by the Java Joker. 
+![](assets/joker2.png)
 
 ## Pass Parameters Back and Forth 
 
@@ -46,7 +47,6 @@ File joker3.js takes another step. It shows how we can post parameters and excha
 ```
 cat /labs/js2java/joker3.js
 ```{{execute}}
-
 
 Run the application with this command
 
@@ -61,4 +61,4 @@ and find that two postal codes are validated.
 
 The remarkable thing here is that what is actually taking place is JavaScript executing Java code that in turn is executing JavaScript code. Not an obvious thing to do – but not a problem on a technical level.
 
-![](assets/js-java-js.png)
+![](assets/js2java2js.png)
