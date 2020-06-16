@@ -36,3 +36,8 @@ To try it out, run the application with this command – on the command line fro
 `js --polyglot --jvm polyglot.js`{{execute}}
 
 Please, take this opportunity and modify the source polyglot.js. Make it jump through even more hoops. Make the polyglot contexts share even more.
+
+Open the file using good old *vi*:
+`vi /labs/polyglot/polyglot.js`{{execute}}
+
+Remember: use ESC + q! to leave the file without saving changes, or using ESC + wq to leave with saving your changes.
