@@ -16,6 +16,16 @@ time java PrimeNumbers
 ```{{execute}}
 Please take note of the value for *real* time (expected to be somewhere between 60 and 150 ms).
 
+Quick preview:
+
+```
+cd /labs/native
+chmod +x primes
+
+time ./primes
+```{{execute}}
+
+
 ## Run JavaScript and Node applications - with GraalVM
 
 GraalVM includes an ECMAScript compliant JavaScript engine. It is designed to be fully standard compliant, execute applications with high performance, and provide all the benefits from the GraalVM stack, including language interoperability and common tooling. With that engine, GraalVM can execute JavaScript and Node.js applications.

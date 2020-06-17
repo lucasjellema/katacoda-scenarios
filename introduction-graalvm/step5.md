@@ -198,7 +198,11 @@ The result should be a natively executable file of moderate size (compared to th
 
 Run this executable with the following command. No Java, no classpath. Only this one file (that contains a JavaScript runtime engine as well as the as yet unparsed, unprocessed JavaScript snippets):
 
-`/labs/native/hello`{{execute}}
+```
+cd /labs/native
+chmod +x hello
+./hello
+```{{execute}}
 
 ![](assets/run-native-image.png)
 This tells you that the run time image - a combination of Java & JavaScript runtime engines along with the application - is close to 100MB. Without the JavaScript runtime, it would have been closer to 20MB. The startup time is phenomenal: less than 10 ms.

@@ -53,7 +53,7 @@ Run the application with this command
 `node --jvm --vm.cp application-bundle.jar joker3.js`{{execute}}
 
 ## VALIDATOR APPLICATION - Node calling Java calling JavaScript
-Open file validateJS2J2JS.js. The JavaScript application wants to validate a Postal Code. The developer knew about the Java Class ValidateThroughNPMValidator that we created a little earlier on, so she though she might as well make use of it.
+Open file validateJS2J2JS.js. The JavaScript application wants to validate a Postal Code. The developer knew about the Java Class ValidateThroughNPMValidator that we created a little earlier on, so she thought she might as well make use of it.
 
 Run the application with this command
 `node --jvm --vm.cp application-bundle.jar validateJS2J2JS.js`{{execute}}
