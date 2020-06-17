@@ -143,7 +143,7 @@ You can take a look at this file:
 `cat /labs/java2js/validatorbundled.js`{{execute}}
 
 We can now use this file as JavaScript resource in our Java application. Check Java class ValidateThroughNPMValidator:
-`cat /labs/java2js/nl/amis/java2js/ValidateThroughNPMValidator.java`
+`cat /labs/java2js/nl/amis/java2js/ValidateThroughNPMValidator.java`{{execute}}
 
 See how this class loads the validatorbundled.js using the ClassLoader (for example from the JAR file) – or from an absolute path on the file system (used when we create a native image of this Java application, see below). The source loaded from file is evaluated against the Polyglot JavaScript context. As a result, all top level functions in the Validator module are now executable from within the Java application. 
 
