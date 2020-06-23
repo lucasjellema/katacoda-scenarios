@@ -51,10 +51,11 @@
     }
   },
   "environment": {
-    "uilayout": "editor-terminal",
-    "uimessage1": "\u001b[32mYour Interactive Bash Terminal.\r\nExecute bash shell commands \u001b[m\r\n"
+    "uilayout": "terminal",
+    "uimessage1": "\u001b[32mYour Interactive Bash Terminal.\r\nExecute bash shell commands \u001b[m\r\n",
+    "showide": true
   },
   "backend": {
-    "imageid": "ubuntu1904"
+    "imageid": "ubuntu:2004"
   }
 }
