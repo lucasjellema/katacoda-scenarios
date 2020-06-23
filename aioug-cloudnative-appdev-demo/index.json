@@ -1,0 +1,49 @@
+{
+  "title": "API Gateway on Oracle Cloud Infrastructure",
+  "description": "Getting started with API Gateway on Oracle Cloud Infrastructure - expose a stock response,  HTTP Backend and Serverless Functions.",
+  "difficulty": "beginner",
+  "time": "30 minutes",
+  "details": {
+    "steps": [
+      {
+        "title": "Step 1 - Prepare Fn and OCI CLI",
+        "text": "step1.md"
+      },
+      {
+        "title": "Step 2 - Create your first API Deployment",
+        "text": "step2.md"
+      },
+      {
+        "title": "Step 3 - Expose an HTTP Backend in the API Deployment",
+        "text": "step3.md"
+      },
+      {
+        "title": "Step 4 - Expose a Serverless Function in the API Deployment for public access",
+        "text": "step4.md"
+      }
+    ],
+    "intro": {
+      "text": "introduction.md",
+      "credits": "AMIS | Conclusion",
+      "courseData": "background.sh",
+      "code": "foreground.sh"
+        },
+    "finish": {
+      "text": "finish.md",
+      "courseData": "teardown.sh"
+    },
+    "assets": {
+      "client": [
+     
+      ]
+    }
+  },
+  "environment": {
+    "uilayout": "terminal",
+    "uimessage1": "\u001b[32mYour Interactive Bash Terminal.\r\nExecute bash shell commands \u001b[m\r\n",
+    "showide": true
+  },
+  "backend": {
+    "imageid": "ubuntu:2004"
+  }
+}
