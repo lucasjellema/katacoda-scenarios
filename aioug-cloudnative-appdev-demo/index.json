@@ -1,8 +1,8 @@
 {
-  "title": "API Gateway on Oracle Cloud Infrastructure",
-  "description": "Getting started with API Gateway on Oracle Cloud Infrastructure - expose a stock response,  HTTP Backend and Serverless Functions.",
+  "title": "AIOUG Webinar - Live Demo of Cloud Native Application Development",
+  "description": "AIOUG Webinar - Live Demo of Cloud Native Application Development",
   "difficulty": "beginner",
-  "time": "30 minutes",
+  "time": "55 minutes",
   "details": {
     "steps": [
       {
