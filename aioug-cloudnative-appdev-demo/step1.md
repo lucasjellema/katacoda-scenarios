@@ -18,25 +18,9 @@ You need to provide details on the OCI tenancy you will work in and the OCI user
 
 Paste the contents that you prepared in the [OCI Tenancy preparation scenario](https://katacoda.com/redexpertalliance/courses/oci-course/oci-lab-preparation-cloud-trial). 
 
-Set the environment variable LAB_ID to 1 - unless you are in a workshop with multiple participants and each uses their own number.
-
-`export LAB_ID=1`{{execute}}
 
 
 
-The environment is currently being prepared. While that is happening, we can take a look at the Stream `lab-stream` in the `lab-compartment`. Note: there is a fairly strict limit on the number of Stream (partitions) that we are allowed to create (out of the box); therefore we are all sharing the stream in this workshop.
-
-Open the OCI Console as lab-user at: https://console.us-ashburn-1.oraclecloud.com/storage/streaming . Here you should see the stream `lab-stream`. 
-`echo "Open the console at https://console.YOUR_REGION.oraclecloud.com/storage/streaming"`{{execute}}
-
-Click on the stream *lab-stream* to go to the details page. Click on Produce Test Message to... well, produce a test message of course.
-![](assets/stream-details.png)  
-
-Type a message and press Produce. The console will indicate that the message was produced successfully.
-
-To check on the message, close the popup window and press Load Messages. All recently published messages on the stream are displayed – including the one that was just published.
-
-This is the simplest example of pub/sub through OCI Streaming.
 
 ### Finalizing the Environment 
 
