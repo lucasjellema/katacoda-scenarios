@@ -46,6 +46,10 @@
         {
           "file": "locale-faker.js",
           "target": "~/"
+        },
+        {
+          "file": "generate-users-file.js",
+          "target": "~/"
         }
       ]
     }
