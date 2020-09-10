@@ -73,6 +73,10 @@ Check the contents of *names.js* in the IDE or with `cat names.js`{{execute}}.
 
 The JavaScript code requires the *faker* module. Then it uses this module by asking it for specific properties in specific domains. In this case, the domain is *name* and the properties are *firstName, lastName, jobTitle, prefix, suffix and jobArea.
 
+In `names-extended.js` we make use of a few other domains supported by faker: vehicle, finance and git. Just for fun really.
+
+`node names-extended.js`{{execute}}
+
 In *fake-expressions.js* we make use of the *faker.fake()* function that interprets strings with moustache notations and replaces expressions with generated data:
 `faker.fake ("{{name.prefix}} {{name.firstName}} {{name.lastName}} {{name.suffix}}")`
 Using such expressions, we can generate documents with fake data in many different formats.
