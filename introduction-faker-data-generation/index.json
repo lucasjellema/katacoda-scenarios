@@ -31,7 +31,10 @@
     },
     "assets": {
       "client": [
-       
+        {
+          "file": "names.js",
+          "target": "~/"
+        }
       ]
     }
   },
