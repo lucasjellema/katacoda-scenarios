@@ -50,6 +50,10 @@
         {
           "file": "generate-users-file.js",
           "target": "~/"
+        },
+        {
+          "file": "generate-users-csv.js",
+          "target": "~/"
         }
       ]
     }

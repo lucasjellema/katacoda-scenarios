@@ -41,6 +41,8 @@ faker-cli -n firstName
 faker-cli -n lastName
 ```{{execute}}
 
+Try again executing the above statements - and find that the result is different each time.
+
 
 # Get going programmatically from Node applications
 

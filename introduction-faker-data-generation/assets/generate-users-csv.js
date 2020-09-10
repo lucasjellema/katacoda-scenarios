@@ -28,7 +28,7 @@ let dataObj = generateUsers();
 const opts = { "quote":"'" }; // see: https://www.npmjs.com/package/json2csv 
 
 const parser = new Parser(opts);
-  const csv = parser.parse(dataObj);
+  const csv = parser.parse(dataObj.data);
 
 
 fs.writeFileSync('users.csv', csv);
