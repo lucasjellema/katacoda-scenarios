@@ -11,7 +11,7 @@ For example file *faker/lib/locales/de/name/first_name.js* contains the German s
 You can of course create enhancements to faker and send a merge request to the maintainers of the project. And you should.
 
 For quick finetuning of what faker does, you can use other means. Such as overriding functions in the original faker module and adding such functions.
-
+<pre>
 const faker = require('faker');
 // delete the function you would like to override
 delete faker['name.jobTitle'];
@@ -28,4 +28,11 @@ faker.timeOff.hobbies = function (str) {
 }
 // re-export the module for changes to take effect
 module.exports = faker
- 
+</pre>
+
+Check out the contents of `custom-faker.js` and `names-custom.js` that uses the overriding actions of the custom faker. 
+
+Then run 
+`node names-custom.js`{{execute}}
+
+for an example of how you can tune and complement the actions of the faker module.
