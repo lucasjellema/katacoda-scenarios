@@ -10,7 +10,8 @@ For example file *faker/lib/locales/de/name/first_name.js* contains the German s
 
 You can of course create enhancements to faker and send a merge request to the maintainers of the project. And you should.
 
-For quick finetuning of what faker does, you can use other means. Such as overriding functions in the original faker module and adding such functions.
+For quick finetuning of what faker does, you can use other means. Such as overriding functions in the original faker module and adding such similar functions. In this code snippet, the faker module is required, manipulated and exported. The result can be required in other modules - as a customized wrapper around the original faker module.
+
 <pre>
 const faker = require('faker');
 // delete the function you would like to override
