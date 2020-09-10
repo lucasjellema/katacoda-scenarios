@@ -14,4 +14,9 @@ console.log(`Employee: ${prefix} ${firstName} ${lastName} ${suffix}`);
 console.log(`Job title: ${jobTitle}`);
 console.log(`Job area: ${jobArea}`);
 console.log(`Phone: ${phone}`);
+console.log(`Vehicle: ${faker.vehicle.model()} ${faker.vehicle.type()}`)
+console.log(`Credit Card: ${faker.finance.creditCardNumber()}`)
+console.log(`IBAN: ${faker.finance.iban()}`)
+console.log(`Git Commit: ${faker.git.commitEntry()}`)
+
 

@@ -7,3 +7,6 @@ let weekday = faker.date.weekday();
 console.log(futureDate);
 console.log(recentDate);
 console.log(weekday);
+
+console.log(faker.time.recent('wide'));
+console.log(faker.time.recent('abbr'));
