@@ -14,3 +14,4 @@ console.log(`Employee: ${prefix} ${firstName} ${lastName} ${suffix}`);
 console.log(`Job title: ${jobTitle}`);
 console.log(`Job area: ${jobArea}`);
 console.log(`Phone: ${phone}`);
+
