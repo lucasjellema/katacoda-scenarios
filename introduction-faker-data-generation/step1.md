@@ -49,7 +49,7 @@ Check the contents of *names.js* in the IDE or with `cat names.js`{{execute}}.
 
 The JavaScript code requires the *faker* module. Then it uses this module by asking it for specific properties in specific domains. In this case, the domain is *name* and the properties are *firstName, lastName, jobTitle, prefix, suffix and jobArea.
 
-Check file *dates.js* for similar fake data generation in the *date* domain:
+Check file *dates.js* for similar fake data generation in the *date* domain - using properties futureDate, recentDate and weekday:
 
 `node dates.js`{{execute}}
 
