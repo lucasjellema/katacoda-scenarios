@@ -61,11 +61,7 @@ vi
 zh_CN
 zh_TW
 
-As of vesion v3.0.0 faker.js supports incremental loading of locales.
-
-By default, requiring faker will include all locale data.
-
-In a production environment, you may only want to include the locale data for a specific set of locales.
+As of version v3.0.0 faker.js supports incremental loading of locales. By default, requiring faker will include all locale data. In a production environment, you may only want to include the locale data for a specific set of locales.
 ```
 // loads only de locale
 var faker = require('faker/locale/de');

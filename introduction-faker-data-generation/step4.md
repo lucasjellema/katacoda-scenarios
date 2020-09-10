@@ -37,3 +37,5 @@ Then run
 `node names-custom.js`{{execute}}
 
 for an example of how you can tune and complement the actions of the faker module.
+
+In this example, the name.jobTitle has been replaced, timeOff.hobbies has been added and vehicle.manufacturer has been customized. 

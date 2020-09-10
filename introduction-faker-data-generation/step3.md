@@ -25,3 +25,5 @@ node generate-users-csv
 cat users.csv
 ls -l users.csv
 ```{{execute}}
+
+By all means, execute these statements multiple times. Every time, the file will be quite different.

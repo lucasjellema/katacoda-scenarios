@@ -6,8 +6,6 @@ This completes your explorations with Faker. You should now know about a valuabl
 
 ## Background Resources
 
-## Resources
-
 A Faker Tutorial- http://zetcode.com/javascript/fakerjs/
 
 Faker on NPM - https://www.npmjs.com/package/faker 
