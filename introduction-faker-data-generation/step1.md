@@ -20,7 +20,29 @@ curl http://faker.hook.io?property=x
 ```{{execute}}
 
 
-# Get going locally and programmatically
+
+
+# Get going locally - with CLI
+
+Faker CLI
+The faker-cli is a Node module, which is a wrapper over the faker.js. It allows to generate fake data from a command line tool.
+
+Install the faker-cli module.
+`npm install -g faker-cli`{{execute}}
+
+We can use the CLI as follows:
+
+`faker-cli -d future`{{execute}}
+The -d switch indicates the domain (d: date, n:name, p: phone, f: finance), follow by the property in that domain.
+
+```
+faker-cli -d recent
+faker-cli -n firstName
+faker-cli -n lastName
+```{{execute}}
+
+
+# Get going programmatically from Node applications
 
 Setting up faker.js
 First, we install faker.js. Check if node is installed and if so which version:

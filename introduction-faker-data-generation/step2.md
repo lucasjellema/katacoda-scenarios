@@ -17,6 +17,10 @@ This script generates one hundred user objects and writes them to a JSON file ca
 
 `node generate-users-file`{{execute}}
 
-Check the file that was produced: `cat users.json`{{execute}}
+Check the file that was produced: 
+```
+cat users.json
+ls -l users.json
+```{{execute}}
 
 Note: every time you rerun this statement, the file is generated with fresh contents.
