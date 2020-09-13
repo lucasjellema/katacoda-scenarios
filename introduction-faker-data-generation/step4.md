@@ -121,6 +121,7 @@ to make sure that the new date domain in the NL domain is loaded.
 Then, I translate both weekday.js and month.js.
 
 After making the changes, I run the entire test set. This does not prove I defined the correct translations of course but it does verify that the code is still valid after making my changes. There is no need to extend the test set for this change.
+![](assets/test.png)
 
 If you add functionality - new functions, even a new domain - then you need to make sure to update the test set to retain the test coverage. The project owner has asked several pull requesters to first extend the test set before the pull request can be accepted. See for example [PR for Support parts of speech for faker.random.word and faker.random.words - needs test cverage](https://github.com/Marak/faker.js/pull/907).
 
