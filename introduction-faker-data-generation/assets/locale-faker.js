@@ -1,4 +1,11 @@
-const faker = require('faker/locale/ru');
+var faker = require('faker');
+faker.locale = "nl";
+let firstName = faker.name.firstName();
+let lastName = faker.name.lastName();
+
+console.log(` ${firstName} ${lastName}`);
+
+faker.locale = "ru";
 
 let firstName = faker.name.firstName();
 let lastName = faker.name.lastName();
