@@ -2,7 +2,7 @@ This scenario introduces Faker. Faker is an NPM module for generating fake data 
 
 Faker provides supported for data in many different categories - IP addresses, Vehicle Models, Credit Card Numbers, First Names, Addresses, Country Codes, Telephone Numbers, Timestamps and Dates (past and present), Filenames and random numbers and text. And much more besides.
 
-This scenario introduces Faker: what it can dom, how it can be used and how it can be customized. Faker can be used in a browser and from a Node application as well as from a CLI. 
+This scenario introduces Faker: what it can do, how it can be used and how it can be customized. Faker can be used in a browser and from a Node application as well as from a CLI. 
 
 
 ## Resources
