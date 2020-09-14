@@ -16,8 +16,8 @@ console.log(`Job area: ${jobArea}`);
 console.log(`Phone: ${phone}`);
 
 faker.locale = "nl";
-let firstName = faker.name.firstName();
-let lastName = faker.name.lastName();
+firstName = faker.name.firstName();
+lastName = faker.name.lastName();
 
 console.log(`Dutch Name: ${firstName} ${lastName}`);
 
