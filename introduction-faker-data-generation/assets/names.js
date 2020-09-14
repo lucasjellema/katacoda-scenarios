@@ -15,5 +15,16 @@ console.log(`Job title: ${jobTitle}`);
 console.log(`Job area: ${jobArea}`);
 console.log(`Phone: ${phone}`);
 
+faker.locale = "nl";
+let firstName = faker.name.firstName();
+let lastName = faker.name.lastName();
+
+console.log(`Dutch Name: ${firstName} ${lastName}`);
+
+let month = faker.date.month();
+let weekday = faker.date.weekday();
+
+console.log(month);
+console.log(weekday);
 
 

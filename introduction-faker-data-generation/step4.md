@@ -91,6 +91,10 @@ See [GitHub Docs](https://docs.github.com/en/github/getting-started-with-github/
 In order to perform any work on the Faker sources (on a local machine), a local clone of the repo should be created. A common way would be on the command line using the Git CLI command:
 `git clone https://github.com/lucasjellema/faker.js`{{execute}}
 
+In order to run the test set and try out code samples, you need to to perform an npm install:
+
+`npm install`{{execute}}
+
 ## Set the Original Upstream Repository as Remote 
 You must configure a remote that points to the upstream repository in Git to sync changes you make in a fork with the original repository. This also allows you to sync changes made in the original repository with the fork.
 
@@ -149,7 +153,29 @@ I am at this moment waiting for feedback on my PR. You can check it here [my PR]
 
 Hopefully my PR will quickly be reviewed and accepted. Then I have really made a (small) contribution to Faker.
 
-Please feel encouraged to also make contributions to Faker - and hopefully even more interesting ones than this somewhat low hanging translation fruit. What about extending Faker with new namespaces - for example for weather, food, sports, airlines, animals, programming languages, cloud? 
+Please feel encouraged to also make contributions to Faker - and hopefully even more interesting ones than this somewhat low hanging translation fruit. What about extending Faker with new namespaces - for example for weather, food, sports, airlines, programming languages, cloud? To start with a simple contribution, consider translating into Dutch data sets such as commerce/product_name, commerce/color, commerce/product_description, commerce/department, finance/account_type, finance/transaction_type, company/bs_verb, company/bs_noun, team/creature (animals), vehicle/fuel, vehicle/vehicle_type. All these locale sets are defined in English here: https://github.com/Marak/faker.js/tree/master/lib/locales/en.
 
+# Using the customized Faker.js module
+Until the PR has been accepted and a new release of the Faker.js module is pushed to NPM, we can make use of the customized version of Faker.js. This is done by changing the entry in package.json. Where it currently says:
+```
+"dependencies": {
+    "faker": "^5.1.0"
+  }
+```
+we can change the reference to faker in package.json to the customized version in our GitHub repo:
 
+```
+"dependencies": {
+    "faker": "lucasjellema/faker.js#nl-locale-weekdays"
+  }
+```
+Then run npm install to install this customized version of faker.js.
 
+Now when you run 
+`node names.js`{{execute}}
+
+the customized version of the Dutch locale for month and weekday names should have it effect.
+
+Note: see https://docs.npmjs.com/files/package.json#git-urls-as-dependencies for details on GitHub and other references to custom NPM modules in package.json.
+
+Note: not until we have merged the feature branch to the master branch will this reference resolve to include our new feature.
