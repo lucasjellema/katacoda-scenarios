@@ -178,4 +178,3 @@ the customized version of the Dutch locale for month and weekday names should ha
 
 Note: see https://docs.npmjs.com/files/package.json#git-urls-as-dependencies for details on GitHub and other references to custom NPM modules in package.json.
 
-Note: not until we have merged the feature branch to the master branch will this reference resolve to include our new feature.
