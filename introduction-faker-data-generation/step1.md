@@ -89,3 +89,24 @@ Check file *dates.js* for similar fake data generation in the *date* domain - us
 And feel free to run it a few times more.
 
 Check the contents of *dates.js* in the IDE or with `cat dates.js`{{execute}}.
+
+## Build JSON object using Faker Moustache placeholders
+
+Run this command:
+`node json-faker.js`{{execute}}
+
+The result is a JSON object. It is constructed using the Faker moustache expressions like this:
+<pre>
+const fakePerson = { "name"      :"{{name.firstName}} {{name.lastName}}"
+                   , "address"   : { "street" :"{{address.streetName}} {{random.number}}"
+                                   , "city"   :"{{address.city}}"
+                                   , "country":"{{address.country}}"
+                                   }
+                   , "birthdate" : "{{date.past}}"
+                   }
+</pre>  
+
+This object - with many properties containing Faker expressions - is stringified and fed to Faker.fake() for replacing the moustache expressions with generated fake data. Next, the resulting string is parsed into an object again:
+`const person = JSON.parse( faker.fake( JSON.stringify(fakePerson)))`
+ 
+

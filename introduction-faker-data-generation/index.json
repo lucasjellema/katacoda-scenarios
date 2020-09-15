@@ -45,6 +45,10 @@
           "target": "~/"
         },
         {
+          "file": "json-faker.js",
+          "target": "~/"
+        },
+        {
           "file": "dates.js",
           "target": "~/"
         },
