@@ -113,11 +113,12 @@ This object - with many properties containing Faker expressions - is stringified
 Frequently you are not just interested in a single object, but in series of them. Faker at present does not have out of the box functions that you just ask to generate such a collection. However - as is discussed in [the Issues section](https://github.com/Marak/faker.js/issues/724) of the faker.js project on GitHub - by combining some JavaScript collection manipulation functions with faker.js, you can achieve nice things. For example: 
 ```
 // create an array with a random number (between 1 and 50) of elements
-const arr = new Array(faker.random.number({min: 1, max: 50}).fill())
+const arr = new Array(faker.random.number({min: 1, max: 50})).fill()
 // define at each position in the Array an element that has two fake generated properties - one a a city and the other a list of up to three street names
-const list = arr.map(() => ({
+
+const generatedList = arr.map(() => ({
     city: faker.address.city(),
-    streets: new Array(faker.random.number({min: 1, max: 3}).fill().map(() => faker.address.streetName, 3, true))
+    streets: new Array(faker.random.number({min: 1, max: 3})).fill().map(() => faker.address.streetName(), 3, true)
 }))
 ```
 Try this out using
