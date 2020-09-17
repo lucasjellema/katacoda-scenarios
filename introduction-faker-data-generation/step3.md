@@ -51,7 +51,7 @@ It shows a JSON document structure using calls to faker.js to produce random dat
 ```
 To execute this file, run this command:
 ```
-node generateCompanyObject.js`
+node generateCompanyObject.js
 cat companyDataSet.json
 ```{{execute}}
 
