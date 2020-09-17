@@ -34,13 +34,16 @@
         {
           "file": "names.js",
           "target": "~/"
-        }, {
+        },
+        {
           "file": "names-extended.js",
           "target": "~/"
-        }, {
+        },
+        {
           "file": "names-custom.js",
           "target": "~/"
-        }, {
+        },
+        {
           "file": "custom-faker.js",
           "target": "~/"
         },
@@ -63,7 +66,12 @@
         {
           "file": "list-generation.js",
           "target": "~/"
-        },        {
+        },
+        {
+          "file": "generateCompanyObject.js",
+          "target": "~/"
+        },
+        {
           "file": "generate-users-file.js",
           "target": "~/"
         },
